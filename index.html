@@ -1,0 +1,87 @@
+
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="type text/html; charset=utf-8" >
+    <meta name="referrer" content="same-origin">
+    <meta name="description" content="Portfolio of Madison Goggin, MS, CISSP, Multi-Disciplinary Cybersecurity and AI Cross-Systems and Services Engineer.">
+    <meta http-equiv="content-security-policy" content="default-src self"/>
+    <title>Madison Goggin, MS, CISSP</title>
+    <script type="module" async, crossorigin="anonymous" referrerpolicy="same-origin" src="./js/d3-viz.js"></script>
+    <link rel="stylesheet" type="text/css" href="./css/main.css">
+</head>
+<body>
+<header class="site-header">
+    <div class="header-inner">
+        <span class="brand-mark" aria-hidden="true">MG</span>
+        <span class="brand-text">
+          <strong>Madison Goggin, MS, CISSP</strong>
+          <summary> Cybersecurity and AI Cross-Systems and Services Engineer</summary>
+        </span>
+        </div>
+  <ul class="hero-tags" aria-label="Focus areas">
+    <li>AI Safety</li>
+    <li>Security Engineering</li>
+    <li>DevSecAIOps</li>
+    <li>Distributed Systems</li>
+    <li>Federated &amp; Edge AI</li>
+    <li>Post-Quantum Readiness</li>
+  </ul>
+</header>
+<main>
+<section aria-label="about" class="panel">
+        <h2>Summary</h2>
+        <p>
+            I am a strategic technologist and multi-disciplinary, cross-systems Cybersecurity and AI  Engineer with over seven years of experience driving secure high availability, system, and database administration, intelligent process automation, and bespoke security tool development across complex state infrastructure. This page doubles a live map of my work: every tag below is drawn from a professional experience.</p>
+</section>
+<section aria-labelledby="controls-heading" class="panel">
+    <h2 id="controls-heading">Dashboard Controls and Filters</h2>
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <section aria-label="explore connections">
+                    <h3> Explore Connections</h3>
+                        <p class="text-sm text-slate-500">Click elements or use keyboard navigation to cross-filter projects, skill groups, and dependency structures.</p>
+                </section>
+                <section aria-label="Filters" class="flex flex-wrap items-center gap-3">
+                        <label for="tag-filter " class="legend-item">Filter Category:</label>
+                        <select id="tag-filter" class="legend-item">
+                            <option value="all">All Skill Categories</option>
+                            <!-- Populated dynamically via JS from Flask data -->
+                    </select>
+                    <button id="reset-filters" >
+                        Reset Filters
+                    </button>
+                </div>
+            </div>
+        </section>
+
+          <!-- Grid Layout for Visualizations -->
+        <div id="viz">
+            <!-- Left / Top Column: Marey's Train Schedule Style Timeline (Span 7) -->
+            <section class="panel" aria-labelledby="marey">
+                <span aria-labelledby="mercy-panel-head"></span>
+                        <h2 id="marey-heading" class="panel-head">Cross-Systems Graph</h2>
+                        <p class='panel-sub'>Marey's Train Schedule style showing cross-systems experience and expertise.</p>
+                </span>
+                 <div id="marey-container" class="w-full h-full" role="region" aria-label="Marey's Train Schedule style showing cross-systems experience and expertise."></div>
+            </section>
+
+            <section class="panel" aria-label="treemap">
+                <h2 id="treemap-heading" class="panel-head">Cross-Systems Treemap</h2>
+                     <p class='panel-sub'>Hierarchical treemap of cross-systems experience and expertise.</p>
+                    <div id="treemap-container" class="w-full h-full" role="region" aria-label="Cascaded treemap visualization"></div>
+            </section>
+    </div>
+    <!-- Accessible Global Tooltip Element -->
+<div id="floating-tooltip" role="tooltip" aria-hidden="true" class="absolute z-50 pointer-events-none opacity-0 transform scale-95 bg-slate-900 text-white text-xs rounded-lg shadow-xl p-3 max-w-xs tooltip-transition">
+    <!-- Tooltip dynamic content loaded by JS -->
+</div>
+</main>
+
+  <footer class="site-footer">
+      <p class="brand-text"><strong>Madison Goggin, MS, CISSP</strong>Accessible by design. Secure by default.</p>
+    </div>
+  </footer>
+</body>
+</html>

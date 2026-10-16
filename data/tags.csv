@@ -1,0 +1,51 @@
+tag_name,tag_category,tag_slug
+Go,language,go
+Python,language,python
+PowerShell,language,powershell
+SQL,language,sql
+C#,language,c-sharp
+Bash,language,bash
+R,language,r
+Julia,language,julia,
+Cybersecurity,domain,cybersecurity
+AI,domain,ai
+DevSecAIOps,domain,devsecaiops
+Security Engineering,domain,security-engineering
+IT Auditing,domain,it-auditing
+Compliance,domain,compliance
+Database Administration,domain,database-administration
+High Availability,domain,high-availability
+Resilient Architecture,domain,resilient-architecture
+Observability,domain,observability
+Telemetry,domain,telemetry
+Distributed Systems,domain,distributed-systems
+Agentic AI,domain,agentic-ai
+Edge AI,domain,edge-ai
+Federated Learning,domain,federated-learning
+PQC,domain,pqc
+Post-Quantum Cryptography,domain,post-quantum-cryptography
+Cloud,domain,cloud
+Azure,cloud-provider,azure
+AWS,cloud-provider,aws
+GCP,cloud-provider,gcp
+IAM,security,iam
+Access Governance,security,access-governance
+Risk Assessment,security,risk-assessment
+CI/CD,devops,ci-cd
+IaC,devops,iac
+GraphQL,api,graphql
+Graph Databases,storage,graph-databases
+Multimodal AI,ai,multimodal-ai
+Federated NLP,ai,federated-nlp
+Federated CV,ai,federated-cv
+AIoT,ai,aiot
+SQL Server,storage,sql-server
+PenTest,security,pentest
+Adversarial ML,ai,adversarial-ml
+SBOM,security,sbom
+SAST,security,sast
+DAST,security,dast
+TPRM,security,tprm
+Edge AI Security,security,edge-ai-security
+Intelligent Process Automation,domain,intelligent-process-automation
+Web application,storage,web-app

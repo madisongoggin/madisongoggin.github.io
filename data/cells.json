@@ -1,0 +1,4933 @@
+{
+    "x": "c-sharp",
+    "y": "c-sharp",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "powershell",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "sql",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "cloud",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "compliance",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "cybersecurity",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "database-administration",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "distributed-systems",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "high-availability",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "intelligent-process-automation",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "it-auditing",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "observability",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "resilient-architecture",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "security-engineering",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "telemetry",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "access-governance",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "iam",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "pentest",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "tprm",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "sql-server",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "c-sharp",
+    "y": "web-app",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "go",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "sql",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "compliance",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "database-administration",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "intelligent-process-automation",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "it-auditing",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "observability",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "telemetry",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "access-governance",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "sql-server",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "go",
+    "y": "web-app",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "julia",
+    "y": "julia",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "julia",
+    "y": "compliance",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "julia",
+    "y": "intelligent-process-automation",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "julia",
+    "y": "observability",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "julia",
+    "y": "access-governance",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "julia",
+    "y": "web-app",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "powershell",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "python",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "sql",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "ai",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "cloud",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "compliance",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "cybersecurity",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "database-administration",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "devsecaiops",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "distributed-systems",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "edge-ai",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "high-availability",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "intelligent-process-automation",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "it-auditing",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "observability",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "resilient-architecture",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "security-engineering",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "telemetry",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "access-governance",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "dast",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "edge-ai-security",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "iam",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "pentest",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "risk-assessment",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "sast",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "sbom",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "tprm",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "aws",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "azure",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "gcp",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "ci-cd",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "iac",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "graphql",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "powershell",
+    "y": "sql-server",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "python",
+    "count": 22,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "r",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "sql",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "agentic-ai",
+    "count": 10,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "ai",
+    "count": 20,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "cloud",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "compliance",
+    "count": 18,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "cybersecurity",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "database-administration",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "devsecaiops",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "distributed-systems",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "edge-ai",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "federated-learning",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "high-availability",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "intelligent-process-automation",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "it-auditing",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "observability",
+    "count": 18,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "resilient-architecture",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "security-engineering",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "telemetry",
+    "count": 5,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "adversarial-ml",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "aiot",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "federated-cv",
+    "count": 6,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "federated-nlp",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "multimodal-ai",
+    "count": 11,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "access-governance",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "dast",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "edge-ai-security",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "iam",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "risk-assessment",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "sast",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "sbom",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "tprm",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "aws",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "azure",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "gcp",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "ci-cd",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "iac",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "graphql",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "sql-server",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "python",
+    "y": "web-app",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "r",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "sql",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "ai",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "compliance",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "cybersecurity",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "database-administration",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "edge-ai",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "federated-learning",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "intelligent-process-automation",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "it-auditing",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "observability",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "security-engineering",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "telemetry",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "access-governance",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "iam",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "tprm",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "r",
+    "y": "sql-server",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "sql",
+    "count": 7,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "ai",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "cloud",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "compliance",
+    "count": 6,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "cybersecurity",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "database-administration",
+    "count": 5,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "distributed-systems",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "high-availability",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "intelligent-process-automation",
+    "count": 5,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "it-auditing",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "observability",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "resilient-architecture",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "security-engineering",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "telemetry",
+    "count": 4,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "access-governance",
+    "count": 5,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "iam",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "pentest",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "risk-assessment",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "tprm",
+    "count": 2,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "azure",
+    "count": 1,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "sql-server",
+    "count": 5,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "sql",
+    "y": "web-app",
+    "count": 3,
+    "category": "language",
+    "color": "#4e79a7"
+}{
+    "x": "agentic-ai",
+    "y": "agentic-ai",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "ai",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "cloud",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "compliance",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "cybersecurity",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "devsecaiops",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "distributed-systems",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "edge-ai",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "federated-learning",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "high-availability",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "intelligent-process-automation",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "it-auditing",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "observability",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "resilient-architecture",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "security-engineering",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "telemetry",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "adversarial-ml",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "aiot",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "federated-cv",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "federated-nlp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "multimodal-ai",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "access-governance",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "dast",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "iam",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "pentest",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "risk-assessment",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "sast",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "sbom",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "tprm",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "aws",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "agentic-ai",
+    "y": "iac",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "ai",
+    "count": 25,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "cloud",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "compliance",
+    "count": 22,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "cybersecurity",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "database-administration",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "devsecaiops",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "distributed-systems",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "edge-ai",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "federated-learning",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "high-availability",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "intelligent-process-automation",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "it-auditing",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "observability",
+    "count": 21,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "resilient-architecture",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "security-engineering",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "telemetry",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "adversarial-ml",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "aiot",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "federated-cv",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "federated-nlp",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "multimodal-ai",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "access-governance",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "dast",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "iam",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "pentest",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "risk-assessment",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "sast",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "sbom",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "tprm",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "aws",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "azure",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "gcp",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "iac",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "sql-server",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "ai",
+    "y": "web-app",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "cloud",
+    "count": 20,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "compliance",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "cybersecurity",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "database-administration",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "devsecaiops",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "distributed-systems",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "edge-ai",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "federated-learning",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "high-availability",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "intelligent-process-automation",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "it-auditing",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "observability",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "resilient-architecture",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "security-engineering",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "telemetry",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "adversarial-ml",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "aiot",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "federated-nlp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "multimodal-ai",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "access-governance",
+    "count": 16,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "dast",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "iam",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "pentest",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "risk-assessment",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "sast",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "sbom",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "tprm",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "aws",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "azure",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "gcp",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "ci-cd",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "iac",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "sql-server",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cloud",
+    "y": "web-app",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "compliance",
+    "count": 42,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "cybersecurity",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "database-administration",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "devsecaiops",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "distributed-systems",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "edge-ai",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "federated-learning",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "high-availability",
+    "count": 16,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "intelligent-process-automation",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "it-auditing",
+    "count": 16,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "observability",
+    "count": 35,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "resilient-architecture",
+    "count": 16,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "security-engineering",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "telemetry",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "adversarial-ml",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "aiot",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "federated-cv",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "federated-nlp",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "multimodal-ai",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "access-governance",
+    "count": 18,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "dast",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "iam",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "pentest",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "risk-assessment",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "sast",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "sbom",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "tprm",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "aws",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "azure",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "ci-cd",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "iac",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "sql-server",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "compliance",
+    "y": "web-app",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "cybersecurity",
+    "count": 17,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "database-administration",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "devsecaiops",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "distributed-systems",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "edge-ai",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "federated-learning",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "high-availability",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "intelligent-process-automation",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "it-auditing",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "observability",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "resilient-architecture",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "security-engineering",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "telemetry",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "adversarial-ml",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "aiot",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "multimodal-ai",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "access-governance",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "dast",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "iam",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "pentest",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "risk-assessment",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "sast",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "sbom",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "tprm",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "aws",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "ci-cd",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "iac",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "sql-server",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "cybersecurity",
+    "y": "web-app",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "database-administration",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "distributed-systems",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "edge-ai",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "federated-learning",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "high-availability",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "intelligent-process-automation",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "it-auditing",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "observability",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "resilient-architecture",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "security-engineering",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "telemetry",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "access-governance",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "iam",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "pentest",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "risk-assessment",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "tprm",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "azure",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "sql-server",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "database-administration",
+    "y": "web-app",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "devsecaiops",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "distributed-systems",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "edge-ai",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "federated-learning",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "high-availability",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "intelligent-process-automation",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "it-auditing",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "observability",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "resilient-architecture",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "security-engineering",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "telemetry",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "adversarial-ml",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "aiot",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "multimodal-ai",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "access-governance",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "dast",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "edge-ai-security",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "iam",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "pentest",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "risk-assessment",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "sast",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "sbom",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "tprm",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "aws",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "gcp",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "ci-cd",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "iac",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "devsecaiops",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "distributed-systems",
+    "count": 18,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "edge-ai",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "federated-learning",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "high-availability",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "intelligent-process-automation",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "it-auditing",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "observability",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "resilient-architecture",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "security-engineering",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "telemetry",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "adversarial-ml",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "aiot",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "multimodal-ai",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "access-governance",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "dast",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "iam",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "pentest",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "risk-assessment",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "sast",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "sbom",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "tprm",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "aws",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "ci-cd",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "iac",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "sql-server",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "distributed-systems",
+    "y": "web-app",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "edge-ai",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "federated-learning",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "high-availability",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "intelligent-process-automation",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "it-auditing",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "observability",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "resilient-architecture",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "security-engineering",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "telemetry",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "adversarial-ml",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "aiot",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "multimodal-ai",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "access-governance",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "dast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "edge-ai-security",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "iam",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "pentest",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "risk-assessment",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "sast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "sbom",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "tprm",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "aws",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "gcp",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "iac",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "edge-ai",
+    "y": "sql-server",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "federated-learning",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "intelligent-process-automation",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "it-auditing",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "observability",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "security-engineering",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "telemetry",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "adversarial-ml",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "aiot",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "federated-cv",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "multimodal-ai",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "access-governance",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "edge-ai-security",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "iam",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "risk-assessment",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "tprm",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "ci-cd",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "iac",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "federated-learning",
+    "y": "sql-server",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "high-availability",
+    "count": 16,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "intelligent-process-automation",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "it-auditing",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "observability",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "resilient-architecture",
+    "count": 16,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "security-engineering",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "telemetry",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "adversarial-ml",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "multimodal-ai",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "access-governance",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "dast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "edge-ai-security",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "iam",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "pentest",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "risk-assessment",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "sast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "sbom",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "tprm",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "aws",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "azure",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "iac",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "sql-server",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "high-availability",
+    "y": "web-app",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "intelligent-process-automation",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "it-auditing",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "observability",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "resilient-architecture",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "security-engineering",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "telemetry",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "adversarial-ml",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "multimodal-ai",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "access-governance",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "dast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "edge-ai-security",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "iam",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "pentest",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "risk-assessment",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "sast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "sbom",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "tprm",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "aws",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "ci-cd",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "iac",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "sql-server",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "intelligent-process-automation",
+    "y": "web-app",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "it-auditing",
+    "count": 18,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "observability",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "resilient-architecture",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "security-engineering",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "telemetry",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "adversarial-ml",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "aiot",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "federated-cv",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "federated-nlp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "multimodal-ai",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "access-governance",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "dast",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "edge-ai-security",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "iam",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "pentest",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "risk-assessment",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "sast",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "sbom",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "tprm",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "aws",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "ci-cd",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "iac",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "sql-server",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "it-auditing",
+    "y": "web-app",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "observability",
+    "count": 39,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "resilient-architecture",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "security-engineering",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "telemetry",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "adversarial-ml",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "aiot",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "federated-cv",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "federated-nlp",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "multimodal-ai",
+    "count": 14,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "access-governance",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "dast",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "iam",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "pentest",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "risk-assessment",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "sast",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "sbom",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "tprm",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "aws",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "ci-cd",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "iac",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "sql-server",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "observability",
+    "y": "web-app",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "resilient-architecture",
+    "count": 18,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "security-engineering",
+    "count": 9,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "telemetry",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "adversarial-ml",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "multimodal-ai",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "access-governance",
+    "count": 13,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "dast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "edge-ai-security",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "iam",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "pentest",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "risk-assessment",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "sast",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "sbom",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "tprm",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "aws",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "azure",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "iac",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "sql-server",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "resilient-architecture",
+    "y": "web-app",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "security-engineering",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "telemetry",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "adversarial-ml",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "multimodal-ai",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "access-governance",
+    "count": 11,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "dast",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "edge-ai-security",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "iam",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "pentest",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "risk-assessment",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "sast",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "sbom",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "tprm",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "aws",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "ci-cd",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "iac",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "sql-server",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "security-engineering",
+    "y": "web-app",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "telemetry",
+    "count": 15,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "adversarial-ml",
+    "count": 3,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "aiot",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "federated-cv",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "federated-nlp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "multimodal-ai",
+    "count": 5,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "access-governance",
+    "count": 12,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "dast",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "edge-ai-security",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "iam",
+    "count": 7,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "pentest",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "risk-assessment",
+    "count": 10,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "sast",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "sbom",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "tprm",
+    "count": 8,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "aws",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "azure",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "gcp",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "iac",
+    "count": 2,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "graphql",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "sql-server",
+    "count": 6,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "telemetry",
+    "y": "web-app",
+    "count": 4,
+    "category": "domain",
+    "color": "#f28e2b"
+}{
+    "x": "adversarial-ml",
+    "y": "adversarial-ml",
+    "count": 6,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "aiot",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "multimodal-ai",
+    "count": 6,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "access-governance",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "dast",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "iam",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "pentest",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "sast",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "sbom",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "tprm",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "gcp",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "adversarial-ml",
+    "y": "iac",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "aiot",
+    "count": 3,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "multimodal-ai",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "access-governance",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "edge-ai-security",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "gcp",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "ci-cd",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "aiot",
+    "y": "iac",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-cv",
+    "y": "federated-cv",
+    "count": 6,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-cv",
+    "y": "multimodal-ai",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-cv",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-cv",
+    "y": "tprm",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "federated-nlp",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "multimodal-ai",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "iam",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "tprm",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "aws",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "federated-nlp",
+    "y": "web-app",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "multimodal-ai",
+    "count": 15,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "access-governance",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "dast",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "edge-ai-security",
+    "count": 5,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "iam",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "pentest",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "risk-assessment",
+    "count": 3,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "sast",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "sbom",
+    "count": 2,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "tprm",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "aws",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "gcp",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "iac",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "multimodal-ai",
+    "y": "web-app",
+    "count": 1,
+    "category": "ai",
+    "color": "#59a14f"
+}{
+    "x": "access-governance",
+    "y": "access-governance",
+    "count": 22,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "dast",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "edge-ai-security",
+    "count": 4,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "iam",
+    "count": 16,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "pentest",
+    "count": 8,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "risk-assessment",
+    "count": 11,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "sast",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "sbom",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "tprm",
+    "count": 7,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "aws",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "azure",
+    "count": 4,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "ci-cd",
+    "count": 7,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "iac",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "sql-server",
+    "count": 9,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "access-governance",
+    "y": "web-app",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "dast",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "edge-ai-security",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "iam",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "pentest",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "risk-assessment",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "sast",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "sbom",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "tprm",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "aws",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "azure",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "gcp",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "iac",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "graphql",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "dast",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "edge-ai-security",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "iam",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "pentest",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "risk-assessment",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "sast",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "sbom",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "tprm",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "aws",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "azure",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "gcp",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "iac",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "graphql",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "edge-ai-security",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "iam",
+    "count": 17,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "pentest",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "risk-assessment",
+    "count": 10,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "sast",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "sbom",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "tprm",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "aws",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "azure",
+    "count": 4,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "iac",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "sql-server",
+    "count": 7,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "iam",
+    "y": "web-app",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "pentest",
+    "count": 8,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "risk-assessment",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "sast",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "sbom",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "tprm",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "ci-cd",
+    "count": 4,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "iac",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "sql-server",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "pentest",
+    "y": "web-app",
+    "count": 2,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "risk-assessment",
+    "count": 16,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "sast",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "sbom",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "tprm",
+    "count": 10,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "ci-cd",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "iac",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "sql-server",
+    "count": 4,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "risk-assessment",
+    "y": "web-app",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "sast",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "sbom",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "tprm",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "aws",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "azure",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "gcp",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "iac",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "graphql",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sast",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "sbom",
+    "count": 6,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "tprm",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "aws",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "azure",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "gcp",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "iac",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "graphql",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "sbom",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "tprm",
+    "count": 13,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "aws",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "azure",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "gcp",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "ci-cd",
+    "count": 5,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "iac",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "graphql",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "sql-server",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "tprm",
+    "y": "web-app",
+    "count": 3,
+    "category": "security",
+    "color": "#e15759"
+}{
+    "x": "aws",
+    "y": "aws",
+    "count": 4,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "azure",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "gcp",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "ci-cd",
+    "count": 2,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "iac",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "graphql",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "aws",
+    "y": "web-app",
+    "count": 2,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "azure",
+    "count": 5,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "gcp",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "ci-cd",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "iac",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "graphql",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "azure",
+    "y": "sql-server",
+    "count": 3,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "gcp",
+    "y": "gcp",
+    "count": 2,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "gcp",
+    "y": "ci-cd",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "gcp",
+    "y": "iac",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "gcp",
+    "y": "graphql",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "gcp",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "cloud-provider",
+    "color": "#76b7b2"
+}{
+    "x": "ci-cd",
+    "y": "ci-cd",
+    "count": 8,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "ci-cd",
+    "y": "iac",
+    "count": 4,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "ci-cd",
+    "y": "graphql",
+    "count": 1,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "ci-cd",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "iac",
+    "y": "iac",
+    "count": 4,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "iac",
+    "y": "graphql",
+    "count": 1,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "iac",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "devops",
+    "color": "#edc948"
+}{
+    "x": "graphql",
+    "y": "graphql",
+    "count": 1,
+    "category": "api",
+    "color": "#b07aa1"
+}{
+    "x": "graphql",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "api",
+    "color": "#b07aa1"
+}{
+    "x": "graph-databases",
+    "y": "graph-databases",
+    "count": 1,
+    "category": "storage",
+    "color": "#ff9da7"
+}{
+    "x": "sql-server",
+    "y": "sql-server",
+    "count": 9,
+    "category": "storage",
+    "color": "#ff9da7"
+}{
+    "x": "sql-server",
+    "y": "web-app",
+    "count": 2,
+    "category": "storage",
+    "color": "#ff9da7"
+}{
+    "x": "web-app",
+    "y": "web-app",
+    "count": 17,
+    "category": "storage",
+    "color": "#ff9da7"
+}
