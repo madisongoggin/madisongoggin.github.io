@@ -14,7 +14,7 @@ const portfolioData = async() => {
     const rawCert = d3.autoType(await d3.csv('./data/certification.csv'))
     const cert =  d3.rollup(rawCert, t => tagClean(t.tag_slugs))
     const rawEdu = d3.autoType(await d3.csv('./education.csv'))
-    const edu = d3.rollup(rawEdu, , t => tagClean(t.tag_slugs))
+    const edu = d3.rollup(rawEdu, t => tagClean(t.tag_slugs))
     const rawPosition = d3.autoType(await  d3.csv('./position.csv'))
     const position = d3.rollup(rawPosition, t => tagClean(t.tags))
     const posBullets = d3.autoType(await d3.csv('./position_bullet.csv'))
@@ -23,7 +23,7 @@ const portfolioData = async() => {
     const rawService = d3.autoType(await d3.csv('./professional_service.csv'))
     const service = d3.rollup(rawService,  t => tagClean(t.tag_slugs))
     const rawProject = d3.autoType(await d3.csv('./projects.csv'))
-    const projects = d3.rollup(rawProject,t => tagClean(t.tags))
+    const projects = d3.rollup(rawProject, t => tagClean(t.tags))
     const nodeMap = new d3.InternSet(d3.merge(cert, edu, position, posBullets, awards, service, projects))
 };
 
