@@ -8,26 +8,64 @@
 const tagClean = (t) => t.split(',').map(t => t.trim())
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
-const loadportfolioData = async() => {
-    get(cell) { return d3.autoType(await d3.json('./data/cells.json')) }
-    get(tags) { return d3.autoType(await d3.json('./data/tags.json')) }
-    get(rawCert) { return  d3.autoType(await d3.csv('./data/certification.csv') )}
-    get(cert)   { return  d3.rollup(this.rawCert, t => tagClean(t.tag_slugs)) }
-    get(rawEdu)  { return d3.autoType(await d3.csv('./education.csv')) }
-    get(edu) { return d3.rollup(this.rawEdu, t => tagClean(t.tag_slugs)) }
-    get(rawPosition)  { return d3.autoType(await  d3.csv('./position.csv')) }
-    get(position) { return d3.rollup(this.rawPosition, t => tagClean(t.tags) }
-    get(posBullets) { return d3.autoType(await d3.csv('./position_bullet.csv')) }
-    get(rawAwards) { return d3.autoType(await d3.csv('./professional_award.csv')) }
-    get(awards) { return  d3.rollup(this.rawAward,  t => tagClean(t.tag_slug)) } 
-    get(rawService) { return ed3.autoType(await d3.csv('./professional_service.csv')) }
-    get(service) { return d3.rollup(this.rawService,  t => tagClean(t.tag_slugs)) }
-    get(rawProject) { return d3.autoType(await d3.csv('./projects.csv')) }
-    get(projects) { return d3.rollup(this.rawProject, t => tagClean(t.tags)) }
-    get(nodeMap) { return new d3.InternSet(d3.merge(this.cert, this.edu, this.position, this.posBullets, this.awards, this.service, this.projects)) }
-};
 
-const portfolioData = loadportfolioData
+class PortfolioLoader {
+   // Class constructor triggers the parallel download
+  constructor() {
+    this.ready = this.#init();
+  }
+   async #init() {
+    // Downloads and populates raw data caches asynchronously
+    this._cell = await d3.json('./data/cells.json').then(d3.autoType);
+    this._tags = await d3.json('./data/tags.json').then(d3.autoType);
+    this._rawCert = await d3.csv('./data/certification.csv').then(d3.autoType);
+    this._rawEdu = await d3.csv('./education.csv').then(d3.autoType);
+    this._rawService =  await d3.csv('/professional_service.csv').then(d3.autoType)
+    this._rawPosition = await  d3.csv('./position.csv').then(d3.autoType)
+    this._posBullets = await  d3.csv('./position_bullets.csv').then(d3.autoType)
+     this._award = await  d3.csv('./professional_award.csv').then(d3.autoType)
+    this._project =     this._rawPositon = await  d3.csv('./projects.csv').then(d3.autoType)
+  }
+
+  // Getters allow you to access properties directly without parentheses
+  get cell() { return this._cell; }
+  get tags() { return this._tags; }
+
+ get rawCert() { return this._rawCert }
+
+  get cert() {
+    return d3.rollup(this._rawCert, v => tagClean(v.map(d => d.tag_slugs)));
+  }
+
+ get rawEd() { return this._rawEdu }
+
+  get edu() {
+    return d3.rollup(this._rawEdu, v => tagClean(v.map(d => d.tag_slugs)));
+  }
+  get rawService() { return this._rawService }
+
+  get Service() {
+    return d3.rollup(this._rawService, v=> tagClean(v.map(d => d.tag_slugs)))
+  }
+
+  get rawProject() { return this._project }
+
+  get Project() {
+    return d3.rollup(this._project, v=> tagClean(v.map(d => d.tags)))
+  }
+
+  get rawAward() { return this._award }
+
+  get Award() {
+    return  d3.rollup(this._award, v=> tagClean(v.map(d => d.tag_slugs)))
+  }
+
+  get NodeMap() {
+    return new d3.InternSet(d3.merge(this.cert, this.edu, this.position, this.awards, this.service, this.projects))
+  }
+}
+
+const portfolioData = new loadportfolioData()
 
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
@@ -380,8 +418,10 @@ resetBtn.addEventListener('click', () => {
 
 // Initialize on load
  window.addEventListener('DOMContentLoaded', () => {
+   portfolioData.ready.then(() => {
     initFilters();
     updateVisualizations('all');
+    })
 });
 
 // Responsive resize listener
