@@ -5,7 +5,7 @@
 */
 
 
-import { select, autoType, rollup, InternSet, filter, reverse, scalePoint, hierarchy, treemap, csv, formatSpecifier, utcFormat, utcParse } from './d3.v7.min.js'
+import { select, autoType, rollup, InternSet, scalePoint, hierarchy, treemap, csv, formatSpecifier, utcFormat, utcParse } from './d3.v7.min.js'
 
 const tagClean = (t) => t.tag_slugs.split(',').map(t => t.trim())
 
