@@ -58,7 +58,7 @@ const createSections = (key) => {
                     <header>
                     <h3>${p.title}</h3>
                     <p class="card-org">${p.org}</p>
-                    <p class="card-meta">`formatDate(p.start_date) + ' -'  + fomatDate(p.end_Date) + `</p>
+                    <p class="card-meta">` + formatDate(p.start_date) + ' -'  + fomatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class="bullets">` +
@@ -82,7 +82,7 @@ const createSections = (key) => {
                     displayTags(c.tag_slugs) +
                     `</header>
                     <p class='tag-org">${c.gov_body}</p>` +
-                    c.earn_date ? `<p>`formatDate(c.earn_date) +` </p>` : `` +
+                    c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             ), `</ul>`)
         break;
