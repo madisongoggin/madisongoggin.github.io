@@ -225,7 +225,7 @@ function renderMareyChart(filteredCells, nodeMap) {
         // Axes
         g.append('g')
                 .attr('transform', `translate(0,${innerHeight})`)
-                .(axisBottom(xScale))
+                .call(d3.axisBottom(xScale))
                 .selectAll('text')
                 .attr('class', 'text-xs text-slate-600')
                 .style('text-anchor', 'middle');
