@@ -3,35 +3,30 @@
 * Secure Portfolio Visualization Module
 * Handles data parsing, state management, v7 chart rendering, accessibility attributes, and interactivity.
 */
-
-
-import { select, autoType, rollup, InternSet, curveMonotoneX, hierarchy, treemap, csv, formatSpecifier, utcFormat, utcParse } from './d3.v7.min.js'
-
 const tagClean = (t) => t.tag_slugs.split(',').map(t => t.trim())
 
-
-formatSpecifier(utcParse("%Y-%m-%d"))
-formatSpecifier(utcFormat("%b %Y"))
+d3.formatSpecifier(d3.utcParse("%Y-%m-%d"))
+d3.formatSpecifier(d3.utcFormat("%b %Y"))
 
 // Validate and sanitize incoming data structure
 const portfolioData = async() => {
-    const cells = autoType(await json('./data/cells.json'))
-    const tags = autoType(await json('./data/tags.json'))
-    const rawCert = d.autoType(await csv('./data/certification.csv'))
-    const cert =  rollup(rawCert, tagClean)
-    const rawEdu = autoType(await csv('./education.csv'))
-    const edu = rollup(rawEdu, tagClean)
-    const rawPosition = autoType(await  csv('./position.csv'))
-    const position = rollup(rawPosition, tagClean)
-    const rawPosBullets = autoType(await csv('./position_bullet.csv'))
-    const posBullets = rollup(rawPosBullets, tagClean)
-    const rawAwards = autoType(await csv('./professional_award.csv'))
-    const awards =  rollup(rawAwards)
-    const rawService = autoType(await csv('./professional_service.csv'))
-    const service = rollup(rawService, tagClean)
-    const rawProject = autoType(await csv('./project.csv'))
-    const projects = rollup(rawProject, tagClean)
-    const nodeMap = new InternSet(merge(cert, edu, position, posBullets, awards, service, projects))
+    const cells = d3,autoType(await json('./data/cells.json'))
+    const tags = d3,autoType(await json('./data/tags.json'))
+    const rawCert = d.d3,autoType(await d3.csv('./data/certification.d3.csv'))
+    const cert =  d3.rollup(rawCert, tagClean)
+    const rawEdu = d3,autoType(await d3.csv('./education.d3.csv'))
+    const edu = d3.rollup(rawEdu, tagClean)
+    const rawPosition = d3,autoType(await  d3.csv('./position.d3.csv'))
+    const position = d3.rollup(rawPosition, tagClean)
+    const rawPosBullets = d3,autoType(await d3.csv('./position_bullet.d3.csv'))
+    const posBullets = d3.rollup(rawPosBullets, tagClean)
+    const rawAwards = d3,autoType(await d3.csv('./professional_award.d3.csv'))
+    const awards =  d3.rollup(rawAwards)
+    const rawService = d3,autoType(await d3.csv('./professional_service.d3.csv'))
+    const service = d3.rollup(rawService, tagClean)
+    const rawProject = d3,autoType(await d3.csv('./project.d3.csv'))
+    const projects = d3.rollup(rawProject, tagClean)
+    const nodeMap = new d3.InternSet(merge(cert, edu, position, posBullets, awards, service, projects))
 };
 
 // DOM elements
@@ -230,23 +225,23 @@ function renderMareyChart(filteredCells, nodeMap) {
         // Axes
         g.append('g')
                 .attr('transform', `translate(0,${innerHeight})`)
-                .call(axisBottom(xScale))
+                .(d3.axisBottom(xScale))
                 .selectAll('text')
                 .attr('class', 'text-xs text-slate-600')
                 .style('text-anchor', 'middle');
 
         g.append('g')
-                .call(axisLeft(yScale))
+                .call(d3,axisLeft(yScale))
                 .selectAll('text')
                 .attr('class', 'text-xs text-slate-600');
 
         // Grid lines
         g.append('g')
                 .attr('class', 'grid opacity-15')
-                .call(axisLeft(yScale).tickSize(-innerWidth).tickFormat(''));
+                .call(d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(''));
 
         // Draw train tracks / connection paths for items sharing objects
-         const lineGen = curveMonotoneX(xScale)
+         const lineGen = d3.line(xScale).curveMonotoneX()
 
         const allTags = performanceData.tags;
 
@@ -290,21 +285,21 @@ function renderMareyChart(filteredCells, nodeMap) {
             .on('blur', hideTooltip);
         }
 
-        // --- 2. Cascaded Treemap Visualization ---
-function renderTreemap(filteredCells, nodeMap) {
-    const container = document.getElementById('treemap-container');
+        // --- 2. Cascaded d3.treemap Visualization ---
+function renderd3.treemap(filteredCells, nodeMap) {
+    const container = document.getElementById('d3.treemap-container');
     container.innerHTML = '';
 
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
 
-    const svg = select('#treemap-container')
+    const svg = select('#d3.treemap-container')
                 .append('svg')
                 .attr('width', width)
                 .attr('height', height)
                 .attr('viewBox', [0, 0, width, height])
                 .attr('role', 'img')
-                .attr('aria-label', 'Cascaded treemap representing hierarchical categories of skills and weights.');
+                .attr('aria-label', 'Cascaded d3.treemap representing hierarchical categories of skills and weights.');
 
     // Build hierarchical data structure from tags and cells
     const  hierarchicalData = {
@@ -317,10 +312,10 @@ function renderTreemap(filteredCells, nodeMap) {
                 })]
             };
 
-    const root = hierarchy(hierarchicalData)
+    const root = d3.hierarchy(hierarchicalData)
                 .sort((a, b) => b.count - b.count);
 
-    treemap()
+    d3.treemap()
         .size([width, height])
         .paddingOuter(3)
         .paddingInner(2)
@@ -359,7 +354,7 @@ function updateVisualizations(selectedSlug) {
             }
         }
         renderMareyChart(filteredCells, filterNodeMap(filteredCells));
-        renderTreemap(filteredCells, filterNodeMap(filteredCells));
+        renderd3.treemap(filteredCells, filterNodeMap(filteredCells));
 }
 
 function filterNodeMap(filteredCells) {
