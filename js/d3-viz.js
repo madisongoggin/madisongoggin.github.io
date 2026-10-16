@@ -5,7 +5,7 @@
 */
 
 
-const tagClean = (t) = t.split(',').map(t => t.trim())
+const tagClean = (t) => t.split(',').map(t => t.trim())
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
 const portfolioData = async() => {
