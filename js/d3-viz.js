@@ -65,7 +65,7 @@ class PortfolioLoader {
   }
 }
 
-const portfolioData = new loadportfolioData()
+const portfolioData = new PortfolioLoader()
 
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
