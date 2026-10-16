@@ -14,7 +14,7 @@ formatSpecifier(utcParse("%Y-%m-%d"))
 formatSpecifier(utcFormat("%b %Y"))
 
 // Validate and sanitize incoming data structure
-const portfolioDataLoad = async() => {
+const portfolioData = async() => {
     const cells = autoType(await json('./data/cells.json'))
     const tags = autoType(await json('./data/tags.json'))
     const rawCert = d.autoType(await csv('./data/certification.csv'))
@@ -33,8 +33,6 @@ const portfolioDataLoad = async() => {
     const projects = rollup(rawProject, tagClean)
     const nodeMap = new InternSet(merge(cert, edu, position, posBullets, awards, service, projects))
 };
-
-const portfolioData = async() = await portfolioDataLoad
 
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
