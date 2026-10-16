@@ -19,7 +19,7 @@ const portfolioData = async() => {
     const position = d3.rollup(rawPosition, t => tagClean(t.tags))
     const posBullets = d3.autoType(await d3.csv('./position_bullet.csv'))
     const rawAwards = d3.autoType(await d3.csv('./professional_award.csv'))
-    const awards =  d3.rollup(rawAward,  t => tagClean(t.tag_slug)))
+    const awards =  d3.rollup(rawAward,  t => tagClean(t.tag_slug))
     const rawService = d3.autoType(await d3.csv('./professional_service.csv'))
     const service = d3.rollup(rawService,  t => tagClean(t.tag_slugs))
     const rawProject = d3.autoType(await d3.csv('./projects.csv'))
