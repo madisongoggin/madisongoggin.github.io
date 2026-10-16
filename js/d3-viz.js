@@ -5,7 +5,7 @@
 */
 
 
-import { select, autoType, rollup, InternSet, scalePoint, hierarchy, treemap, csv, formatSpecifier, utcFormat, utcParse } from './d3.v7.min.js'
+import { select, autoType, rollup, InternSet, curveMonotoneX, hierarchy, treemap, csv, formatSpecifier, utcFormat, utcParse } from './d3.v7.min.js'
 
 const tagClean = (t) => t.tag_slugs.split(',').map(t => t.trim())
 
@@ -219,18 +219,13 @@ function renderMareyChart(filteredCells, nodeMap) {
             .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Extract unique X and Y sets
-        const xValues = [...new Set(filteredCells.cells.map(d => d.x))].sort();
-        const yValues = [...new Set(filteredCells.cells.map(d => d.y))].sort();
+        const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
+        const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
 
-        const xScale = scalePoint()
-                .domain(xValues)
-                .range([0, innerWidth])
-                .padding(0.5);
-
-        const yScale = scalePoint()
-                .domain(yValues)
-                .range([innerHeight, 0])
-                .padding(0.5);
+        let scaleFactor = innerWidth / xValues.length
+        const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
+        scaleFactor = innerWidth / yValues.length
+        const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
 
         // Axes
         g.append('g')
@@ -251,31 +246,28 @@ function renderMareyChart(filteredCells, nodeMap) {
                 .call(axisLeft(yScale).tickSize(-innerWidth).tickFormat(''));
 
         // Draw train tracks / connection paths for items sharing objects
-            const lineGen = line()
-                .x(d => xScale(d.x))
-                .y(d => yScale(d.y))
-                .curve(curveMonotoneX);
+         const lineGen = curveMonotoneX(xScale)
+
+        const allTags = performanceData.tags;
 
         // Group cells by shared objects or categories to form "train routes"
-        filteredCells.Array.forEach(c => {
-                        g.append('path')
-                        .datum(nodeMap.get(c))
-                        .attr('fill', 'none')
-                        .attr('stroke', c.color)
-                        .attr('stroke-width', 3)
-                        .attr('stroke-opacity', 0.4)
-                        .attr('d', lineGen)
+        for(let i = 0; i < xScale.length; i++) {
+                   g.append('path')
+                     .datum(filteredCells.get(xValues[i]))
+                      .attr('fill', 'none')
+                      .attr('stroke', allTags.filter(t => t.slug == xValues[i]).map(t => t.color)
+                       .attr('stroke-width', 3)
+                      .attr('stroke-opacity', 0.4)
+                       .attr('d', xScale[i])
 
-        });
-
-            // Draw data points (Trains/Projects)
+        }
+         // Draw data points (Trains/Projects)
             const nodes = g.selectAll('.train-node')
-                .data(filteredCells, d => `${d.x}-${d.y}-${d.name || d.count}`);
+                .data(filteredCells, d => `${d.x}-${d.y}-${d.count}`);
 
             const nodeEnter = nodes.enter()
                 .append('g')
                 .attr('class', 'train-node cursor-pointer group')
-                .attr('transform', d => `translate(${xScale(d.x) || 0},${yScale(d.y) || 0})`)
                 .attr('tabindex', '0')
                 .attr('role', 'button')
                 .attr('aria-label', d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`);
