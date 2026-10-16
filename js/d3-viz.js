@@ -10,23 +10,23 @@ d3.formatSpecifier(d3.utcFormat("%b %Y"))
 
 // Validate and sanitize incoming data structure
 const portfolioData = async() => {
-    const cells = d3,autoType(await json('./data/cells.json'))
-    const tags = d3,autoType(await json('./data/tags.json'))
-    const rawCert = d.d3,autoType(await d3.csv('./data/certification.d3.csv'))
+    const cells = d3.autoType(await d3.json('./data/cells.json'))
+    const tags = d3.autoType(await d3.json('./data/tags.json'))
+    const rawCert = d3.autoType(await d3.csv('./data/certification.csv'))
     const cert =  d3.rollup(rawCert, tagClean)
-    const rawEdu = d3,autoType(await d3.csv('./education.d3.csv'))
+    const rawEdu = d3.autoType(await d3.csv('./education.csv'))
     const edu = d3.rollup(rawEdu, tagClean)
-    const rawPosition = d3,autoType(await  d3.csv('./position.d3.csv'))
+    const rawPosition = d3.autoType(await  d3.csv('./position.csv'))
     const position = d3.rollup(rawPosition, tagClean)
-    const rawPosBullets = d3,autoType(await d3.csv('./position_bullet.d3.csv'))
+    const rawPosBullets = d3.autoType(await d3.csv('./position_bullet.csv'))
     const posBullets = d3.rollup(rawPosBullets, tagClean)
-    const rawAwards = d3,autoType(await d3.csv('./professional_award.d3.csv'))
+    const rawAwards = d3.autoType(await d3.csv('./professional_award.csv'))
     const awards =  d3.rollup(rawAwards)
-    const rawService = d3,autoType(await d3.csv('./professional_service.d3.csv'))
+    const rawService = d3.autoType(await d3.csv('./professional_service.csv'))
     const service = d3.rollup(rawService, tagClean)
-    const rawProject = d3,autoType(await d3.csv('./project.d3.csv'))
+    const rawProject = d3.autoType(await d3.csv('./projects.csv'))
     const projects = d3.rollup(rawProject, tagClean)
-    const nodeMap = new d3.InternSet(merge(cert, edu, position, posBullets, awards, service, projects))
+    const nodeMap = new d3.InternSet(d3.merge(cert, edu, position, posBullets, awards, service, projects))
 };
 
 // DOM elements
@@ -52,7 +52,7 @@ const createSections = (key) => {
         case 'position':
             const postSummary = portfolioData.rawPosition
             const posBullets = portfolioData.rawPosBullets
-            reverse(postSummary)
+            d3.reverse(postSummary)
             card = card.concat(
                  postSummary.map(p => {
                 `<li class = "simple-item">
@@ -64,8 +64,8 @@ const createSections = (key) => {
                     </header>` +
                     displayTags(p.tag_slugs) +
                     `<ul class="bullets">` +
-                    sort(
-                        filter(posBullets, (b) => b.bullet_tag === p.bullet_tag),
+                    d3.sort(
+                        d3.filter(posBullets, (b) => b.bullet_tag === p.bullet_tag),
                         (b) => b.bullet_num
                     )
                     .map(b =>
@@ -77,7 +77,7 @@ const createSections = (key) => {
         break;
         case 'cert':
             const certs = portfolioData.rawCert;
-            reverse(certs)
+            d3.reverse(certs)
             card = card.concat(certs.map(c =>  `<li class = "simple-item"> <article class="card">
                     <header>
                     <h3>${c.name}</h3>` +
@@ -103,7 +103,7 @@ const createSections = (key) => {
         break;
         case 'award':
             const awards =  portfolioData.rawAward
-            reverse(awards)
+            d3.reverse(awards)
             card = card.concat(
             awards.map(a =>  `<li class = "simple-item"><article class="card">
                     <header>
@@ -116,7 +116,7 @@ const createSections = (key) => {
           break;
         case 'service':
             const services = portfolioData.rawService;
-            reverse(services)
+            d3.reverse(services)
             card = card.concat(
             services.map(s => `<li class = "simple-item"><article class="card">
                     <header>
@@ -231,7 +231,7 @@ function renderMareyChart(filteredCells, nodeMap) {
                 .style('text-anchor', 'middle');
 
         g.append('g')
-                .call(d3,axisLeft(yScale))
+                .call(d3.axisLeft(yScale))
                 .selectAll('text')
                 .attr('class', 'text-xs text-slate-600');
 
@@ -286,7 +286,7 @@ function renderMareyChart(filteredCells, nodeMap) {
         }
 
         // --- 2. Cascaded d3.treemap Visualization ---
-function renderd3.treemap(filteredCells, nodeMap) {
+function renderTreemap(filteredCells, nodeMap) {
     const container = document.getElementById('d3.treemap-container');
     container.innerHTML = '';
 
@@ -354,7 +354,7 @@ function updateVisualizations(selectedSlug) {
             }
         }
         renderMareyChart(filteredCells, filterNodeMap(filteredCells));
-        renderd3.treemap(filteredCells, filterNodeMap(filteredCells));
+        renderTreemap(filteredCells, filterNodeMap(filteredCells));
 }
 
 function filterNodeMap(filteredCells) {
