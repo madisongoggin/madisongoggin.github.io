@@ -8,7 +8,7 @@
 const tagClean = (t) => t.split(',').map(t => t.trim())
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
-const portfolioData = async() => {
+const loadportfolioData = async() => {
     const cells = d3.autoType(await d3.json('./data/cells.json'))
     const tags = d3.autoType(await d3.json('./data/tags.json'))
     const rawCert = d3.autoType(await d3.csv('./data/certification.csv'))
@@ -26,6 +26,8 @@ const portfolioData = async() => {
     const projects = d3.rollup(rawProject, t => tagClean(t.tags))
     const nodeMap = new d3.InternSet(d3.merge(cert, edu, position, posBullets, awards, service, projects))
 };
+
+const portfolioData = await loadportfolioData
 
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
