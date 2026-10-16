@@ -9,8 +9,8 @@ const tagClean = (t) => t.split(',').map(t => t.trim())
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
 const loadportfolioData = async() => {
-    get(cell) { return {d3.autoType(await d3.json('./data/cells.json')) }
-    get(tags) { return {d3.autoType(await d3.json('./data/tags.json')) }
+    get(cell) { return d3.autoType(await d3.json('./data/cells.json')) }
+    get(tags) { return d3.autoType(await d3.json('./data/tags.json')) }
     get(rawCert) { return  d3.autoType(await d3.csv('./data/certification.csv') )}
     get(cert)   { return  d3.rollup(this.rawCert, t => tagClean(t.tag_slugs)) }
     get(rawEdu)  { return d3.autoType(await d3.csv('./education.csv')) }
