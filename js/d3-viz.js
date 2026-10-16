@@ -359,7 +359,7 @@ function renderTreemap(filteredCells, nodeMap) {
 
 // --- Interactivity & Event Handling ---
 function updateVisualizations(selectedSlug) {
-        const allCells = (await portfolioData.cells);
+        const allCells = portfolioData.cells;
         if (selectedSlug && selectedSlug !== 'all') {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length === 0) {
