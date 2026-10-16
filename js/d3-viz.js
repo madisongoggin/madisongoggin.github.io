@@ -255,7 +255,7 @@ function renderMareyChart(filteredCells, nodeMap) {
                    g.append('path')
                      .datum(filteredCells.get(xValues[i]))
                       .attr('fill', 'none')
-                      .attr('stroke', allTags.filter(t => t.slug == xValues[i]).map(t => t.color)
+                      .attr('stroke', allTags.filter(t => t.slug == xValues[i]).map(t => t.color))
                        .attr('stroke-width', 3)
                       .attr('stroke-opacity', 0.4)
                        .attr('d', xScale[i])
