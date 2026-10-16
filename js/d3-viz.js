@@ -3,29 +3,27 @@
 * Secure Portfolio Visualization Module
 * Handles data parsing, state management, v7 chart rendering, accessibility attributes, and interactivity.
 */
-const tagClean = (t) => t.tag_slugs.split(',').map(t => t.trim())
 
-d3.formatSpecifier(d3.utcParse("%Y-%m-%d"))
-d3.formatSpecifier(d3.utcFormat("%b %Y"))
 
+const tagClean = (t) = t.split(',').map(t => t.trim())
+const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
 const portfolioData = async() => {
     const cells = d3.autoType(await d3.json('./data/cells.json'))
     const tags = d3.autoType(await d3.json('./data/tags.json'))
     const rawCert = d3.autoType(await d3.csv('./data/certification.csv'))
-    const cert =  d3.rollup(rawCert, tagClean)
+    const cert =  d3.rollup(rawCert, t = > tagClean(tag_slugs))
     const rawEdu = d3.autoType(await d3.csv('./education.csv'))
-    const edu = d3.rollup(rawEdu, tagClean)
+    const edu = d3.rollup(rawEdu, , t = > tagClean(tag_slugs))
     const rawPosition = d3.autoType(await  d3.csv('./position.csv'))
-    const position = d3.rollup(rawPosition, tagClean)
-    const rawPosBullets = d3.autoType(await d3.csv('./position_bullet.csv'))
-    const posBullets = d3.rollup(rawPosBullets, tagClean)
+    const position = d3.rollup(rawPosition, t = > tagClean(tags))
+    const posBullets = d3.autoType(await d3.csv('./position_bullet.csv'))
     const rawAwards = d3.autoType(await d3.csv('./professional_award.csv'))
-    const awards =  d3.rollup(rawAwards)
+    const awards =  d3.rollup(rawAward,  t = > tagClean(tag_slug)))
     const rawService = d3.autoType(await d3.csv('./professional_service.csv'))
-    const service = d3.rollup(rawService, tagClean)
+    const service = d3.rollup(rawService,  t = > tagClean(tag_slugs))
     const rawProject = d3.autoType(await d3.csv('./projects.csv'))
-    const projects = d3.rollup(rawProject, tagClean)
+    const projects = d3.rollup(rawProject,t = > tagClean(tags)))
     const nodeMap = new d3.InternSet(d3.merge(cert, edu, position, posBullets, awards, service, projects))
 };
 
@@ -60,9 +58,9 @@ const createSections = (key) => {
                     <header>
                     <h3>${p.title}</h3>
                     <p class="card-org">${p.org}</p>
-                    <p class="card-meta">${p.period}</p>
+                    <p class="card-meta">`formatDate(p.start_date} + ' -'  + fomatDate(p.end_Date) + `</p>
                     </header>` +
-                    displayTags(p.tag_slugs) +
+                    displayTags(p.tags) +
                     `<ul class="bullets">` +
                     d3.sort(
                         d3.filter(posBullets, (b) => b.bullet_tag === p.bullet_tag),
@@ -80,11 +78,11 @@ const createSections = (key) => {
             d3.reverse(certs)
             card = card.concat(certs.map(c =>  `<li class = "simple-item"> <article class="card">
                     <header>
-                    <h3>${c.name}</h3>` +
+                    <h3>${c.cert_name}</h3>` +
                     displayTags(c.tag_slugs) +
                     `</header>
-                    <p>${c.body}</p>` +
-                    c.date ? `<p>${c.date}</p>` : `` +
+                    <p class='tag-org">${c.gov_body}</p>` +
+                    c.earn_date ? `<p>`formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             ), `</ul>`)
         break;
@@ -94,10 +92,10 @@ const createSections = (key) => {
                     <header>
                     <h3>${e.degree}</h3>` +
                     e.scholarship ? `<p class='card-org'>${e.scholarship}</p>` : `` +
-                    displayTags(e.tag_slugs)
+                    displayTags(e.tag_slugs) + 
                     `</header>
                      <p class='card-meta'>${e.school}</p>` +
-                     e.caption ? `<p>${e.caption}</p>` : `` +
+                     e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`
                 ), `</ul>`)
         break;
@@ -110,7 +108,7 @@ const createSections = (key) => {
                     <h3>${a.title}</h3>` +
                     displayTags(a.tag_slugs) +
                     `</header>
-                    <p>${a.org}</p>
+                    <p class="card-org">${a.org_name}</p>
                     </article>`
           ), `</ul>`)
           break;
@@ -121,16 +119,19 @@ const createSections = (key) => {
             services.map(s => `<li class = "simple-item"><article class="card">
                     <header>
                     <h3>${s.title}</h3>
-                    <p class="card-org"${s.org}</p>` +
+                    <p class="card-org"${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
-                    <p class='card-meta'>${s.start} - ${s.end}</p>
+                    <p class='card-meta'>` + 
+                 formatDate(s.start_date) + 
+             s.end_date ? ' -' + formatDate(s.end_date) : '' +
+                    `</p>
                     </article>`
             ), `</ul>`)
         break;
         case 'project':
             const projects = portfolioData.rawProjects;
-            reverse(projects)
+            d3.reverse(projects)
             card = card.concat(
             projects.map(p =>
                 `<li class = "simple-item"> <article class="card">
@@ -139,7 +140,7 @@ const createSections = (key) => {
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : -p.name
                     `</h3>` +
                         p.status ? `<p class="card-meta">${p.status }}</p>` : ``  +
-                        displayTags(p.tag_slugs) +
+                        displayTags(p.tags) +
                 `</header>
                 <p>${p.description}</p>` +
                    p.deploy_url ? `<p class="card-links"><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
