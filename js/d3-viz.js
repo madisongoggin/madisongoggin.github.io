@@ -65,6 +65,11 @@ class PortfolioLoader {
     // Clean whitespace
     const trimmed = value.trim();
 
+       // Coerce Basic Dates (YYYY-MM-DD)
+    if (/^\d{4}/.test(trimmed)) {
+      return new Date(trimmed);
+    }
+
     // Coerce Numbers
     if (!isNaN(trimmed) && !isNaN(parseFloat(trimmed))) {
       return Number(trimmed);
@@ -73,10 +78,7 @@ class PortfolioLoader {
     if (trimmed.toLowerCase() === "true") return true;
     if (trimmed.toLowerCase() === "false") return false;
 
-    // Coerce Basic Dates (YYYY-MM-DD)
-    if (/^\d{4}$/.test(trimmed)) {
-      return new Date(trimmed);
-    }
+
 
     return trimmed;
   }
@@ -159,10 +161,10 @@ async function createSections(key)  {
             const posBullets = Array.from(portfolioData.rawPosBullets)
             postSummary.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
-                    <header 'panel-head'>
-                    <p class='eyebrow'>${p.title}</p>
-                    <p class="lede">${p.org_name}</p>
-                    <p class="card-meta">` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
+                    <header class='tag-group'>
+                    <p class='eyebrow' color='#1a7f37'>${p.title}</p>
+                    <p color="#4b5563;'>${p.org_name}</p>
+                    <p color= '#0b5fa5;'>` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
@@ -171,37 +173,37 @@ async function createSections(key)  {
                         (b) => b.bullet_num
                     )
                     .map(b =>
-                        `<li class='simepl-item">${b.bullet_text}</li>`
+                        `<li class='simple-item">${b.bullet_text}</li>`
                     ).join() + '</ul></article>'
                 )
                 }
             )
             break;
         case 'cert':
-            const certs = portfolioData.rawCert;
+            const certs = Array.from(portfolioData.rawCert);
             certs.forEach(c => {
             card.setHTML(`<article class="card matrix-legend">
-                    <header 'panel-head'>
-                    <p class= 'eyebrow'>${c.cert_name}</p>` +
+                    <header class='tag-group'>
+                    <p class='eyebrow' color='#1a7f37>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
-                    <p class'lede'>${c.gov_body}</p>` +
+                    <p color="#4b5563;'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             )
         })
             break;
         case 'edu':
-            const ed =  portfolioData.rawEdu
+            const ed = Array.from(portfolioData.rawEdu)
             ed.forEach(e => {
              card.setHTML(
                 `<article class="matrix-legend card">
-                    <header class='panel-head'>
-                    <p class='eyebrow'>${e.degree}</p>` +
-                    e.scholarship ? `<p class='lede'>${e.scholarship}</p>` : `` +
+                    <header class='tag-group'>
+                    <p class='eyebrow' color='#1a7f37>${e.degree}</p>` +
+                    e.scholarship ? `<p color="#4b5563;'>>${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     `</header>
-                     <p class='card-meta'>${e.school}</p>` +
+                     <p color="#4b5563;'>${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`
                 )
@@ -209,28 +211,28 @@ async function createSections(key)  {
             })
             break;
      case 'award':
-            const awards =  portfolioData.rawAward
+            const awards =  Array.from(portfolioData.rawAward)
             awards.forEach(a => {
              card.setHTML(`<article class="card matrix-legend">
-                    <header 'panel-head'>
-                    <p class='eyebrow'>${a.title}</p>` +
+                    <header class='tag-group'>
+                    <p class='eyebrow' color='#1a7f37;'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
-                    <p class="lede">${a.org_name}</p>
+                    <p color="#4b5563;'>${a.org_name}</p>
                     </article>`
             )
         })
         break;
         case 'service':
-            const services = portfolioData.rawService;
+            const services = Array.from(portfolioData.rawService)
             services.foreach(s => { 
              card.setHTML(`<article class="card matrix-legend">
-                    <header>
-                    <p class='eyebrow'>${s.title}</p>
-                    <p class="lede"${s.org_name}</p>` +
+                    <header class='tag-group'>
+                    <p class='eyebrow' color='#1a7f37;'>${s.title}</p>
+                    <p color ='#0b5fa5;'>${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
-                    <p class='card-meta'>` +
+                    <p  color="#4b5563;">` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
@@ -240,14 +242,14 @@ async function createSections(key)  {
 
         break;
         case 'project':
-            const projects = portfolioData.rawProject;
+            const projects = Array.form(portfolioData.rawProject);
             projects.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
-                    <header>
-                        <p class=='eyebrow>` +
+                    <header class = 'tag-group'>
+                        <p class='eyebrow' color='#1a7f37'>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</p>` +
-                        p.status ? `<p class="card-meta">${p.status }}</p>` : ``  +
+                        p.status ? `<p color="#4b5563;">${p.status }}</p>` : ``  +
                         displayTags(p.tags) +
                 `</header>
                 <p>${p.description}</p>` +
@@ -343,7 +345,7 @@ let svg = document.createElement('svg')
         // Axes
        let xG = anyG
        xG.transform = `translate(0,${innerHeight})`
-       xG.call(d3.axisBottom(xScale))
+       d3.axisBottom(xScale).call(xG)
        Array.from(xG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
         t.style = 'text-anchor, middle'
@@ -351,7 +353,7 @@ let svg = document.createElement('svg')
       g.append(xG)
          
        let yG = anyG
-       yG.call(d3.axisBottom(yScale))
+        d3.axisBottom(yScale).call(yG)
        Array.from(yG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
        })
