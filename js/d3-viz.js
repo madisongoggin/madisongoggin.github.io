@@ -95,29 +95,29 @@ class PortfolioLoader {
   get rawService() { return this._rawService }
 
   get Service() {
-    return d3.rollup(this._rawService, v=> tagClean(v.map(d => d.tag_slugs)))
+    return d3.rollup(this._rawService, v => tagClean(v.map(d => d.tag_slugs)))
   }
 
   get rawProject() { return this._project }
 
   get Project() {
-    return d3.rollup(this._project, v=> tagClean(v.map(d => d.tags)))
+    return d3.rollup(this._project, v => tagClean(v.map(d => d.tags)))
   }
 
  get rawPosition() { return this._rawPosition }
 
- get Position() { return d3.rollup(this._rawPosition, v=> tagClean(v.map(d => d.tags))) }
+ get Position() { return d3.rollup(this._rawPosition,  v =>  tagClean(v.map(d => d.tags))) }
 
  get rawPosBullets() { return  this._posBullets }
 
   get rawAward() { return this._award }
 
   get Award() {
-    return  d3.rollup(this._award, v=> tagClean(v.map(d => d.tag_slugs)))
+    return  d3.rollup(this._award, v => tagClean(v.map(d => d.tag_slugs)))
   }
 
-  get NodeMap() {
-    return new d3.InternSet(d3.merge(this.cert, this.edu, this.position, this.award, this.service, this.project))
+  get nodeMap() {
+    return new d3.InternSet([...this.cert, ...this.edu, ...this.position, ...this.award, ...this.service, ...this.project]);
   }
 }
 
@@ -131,30 +131,29 @@ const resetBtn = document.getElementById('reset-filters');
 function displayTags(tags) {
     const allTags = portfolioData.tags;
     return `<ul class="tag-chips" aria-label="Tags">` +
-    tags.map(t =>  {
+    tags.map((t) =>  {
         let tag = filter(allTags, t1 => t1.slug === t)
         `<li class="tag-chip" style="--chip: "${tag.color}">${tag.name}</li>`
     }) + `</ul>`
 }
 
-const createSections = (key) => {
-    let card = `<section class="credential-block panel" aria-labelledby="${key}">
-    <h2>${key}</h2>
-    <ul class="simple-list">
-    `
+createSections = async (key) => {
+    let page = document.getElementById(key)
+    let card = document.createElement('ul')
+    card.className = 'simple-item'
     switch (key) {
         case 'position':
             const postSummary = portfolioData.rawPosition
             const posBullets = portfolioData.rawPosBullets
             d3.reverse(postSummary)
-            card = card.concat(
-                 postSummary.map(p => {
+            postSummary.forEach(p => {
+            card.appendChild(
                 `<li class = "simple-item">
                  <article class="card">
                     <header>
                     <h3>${p.title}</h3>
                     <p class="card-org">${p.org}</p>
-                    <p class="card-meta">` + formatDate(p.start_date) + ' -'  + fomatDate(p.end_Date) + `</p>
+                    <p class="card-meta">` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class="bullets">` +
@@ -166,13 +165,16 @@ const createSections = (key) => {
                         `<li>${b.bullet_text}</li>`
                     )
                     + '</ul><`/article>'
+                )
                 }
-            ), `</ul>`)
+            )
         break;
         case 'cert':
             const certs = portfolioData.rawCert;
             d3.reverse(certs)
-            card = card.concat(certs.map(c =>  `<li class = "simple-item"> <article class="card">
+            certs.forEach(c => {
+            card.appendChild(
+                `<li class = "simple-item"> <article class="card">
                     <header>
                     <h3>${c.cert_name}</h3>` +
                     displayTags(c.tag_slugs) +
@@ -180,60 +182,64 @@ const createSections = (key) => {
                     <p class='tag-org">${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
-            ), `</ul>`)
-        break;
+            ) })
+            break;
         case 'edu':
             const ed =  portfolioData.rawEdu
-            card = card.concat(ed.map(e =>  `<li class = "simple-item"><article class="card">
+            ed.forEach(e => {
+            card.appendChild (
+                `<li class = "simple-item"><article class="card">
                     <header>
                     <h3>${e.degree}</h3>` +
                     e.scholarship ? `<p class='card-org'>${e.scholarship}</p>` : `` +
-                    displayTags(e.tag_slugs) + 
+                    displayTags(e.tag_slugs) +
                     `</header>
                      <p class='card-meta'>${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`
-                ), `</ul>`)
-        break;
+                ) })
+            break;
         case 'award':
             const awards =  portfolioData.rawAward
             d3.reverse(awards)
-            card = card.concat(
-            awards.map(a =>  `<li class = "simple-item"><article class="card">
+            awards.forEach(a => {
+            card.appendChild(
+                `<li class = "simple-item"><article class="card">
                     <header>
                     <h3>${a.title}</h3>` +
                     displayTags(a.tag_slugs) +
                     `</header>
                     <p class="card-org">${a.org_name}</p>
                     </article>`
-          ), `</ul>`)
+          ) } )
           break;
         case 'service':
             const services = portfolioData.rawService;
             d3.reverse(services)
-            card = card.concat(
-            services.map(s => `<li class = "simple-item"><article class="card">
+            services.forEach(s => {
+            card.appendChild(
+                `<li class = "simple-item"><article class="card">
                     <header>
                     <h3>${s.title}</h3>
                     <p class="card-org"${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
-                    <p class='card-meta'>` + 
-                 formatDate(s.start_date) + 
+                    <p class='card-meta'>` +
+                 formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
                     </article>`
-            ), `</ul>`)
+            ) } )
         break;
         case 'project':
             const projects = portfolioData.rawProject;
             d3.reverse(projects)
-            card = card.concat(
-            projects.map(p =>
+            projects.forEach(p => {
+            card.appendChild(
                 `<li class = "simple-item"> <article class="card">
                     <header>
                         <h3>` +
-                        p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : -p.name
+                        p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</h3>` +
                         p.status ? `<p class="card-meta">${p.status }}</p>` : ``  +
                         displayTags(p.tags) +
@@ -241,21 +247,24 @@ const createSections = (key) => {
                 <p>${p.description}</p>` +
                    p.deploy_url ? `<p class="card-links"><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
                + `</article>`
-            ), `</ul>`)
+            ) })
             break;
         default:
             return;
     }
-    card.concat(`</section>`)
-    return card;
+    page.appendChild(card);
+    return key;
+}
+async function createBody() {
+    const sections = ['position', 'cert', 'service', 'award', 'edu', 'project']
+    const result = await Promise.all(
+        sections.map(async (s) => {
+            return await createSections(s)
+        })
+    );
+    return result
 }
 
-function createBody()  {
-    const start = document.getElementById('viz')
-    const sections = ['Position', 'Cert', 'Service', 'Award', 'Edu', 'Project']
-    const body = sections.map(s => createSections(s))
-    start.append(body)
-}
 
 // Populate dropdown filter options
 function initFilters() {
@@ -459,7 +468,7 @@ function updateVisualizations(selectedSlug) {
 function filterNodeMap(filteredCells) {
     const nodeMap = portfolioData.nodeMap;
     const allSlugs = Array.from(new Set(filteredCells.map(c => c.x), filteredCells.map(c => c.y)))
-    allSlugs.map(s => {
+    allSlugs.map((s) => {
         return nodeMap.get(s)
     })
  }
