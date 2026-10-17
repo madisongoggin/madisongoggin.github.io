@@ -5,7 +5,7 @@
 */
 
 
-const tagClean = (t) => t.split(',').map(t => t.trim())
+const tagClean = (t) => t.split(',').map((t) => t.trim())
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
 
@@ -24,7 +24,7 @@ class PortfolioLoader {
     this._rawPosition = await  d3.csv('./position.csv').then(d3.autoType)
     this._posBullets = await  d3.csv('./position_bullets.csv').then(d3.autoType)
      this._award = await  d3.csv('./professional_award.csv').then(d3.autoType)
-    this._project =     this._rawPositon = await  d3.csv('./projects.csv').then(d3.autoType)
+    this._project = await  d3.csv('./projects.csv').then(d3.autoType)
   }
 
   // Getters allow you to access properties directly without parentheses
