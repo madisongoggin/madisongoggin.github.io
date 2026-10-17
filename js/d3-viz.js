@@ -137,7 +137,7 @@ function displayTags(tags) {
     }) + `</ul>`
 }
 
-async function createSections(key) => {
+async function createSections(key)  {
     let page = document.getElementById(key)
     let card = document.createElement('ul')
     card.className = 'simple-item'
