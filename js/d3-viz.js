@@ -23,7 +23,7 @@ class PortfolioLoader {
     this._rawEdu = await this.#fetchAndParseCSV('./data/education.csv');
     this._rawService = await this.#fetchAndParseCSV('/data/professional_service.csv');
     this._rawPosition = await this.#fetchAndParseCSV('./data/position.csv');
-    this._posBullets = await this.#fetchAndParseCSV('./data/position_bullets.csv');
+    this._posBullets = await this.#fetchAndParseCSV('./data/position_bullet.csv');
     this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
   }
