@@ -149,7 +149,7 @@ function displayTags(tags) {
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
 }
-sync function createSections(key)  {
+async function createSections(key)  {
     let page = document.getElementById(key)
     let card = document.createElement('ul')
     card.className = 'simple-item'
