@@ -74,7 +74,7 @@ class PortfolioLoader {
     if (trimmed.toLowerCase() === "false") return false;
 
     // Coerce Basic Dates (YYYY-MM-DD)
-    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+    if (/^\d{4}$/.test(trimmed)) {
       return new Date(trimmed);
     }
 
@@ -134,7 +134,7 @@ const resetBtn = document.getElementById('reset-filters');
 
 function displayTags(tags) {
     const allTags = Array.from(portfolioData.tags);
-    return `<ul class="tag-chips hero-tags" aria-label="Tags">` +
+    return `<ul class="tag-chips aria-label="Tags">` +
     String(tags).split(',')
     .map((t) => {
       // Use .find() instead of .filter() to get the single object directly
@@ -144,37 +144,35 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<li class="tag-chip hero-tags" style="--chip: ${tag.color}">${tag.name}</li>`;
+      return `<li class="tag-chip" style="--chip: ${tag.color}">${tag.name}</li>`;
     })
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
 }
 async function createSections(key)  {
     let page = document.getElementById(key)
-    let card = document.createElement('ul')
-    card.className = 'hero-tags'
+    let card = document.createElement('div')
+    card.class = 'card-grid'
     switch (key) {
         case 'position':
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
             d3.reverse(postSummary)
             postSummary.forEach(p => {
-             let child = document.createElement("li")
-             child.className = "hero-tags"
-             child.setHTML(`<article class="card matrix-legend">
-                    <header>
+             card.setHTML(`<article class="card matrix-legend">
+                    <header 'panel-head'>
                     <p class='eyebrow'>${p.title}</p>
                     <p class="lede">${p.org_name}</p>
                     <p class="card-meta">` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
-                    `<ul class=hero-tags">` +
+                    `<ul class='simple-item">` +
                     d3.sort(
                         d3.filter(posBullets, (b) => b.bullet_tag === p.bullet_tag),
                         (b) => b.bullet_num
                     )
                     .map(b =>
-                        `<li class="card-links hero-tags">${b.bullet_text}</li>`
+                        `<li class='simepl-item">${b.bullet_text}</li>`
                     ).join() + '</ul></article>'
                 )
                 card.appendChild(child)
@@ -184,11 +182,8 @@ async function createSections(key)  {
         case 'cert':
             const certs = portfolioData.rawCert;
             d3.reverse(certs)
-            certs.forEach(c => {
-            let child = document.createElement("li")
-            child.className = "hero-tags"
-            child.setHTML(`<article class="card matrix-legend">
-                    <header>
+            card.setHTML(`<article class="card matrix-legend">
+                    <header 'panel-head'>
                     <p class= 'eyebrow'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
@@ -196,17 +191,14 @@ async function createSections(key)  {
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             )
-            card.appendChild(child)
         })
             break;
         case 'edu':
             const ed =  portfolioData.rawEdu
             ed.forEach(e => {
-            let child = document.createElement("li")
-            child.className = "hero-tags"
-            child.setHTML(
-                `<article class="matrix-legend card credential-columns">
-                    <header>
+             card.setHTML(
+                `<article class="matrix-legend card">
+                    <header class='panel-head'>
                     <p class='eyebrow'>${e.degree}</p>` +
                     e.scholarship ? `<p class='lede'>${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
@@ -222,26 +214,20 @@ async function createSections(key)  {
             const awards =  portfolioData.rawAward
             d3.reverse(awards)
             awards.forEach(a => {
-            let child = document.createElement("li")
-            child.className = "simple-item"
-            child.setHTML(`<article class="card matrix-legend">
-                    <header>
+             card.setHTML(`<article class="card matrix-legend">
+                    <header 'panel-head'>
                     <p class='eyebrow'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
                     <p class="lede">${a.org_name}</p>
                     </article>`
-           )
-           card.appendChild(child)
+            )
         })
         break;
         case 'service':
             const services = portfolioData.rawService;
             d3.reverse(services)
-            services.forEach(s => {
-             let child = document.createElement("li")
-            child.className = "hero-tags"
-            child.setHTML(`<article class="card matrix-legend">
+             card.setHTML(`<article class="card matrix-legend">
                     <header>
                     <p class='eyebrow'>${s.title}</p>
                     <p class="lede"${s.org_name}</p>` +
@@ -253,7 +239,6 @@ async function createSections(key)  {
                     `</p>
                     </article>`
             )
-           card.appendChild(child)
         });
 
         break;
@@ -261,9 +246,7 @@ async function createSections(key)  {
             const projects = portfolioData.rawProject;
             d3.reverse(projects)
             projects.forEach(p => {
-            let child = document.createElement("li")
-            child.className = "hero-tags"
-            child.setHTML(`<article class="card matrix-legend">
+             card.setHTML(`<article class="card matrix-legend">
                     <header>
                         <p class=='eyebrow>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -275,7 +258,6 @@ async function createSections(key)  {
                    p.deploy_url ? `<p class="card-links"><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
                + `</article>`
             )
-            card.appendChild(child)
         });
             break;
         default:
@@ -339,15 +321,40 @@ function renderMareyChart(filteredCells, nodeMap) {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    container
-            .append('svg')
-            .attr('width', width)
-            .attr('height', height)
-            .attr('viewBox', [0, 0, width, height])
-            .attr('role', 'img')
-            .attr('aria-label', "Marey's schedule timeline showing project milestones across time and stages.");
-    container.append('g')
-            .attr('transform', `translate(${margin.left},${margin.top})`);
+   let filteredCells = Array.from(filteredCells)
+
+    let svg = document.createElement('svg')
+   svg.width = width
+   svg.height = height
+   svg.viewBox =  [0, 0, width, height]
+   svg.role='img'
+   svg.ariaLabel = "Marey's schedule timeline showing ."
+         
+   const anyG = document.createElement('g')
+
+    let g =  anyG
+     g.transform=`translate(${margin.left},${margin.top})`
+
+    // Extract unique X and Y sets
+        const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
+        const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
+
+        let scaleFactor = innerWidth / xValues.length
+        const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
+        scaleFactor = innerWidth / yValues.length
+        const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
+        // Axes
+let svg = document.createElement('svg')
+   svg.width = width
+   svg.height = height
+   svg.viewBox =  [0, 0, width, height]
+   svg.role='img'
+   svg.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
+         
+   const anyG = document.createElement('g')
+
+    let g =  anyG
+     g.transform=`translate(${margin.left},${margin.top})`
 
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
@@ -358,66 +365,75 @@ function renderMareyChart(filteredCells, nodeMap) {
         scaleFactor = innerWidth / yValues.length
         const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
 
+
         // Axes
-        container.append('g')
-                .attr('transform', `translate(0,${innerHeight})`)
-                .call(d3.axisBottom(xScale))
-                .selectAll('text')
-                .attr('class', 'text-xs text-slate-600')
-                .style('text-anchor', 'middle');
+       let xG = anyG
+       xG.transform = `translate(0,${innerHeight})`
+       xG.call(d3.axisBottom(xScale))
+       Array.from(xG.getElementsByTagName('text')).forEach(t => {
+        t.class = 'text-xs text-slate-600'
+        t.style = 'text-anchor, middle'
+       })
+      g.append(xG)
+         
+       let yG = anyG
+       yG.call(d3.axisBottom(yScale))
+       Array.from(yG.getElementsByTagName('text')).forEach(t => {
+        t.class = 'text-xs text-slate-600'
+       })
+       yG.text.class = 'text-xs text-slate-600'
+       
+      g.append(yG)
 
-        container.append('g')
-                .call(d3.axisLeft(yScale))
-                .selectAll('text')
-                .attr('class', 'text-xs text-slate-600');
+      let gridG = anyG
+      gridG.class ='grid opacity-15'
+      gridG.call(d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(''))
 
-        // Grid lines
-        container.append('g')
-                .attr('class', 'grid opacity-15')
-                .call(d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(''));
+      g.append(gridD)
 
-        // Draw train tracks / connection paths for items sharing objects
-         const lineGen = d3.line(xScale).curveMonotoneX()
+      let dataG = anyG
+      dataG.fill = 'none'
+      dataG.stoke = 'none'
+      dataG.dataset = filteredCells;
 
-        const allTags = Array.from(performanceData.tags);
-        // Group cells by shared objects or categories to form "train routes"
-        for(let i = 0; i < xScale.length; i++) {
-                   g.append('path')
-                     .datum(filteredCells.get(xValues[i]))
-                      .attr('fill', 'none')
-                      .attr('stroke', allTags.filter(t => t.slug == xValues[i]).map((t) => t.color))
-                       .attr('stroke-width', 3)
-                      .attr('stroke-opacity', 0.4)
-                       .attr('d', xScale[i])
+      g.append(dataG)
 
-        }
-         // Draw data points (Trains/Projects)
-            const nodes = g.selectAll('.train-node')
-                .data(filteredCells, d => `${d.x}-${d.y}-${d.count}`);
+      const line = d3.line()
+      .x(v => xScale.at(xValues.indexOf(v)))
+      .y(v => yScale.at(yValues.indexOf(v)))
+      .stroke()
+      .curve(d3.curveMonotoneX);
 
-            const nodeEnter = nodes.enter()
-                .append('g')
-                .attr('class', 'train-node cursor-pointer group')
-                .attr('tabindex', '0')
-                .attr('role', 'button')
-                .attr('aria-label', d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`);
+      let pathG = anyG;
+      pathG.fill = 'none'
+      pathG.stroke-width = 3
+      pathG.stroke-opacity = 4
+      pathG.d = line(filteredCells)
+      pathG.onfocus((e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+      pathG.onmouseleave((e), hideTooltip())
+      pathG.onmousemove(e => updateTooltipPosition())
+      pathG.onblur(e => hideTooltip())
 
-            nodeEnter.append('circle')
-                .attr('r', d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
-                .attr('fill', d => d.color || '#3b82f6')
-                .attr('stroke', '#ffffff')
-                .attr('stroke-width', 2)
-                .attr('class', 'transition-transform duration-200 group-hover:scale-125');
+            g.append(pathG);
 
-            nodeEnter.on('mouseenter', (event, d) => {
-                showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`);
-            })
-            .on('mousemove', updateTooltipPosition)
-            .on('mouseleave', hideTooltip)
-            .on('focus', (event, d) => {
-                  showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`);
-            })
-            .on('blur', hideTooltip);
+      let circle = document.createElement('circle')
+      circle.r = (d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
+      circle.fill = ( d => d.color || '#3b82f6')
+      circle.stroke = '#ffffff'
+      circle.stroke-width = 3;
+      circle.class = "transition-transform duration-200 group-hover:scale-125"
+      circle.onfocus((e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+      circle.onmouseleave((e), hideTooltip())
+      circle.onmousemove(e => updateTooltipPosition())
+      circle.onblur(e => hideTooltip())
+
+      g.append(circle)
+
+
         }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -428,12 +444,14 @@ function renderTreemap(filteredCells, nodeMap) {
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
 
+  const nodeMap = new Map(Array.from(portfolioData.nodeMap));
+
    container.append('svg')
                 .attr('width', width)
                 .attr('height', height)
                 .attr('viewBox', [0, 0, width, height])
                 .attr('role', 'img')
-                .attr('aria-label', 'Cascaded d3.treemap representing hierarchical categories of skills and weights.');
+                .attr('aria-label', 'Hierarchical treemap of cross-systems experience and expertise.);
 
     // Build hierarchical data structure from tags and cells
     const  hierarchicalData = {
