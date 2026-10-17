@@ -14,17 +14,40 @@ class PortfolioLoader {
   constructor() {
     this.ready = this.#init();
   }
-   async #init() {
+ async #init() {
     // Downloads and populates raw data caches asynchronously
     this._cell = await d3.json('./data/cells.json');
     this._tags = await d3.json('./data/tags.json');
-    this._rawCert = await d3.csv('./data/certification.csv').then(d3.autoType);
-    this._rawEdu = await d3.csv('./education.csv').then(d3.autoType);
-    this._rawService =  await d3.csv('/professional_service.csv').then(d3.autoType)
-    this._rawPosition = await  d3.csv('./position.csv').then(d3.autoType)
-    this._posBullets = await  d3.csv('./position_bullets.csv').then(d3.autoType)
-     this._award = await  d3.csv('./professional_award.csv').then(d3.autoType)
-    this._project = await  d3.csv('./projects.csv').then(d3.autoType)
+
+    // Explicit row coercion functions replacing d3.autoType
+    this._rawCert = await d3.csv('./data/certification.csv', row => this.#parseCert(row));
+    this._rawEdu = await d3.csv('./education.csv', row => this.#parseEdu(row));
+    this._rawService = await d3.csv('/professional_service.csv', row => this.#parseService(row));
+    this._rawPosition = await d3.csv('./position.csv', row => this.#parsePosition(row));
+    this._posBullets = await d3.csv('./position_bullets.csv', row => this.#parsePosBullets(row));
+    this._award = await d3.csv('./professional_award.csv', row => this.#parseAward(row));
+    this._project = await d3.csv('./projects.csv', row => this.#parseProject(row));
+  }
+
+   // Helper function to safely cast types without using eval()
+  #autoClean(row) {
+    const cleaned = {};
+    for (const [key, value] of Object.entries(row)) {
+      if (value === null || value === undefined || value.trim() === "") {
+        cleaned[key] = null;
+      } else if (!isNaN(value) && !isNaN(parseFloat(value))) {
+        cleaned[key] = Number(value);
+      } else if (value.toLowerCase() === "true") {
+        cleaned[key] = true;
+      } else if (value.toLowerCase() === "false") {
+        cleaned[key] = false;
+      } else if (/^\d{4}-\d{2}-\d{2}$/.test(value)) { // Basic ISO Date check (YYYY-MM-DD)
+        cleaned[key] = new Date(value);
+      } else {
+        cleaned[key] = value;
+      }
+    }
+    return cleaned;
   }
 
   // Getters allow you to access properties directly without parentheses
