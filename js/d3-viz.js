@@ -104,6 +104,12 @@ class PortfolioLoader {
     return d3.rollup(this._project, v=> tagClean(v.map(d => d.tags)))
   }
 
+ get rawPosition() { return this._rawPosition }
+
+ get Position() { return d3.rollup(this._rawPosition, v=> tagClean(v.map(d => d.tags))) }
+
+ get rawPosBullets() { return  this._posBullets }
+
   get rawAward() { return this._award }
 
   get Award() {
@@ -111,7 +117,7 @@ class PortfolioLoader {
   }
 
   get NodeMap() {
-    return new d3.InternSet(d3.merge(this.cert, this.edu, this.position, this.awards, this.service, this.projects))
+    return new d3.InternSet(d3.merge(this.cert, this.edu, this.position, this.award, this.service, this.project))
   }
 }
 
@@ -220,7 +226,7 @@ const createSections = (key) => {
             ), `</ul>`)
         break;
         case 'project':
-            const projects = portfolioData.rawProjects;
+            const projects = portfolioData.rawProject;
             d3.reverse(projects)
             card = card.concat(
             projects.map(p =>
@@ -244,9 +250,9 @@ const createSections = (key) => {
     return card;
 }
 
-funtion createBody()  {
+function createBody()  {
     const start = document.getElementById('viz')
-    const sections = ['position', 'service', 'awards', 'edu', 'project']
+    const sections = ['Position', 'Cert', 'Service', 'Award', 'Edu', 'Project']
     const body = sections.map(s => createSections(s))
     start.append(body)
 }
