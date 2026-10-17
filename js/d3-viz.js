@@ -18,46 +18,64 @@ class PortfolioLoader {
     // Downloads and populates raw data caches asynchronously
     this._cell = await d3.json('./data/cells.json');
     this._tags = await d3.json('./data/tags.json');
-
-    // Explicit row coercion functions replacing d3.autoType
-    this._rawCert = await d3.csv('./data/certification.csv', row => this.#parseCert(row));
-    this._rawEdu = await d3.csv('./education.csv', row => this.#parseEdu(row));
-    this._rawService = await d3.csv('/professional_service.csv', row => this.#parseService(row));
-    this._rawPosition = await d3.csv('./position.csv', row => this.#parsePosition(row));
-    this._posBullets = await d3.csv('./position_bullets.csv', row => this.#parsePosBullets(row));
-    this._award = await d3.csv('./professional_award.csv', row => this.#parseAward(row));
-    this._project = await d3.csv('./projects.csv', row => this.#parseProject(row));
+    // Fetch as raw text and parse rows manually to avoid any eval usage
+    this._rawCert = await this.#fetchAndParseCSV('./data/certification.csv');
+    this._rawEdu = await this.#fetchAndParseCSV('./education.csv');
+    this._rawService = await this.#fetchAndParseCSV('/professional_service.csv');
+    this._rawPosition = await this.#fetchAndParseCSV('./position.csv');
+    this._posBullets = await this.#fetchAndParseCSV('./position_bullets.csv');
+    this._award = await this.#fetchAndParseCSV('./professional_award.csv');
+    this._project = await this.#fetchAndParseCSV('./projects.csv');
   }
 
-   // Helper function to safely cast types without using eval()
-  #autoClean(row) {
-    const cleaned = {};
-    for (const [key, value] of Object.entries(row)) {
-      if (value === null || value === undefined || value.trim() === "") {
-        cleaned[key] = null;
-      } else if (!isNaN(value) && !isNaN(parseFloat(value))) {
-        cleaned[key] = Number(value);
-      } else if (value.toLowerCase() === "true") {
-        cleaned[key] = true;
-      } else if (value.toLowerCase() === "false") {
-        cleaned[key] = false;
-      } else if (/^\d{4}-\d{2}-\d{2}$/.test(value)) { // Basic ISO Date check (YYYY-MM-DD)
-        cleaned[key] = new Date(value);
-      } else {
-        cleaned[key] = value;
-      }
+   /  async #fetchAndParseCSV(url) {
+    // 1. Download the file purely as raw string text
+    const rawText = await d3.text(url);
+    
+    // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
+    // d3.csvParseRows is explicitly CSP-safe.
+    const rows = d3.csvParseRows(rawText);
+    
+    if (rows.length === 0) return [];
+
+    // 3. Extract the headers (first row)
+    const headers = rows[0];
+
+    // 4. Map the remaining rows into objects and apply type casting manually
+    return rows.slice(1).map(rowValues => {
+      const obj = {};
+      headers.forEach((header, index) => {
+        obj[header] = this.#cleanValue(rowValues[index]);
+      });
+      return obj;
+    });
+  }
+
+  /**
+   * Inline data coercion replacing d3.autoType safely
+   */
+  #cleanValue(value) {
+    if (value === null || value === undefined || value.trim() === "") {
+      return null;
     }
-    return cleaned;
-  }
+    // Clean whitespace
+    const trimmed = value.trim();
 
-  // Individual hooks got  custom handling per file later
-  #parseCert(row) { return this.#autoClean(row); }
-  #parseEdu(row) { return this.#autoClean(row); }
-  #parseService(row) { return this.#autoClean(row); }
-  #parsePosition(row) { return this.#autoClean(row); }
-  #parsePosBullets(row) { return this.#autoClean(row); }
-  #parseAward(row) { return this.#autoClean(row); }
-  #parseProject(row) { return this.#autoClean(row); }
+    // Coerce Numbers
+    if (!isNaN(trimmed) && !isNaN(parseFloat(trimmed))) {
+      return Number(trimmed);
+    }
+    // Coerce Booleans
+    if (trimmed.toLowerCase() === "true") return true;
+    if (trimmed.toLowerCase() === "false") return false;
+
+    // Coerce Basic Dates (YYYY-MM-DD)
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+      return new Date(trimmed);
+    }
+
+    return trimmed;
+  }
 
   // Getters allow you to access properties directly without parentheses
   get cell() { return this._cell; }
