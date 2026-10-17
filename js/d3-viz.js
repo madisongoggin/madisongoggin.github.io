@@ -117,7 +117,7 @@ class PortfolioLoader {
   }
 
   get nodeMap() {
-    return new d3.InternSet([...this.cert, ...this.edu, ...this.Position, ...this.award, ...this.service, ...this.project]);
+    return new d3.InternSet([...this.cert, ...this.edu, ...this.position, ...this.award, ...this.service, ...this.project]);
   }
 }
 
@@ -129,10 +129,11 @@ const tagFilterSelect = document.getElementById('tag-filter');
 const resetBtn = document.getElementById('reset-filters');
 
 function displayTags(tags) {
-    const allTags = portfolioData.tags;
+    const allTags = Array.from(portfolioData.tags);
     return `<ul class="tag-chips" aria-label="Tags">` +
-    Array.from(tags).map((t) =>  {
-        let tag = filter(allTags, t1 => t1.slug === t)
+
+    Array.from(tagClean(Array.from(tags))).map((t) =>  {
+        let tag = allTags.filter(t1 => t1.slug === t)
         `<li class="tag-chip" style="--chip: "${tag.color}">${tag.name}</li>`
     }) + `</ul>`
 }
