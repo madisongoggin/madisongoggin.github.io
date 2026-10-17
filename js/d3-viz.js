@@ -138,7 +138,7 @@ function displayTags(tags) {
 }
 
 const createSections = (key) => {
-    card = `<section class="credential-block panel" aria-labelledby="${key}">
+    let card = `<section class="credential-block panel" aria-labelledby="${key}">
     <h2>${key}</h2>
     <ul class="simple-list">
     `
