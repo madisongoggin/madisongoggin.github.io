@@ -219,7 +219,6 @@ async function createSections(key)  {
                 card.appendChild(child)
             })
             break;
-        case 'award':
             const awards =  portfolioData.rawAward
             d3.reverse(awards)
             awards.forEach(a => {
@@ -233,9 +232,9 @@ async function createSections(key)  {
                     <p class="card-org">${a.org_name}</p>
                     </article>`
            )
-          card.appendChild(child)
-      
-          break;
+           card.appendChild(child)
+        })
+        break;
         case 'service':
             const services = portfolioData.rawService;
             d3.reverse(services)
