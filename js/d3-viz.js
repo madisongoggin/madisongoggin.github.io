@@ -3,9 +3,13 @@
 * Secure Portfolio Visualization Module
 * Handles data parsing, state management, v7 chart rendering, accessibility attributes, and interactivity.
 */
+function tagClean(t) {
+ if (String(t).includes(',')) {
+    return Array.from(new Set(t.map((e) => (e.split(',').map((i) => i.trim())))))
+ }
+ return Array.from(String(t.trim()))
+}
 
-
-const tagClean = (t) => Array.from(new Set(t.map((e) => (e.split(',').map((i) => i.trim())))))
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
 
@@ -145,7 +149,6 @@ function displayTags(tags) {
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
 }
-
 async function createSections(key)  {
     let page = document.getElementById(key)
     let card = document.createElement('ul')
@@ -156,8 +159,10 @@ async function createSections(key)  {
             const posBullets = portfolioData.rawPosBullets
             d3.reverse(postSummary)
             postSummary.forEach(p => {
-            card.appendChild(
-                `<li class = "simple-item">
+             let child = document.createElement("li")
+             child.className = "simple-item"
+             child.insertAdjacentHTML("afterbegin",
+                ```
                  <article class="card">
                     <header>
                     <h3>${p.title}</h3>
@@ -172,18 +177,20 @@ async function createSections(key)  {
                     )
                     .map(b =>
                         `<li>${b.bullet_text}</li>`
-                    ).join()
-                    + '</ul><`/article>'
+                    ).join() + '</ul><`/article>'
                 )
+                card.appendChild(child)
                 }
             )
-        break;
+            break;
         case 'cert':
             const certs = portfolioData.rawCert;
             d3.reverse(certs)
             certs.forEach(c => {
-            card.appendChild(
-                `<li class = "simple-item"> <article class="card">
+            let child = document.createElement("li")
+            child.className = "simple-item"
+            child.insertAdjacentHTML("afterbegin",
+                `<article class="card">
                     <header>
                     <h3>${c.cert_name}</h3>` +
                     displayTags(c.tag_slugs) +
@@ -191,13 +198,17 @@ async function createSections(key)  {
                     <p class='tag-org">${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
-            ) })
+            )
+            card.appendChild(child)
+        })
             break;
         case 'edu':
             const ed =  portfolioData.rawEdu
             ed.forEach(e => {
-            card.appendChild (
-                `<li class = "simple-item"><article class="card">
+            let child = document.createElement("li")
+            child.className = "simple-item"
+            child.insertAdjacentHTML("afterbegin",
+                `<article class="card">
                     <header>
                     <h3>${e.degree}</h3>` +
                     e.scholarship ? `<p class='card-org'>${e.scholarship}</p>` : `` +
@@ -206,28 +217,36 @@ async function createSections(key)  {
                      <p class='card-meta'>${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`
-                ) })
+                )
+                card.appendChild(child)
+            })
             break;
         case 'award':
             const awards =  portfolioData.rawAward
             d3.reverse(awards)
             awards.forEach(a => {
-            card.appendChild(
-                `<li class = "simple-item"><article class="card">
+v
+            child.className = "simple-item"
+            child.insertAdjacentHTML("afterbegin",
+                `<article class="card">
                     <header>
                     <h3>${a.title}</h3>` +
                     displayTags(a.tag_slugs) +
                     `</header>
                     <p class="card-org">${a.org_name}</p>
                     </article>`
-          ) } )
+           )
+          card.appendChild(child)
+          })
           break;
         case 'service':
             const services = portfolioData.rawService;
             d3.reverse(services)
             services.forEach(s => {
-            card.appendChild(
-                `<li class = "simple-item"><article class="card">
+             let child = document.createElement("li")
+            child.className = "simple-item"
+            child.insertAdjacentHTML("afterbegin",
+                `<article class="card">
                     <header>
                     <h3>${s.title}</h3>
                     <p class="card-org"${s.org_name}</p>` +
@@ -238,14 +257,19 @@ async function createSections(key)  {
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
                     </article>`
-            ) } )
+            )
+           card.appendChild(child)
+        });
+
         break;
         case 'project':
             const projects = portfolioData.rawProject;
             d3.reverse(projects)
             projects.forEach(p => {
-            card.appendChild(
-                `<li class = "simple-item"> <article class="card">
+            let child = document.createElement("li")
+            child.className = "simple-item"
+            child.insertAdjacentHTML("afterbegin",
+                `<article class="card">
                     <header>
                         <h3>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -256,7 +280,9 @@ async function createSections(key)  {
                 <p>${p.description}</p>` +
                    p.deploy_url ? `<p class="card-links"><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
                + `</article>`
-            ) })
+            )
+            card.appendChild(child)
+        });
             break;
         default:
             return;
@@ -264,6 +290,7 @@ async function createSections(key)  {
     page.appendChild(card);
     return key;
 }
+
 async function createBody() {
     const sections = ['position', 'cert', 'service', 'award', 'edu', 'project']
     const result = await Promise.all(
