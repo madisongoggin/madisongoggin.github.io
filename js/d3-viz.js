@@ -50,6 +50,16 @@ class PortfolioLoader {
     return cleaned;
   }
 
+  // Individual hooks got  custom handling per file later
+  #parseCert(row) { return this.#autoClean(row); }
+  #parseEdu(row) { return this.#autoClean(row); }
+  #parseService(row) { return this.#autoClean(row); }
+  #parsePosition(row) { return this.#autoClean(row); }
+  #parsePosBullets(row) { return this.#autoClean(row); }
+  #parseAward(row) { return this.#autoClean(row); }
+  #parseProject(row) { return this.#autoClean(row); }
+}
+
   // Getters allow you to access properties directly without parentheses
   get cell() { return this._cell; }
   get tags() { return this._tags; }
