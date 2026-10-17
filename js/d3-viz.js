@@ -242,7 +242,7 @@ async function createSections(key)  {
 
         break;
         case 'project':
-            const projects = Array.form(portfolioData.rawProject);
+            const projects = Array.from(portfolioData.rawProject);
             projects.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class = 'tag-group'>
@@ -345,7 +345,6 @@ let svg = document.createElement('svg')
         // Axes
        let xG = anyG
        xG.transform = `translate(0,${innerHeight})`
-       d3.axisBottom(xScale).call(xG)
        Array.from(xG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
         t.style = 'text-anchor, middle'
@@ -353,7 +352,6 @@ let svg = document.createElement('svg')
       g.append(xG)
          
        let yG = anyG
-        d3.axisBottom(yScale).call(yG)
        Array.from(yG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
        })
