@@ -5,7 +5,7 @@
 */
 
 
-const tagClean = (t) => t.split(',').map((t) => t.trim())
+const tagClean = (t) => Array.from(new Set(t.map((e) => (e.split(',').map((i) => i.trim())))))
 const formatDate = d3.timeFormat("%b %Y");
 // Validate and sanitize incoming data structure
 
