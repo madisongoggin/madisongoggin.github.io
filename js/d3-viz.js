@@ -219,6 +219,7 @@ async function createSections(key)  {
                 card.appendChild(child)
             })
             break;
+     case 'award':
             const awards =  portfolioData.rawAward
             d3.reverse(awards)
             awards.forEach(a => {
