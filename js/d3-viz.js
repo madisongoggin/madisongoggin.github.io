@@ -28,7 +28,7 @@ class PortfolioLoader {
     this._project = await this.#fetchAndParseCSV('./projects.csv');
   }
 
-   /  async #fetchAndParseCSV(url) {
+   async #fetchAndParseCSV(url) {
     // 1. Download the file purely as raw string text
     const rawText = await d3.text(url);
     
