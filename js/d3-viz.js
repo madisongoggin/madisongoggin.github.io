@@ -244,9 +244,9 @@ const createSections = (key) => {
     return card;
 }
 
-const createBody = () => {
-    const start = document.getElementById('viz')
-    const sections = [position, service, awards, edu, project]
+funtion createBody() => {
+    connt start = document.getElementById('viz')
+    const sections = ['position', 'service', 'awards', 'edu', 'project']
     const body = sections.map(s => createSections(s))
     start.append(body)
 }
@@ -472,7 +472,7 @@ resetBtn.addEventListener('click', () => {
  window.addEventListener('DOMContentLoaded', () => {
    portfolioData.ready.then(() => {
     initFilters();
-    createbody();
+    createBody();
     updateVisualizations('all');
     })
 });
