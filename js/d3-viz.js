@@ -87,37 +87,37 @@ class PortfolioLoader {
     return d3.rollup(this._rawCert, v => tagClean(v.map(d => d.tag_slugs)));
   }
 
- get rawEd() { return this._rawEdu }
+ get rawEdu() { return this._rawEdu }
 
   get edu() {
     return d3.rollup(this._rawEdu, v => tagClean(v.map(d => d.tag_slugs)));
   }
   get rawService() { return this._rawService }
 
-  get Service() {
+  get service() {
     return d3.rollup(this._rawService, v => tagClean(v.map(d => d.tag_slugs)))
   }
 
   get rawProject() { return this._project }
 
-  get Project() {
+  get project() {
     return d3.rollup(this._project, v => tagClean(v.map(d => d.tags)))
   }
 
  get rawPosition() { return this._rawPosition }
 
- get Position() { return d3.rollup(this._rawPosition,  v =>  tagClean(v.map(d => d.tags))) }
+ get position() { return d3.rollup(  this._rawPosition,  v =>  tagClean(v.map(d => d.tags))) }
 
  get rawPosBullets() { return  this._posBullets }
 
   get rawAward() { return this._award }
 
-  get Award() {
+  get award() {
     return  d3.rollup(this._award, v => tagClean(v.map(d => d.tag_slugs)))
   }
 
   get nodeMap() {
-    return new d3.InternSet([...this.cert, ...this.edu, ...this.position, ...this.award, ...this.service, ...this.project]);
+    return new d3.InternSet([...this.cert, ...this.edu, ...this.Position, ...this.award, ...this.service, ...this.project]);
   }
 }
 
@@ -131,7 +131,7 @@ const resetBtn = document.getElementById('reset-filters');
 function displayTags(tags) {
     const allTags = portfolioData.tags;
     return `<ul class="tag-chips" aria-label="Tags">` +
-    tags.map((t) =>  {
+    Array.from(tags).map((t) =>  {
         let tag = filter(allTags, t1 => t1.slug === t)
         `<li class="tag-chip" style="--chip: "${tag.color}">${tag.name}</li>`
     }) + `</ul>`
