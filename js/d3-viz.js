@@ -245,7 +245,7 @@ const createSections = (key) => {
 }
 
 funtion createBody()  {
-    connt start = document.getElementById('viz')
+    const start = document.getElementById('viz')
     const sections = ['position', 'service', 'awards', 'edu', 'project']
     const body = sections.map(s => createSections(s))
     start.append(body)
