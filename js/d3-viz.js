@@ -137,7 +137,7 @@ function displayTags(tags) {
     }) + `</ul>`
 }
 
-createSections = async (key) => {
+async function createSections(key) => {
     let page = document.getElementById(key)
     let card = document.createElement('ul')
     card.className = 'simple-item'
@@ -483,12 +483,13 @@ resetBtn.addEventListener('click', () => {
             updateVisualizations('all');
 });
 
-// Initialize on load
- window.addEventListener('DOMContentLoaded', () => {
+
+window.addEventListener('DOMContentLoaded', () => {
    portfolioData.ready.then(() => {
-    initFilters();
-    createBody();
-    updateVisualizations('all');
+    Promise.any([
+    initFilters(),
+    createBody(),
+    updateVisualizations('all')])
     })
 });
 
