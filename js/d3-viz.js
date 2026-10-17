@@ -134,7 +134,7 @@ const resetBtn = document.getElementById('reset-filters');
 
 function displayTags(tags) {
     const allTags = Array.from(portfolioData.tags);
-    return `<ul class="tag-chips" aria-label="Tags">` +
+    return `<ul class="tag-chips hero-tags" aria-label="Tags">` +
     String(tags).split(',')
     .map((t) => {
       // Use .find() instead of .filter() to get the single object directly
@@ -144,7 +144,7 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<li class="tag-chip" style="--chip: ${tag.color}">${tag.name}</li>`;
+      return `<li class="tag-chip hero-tags" style="--chip: ${tag.color}">${tag.name}</li>`;
     })
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
@@ -152,7 +152,7 @@ function displayTags(tags) {
 async function createSections(key)  {
     let page = document.getElementById(key)
     let card = document.createElement('ul')
-    card.className = 'simple-item'
+    card.className = 'hero-tags'
     switch (key) {
         case 'position':
             const postSummary = Array.from(portfolioData.rawPosition)
@@ -160,23 +160,22 @@ async function createSections(key)  {
             d3.reverse(postSummary)
             postSummary.forEach(p => {
              let child = document.createElement("li")
-             child.className = "simple-item"
-             child.setHTML(`
-                 <article class="card credential-columns">
+             child.className = "hero-tags"
+             child.setHTML(`<article class="card matrix-legend">
                     <header>
                     <p class='eyebrow'>${p.title}</p>
-                    <p class="lede">${p.org}</p>
+                    <p class="lede">${p.org_name}</p>
                     <p class="card-meta">` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
-                    `<ul class="bullets">` +
+                    `<ul class=hero-tags">` +
                     d3.sort(
                         d3.filter(posBullets, (b) => b.bullet_tag === p.bullet_tag),
                         (b) => b.bullet_num
                     )
                     .map(b =>
-                        `<li class="card-links bullets">${b.bullet_text}</li>`
-                    ).join() + '</ul><`/article>'
+                        `<li class="card-links hero-tags">${b.bullet_text}</li>`
+                    ).join() + '</ul></article>'
                 )
                 card.appendChild(child)
                 }
@@ -187,8 +186,8 @@ async function createSections(key)  {
             d3.reverse(certs)
             certs.forEach(c => {
             let child = document.createElement("li")
-            child.className = "simple-item"
-            child.setHTML(`<article class="card credential-columns">
+            child.className = "hero-tags"
+            child.setHTML(`<article class="card matrix-legend">
                     <header>
                     <p class= 'eyebrow'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
@@ -204,9 +203,9 @@ async function createSections(key)  {
             const ed =  portfolioData.rawEdu
             ed.forEach(e => {
             let child = document.createElement("li")
-            child.className = "simple-item"
+            child.className = "hero-tags"
             child.setHTML(
-                `<article class="card credential-columns">
+                `<article class="matrix-legend card credential-columns">
                     <header>
                     <p class='eyebrow'>${e.degree}</p>` +
                     e.scholarship ? `<p class='lede'>${e.scholarship}</p>` : `` +
@@ -225,7 +224,7 @@ async function createSections(key)  {
             awards.forEach(a => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.setHTML(`<article class="card credential-columns">
+            child.setHTML(`<article class="card matrix-legend">
                     <header>
                     <p class='eyebrow'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
@@ -241,8 +240,8 @@ async function createSections(key)  {
             d3.reverse(services)
             services.forEach(s => {
              let child = document.createElement("li")
-            child.className = "simple-item"
-            child.setHTML(`<article class="card credential-columns">
+            child.className = "hero-tags"
+            child.setHTML(`<article class="card matrix-legend">
                     <header>
                     <p class='eyebrow'>${s.title}</p>
                     <p class="lede"${s.org_name}</p>` +
@@ -263,8 +262,8 @@ async function createSections(key)  {
             d3.reverse(projects)
             projects.forEach(p => {
             let child = document.createElement("li")
-            child.className = "simple-item"
-            child.setHTML(`<article class="card .redential-columns">
+            child.className = "hero-tags"
+            child.setHTML(`<article class="card matrix-legend">
                     <header>
                         <p class=='eyebrow>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -340,14 +339,14 @@ function renderMareyChart(filteredCells, nodeMap) {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    const svg = select('#marey-container')
+    container
             .append('svg')
             .attr('width', width)
             .attr('height', height)
             .attr('viewBox', [0, 0, width, height])
             .attr('role', 'img')
             .attr('aria-label', "Marey's schedule timeline showing project milestones across time and stages.");
-    const g = svg.append('g')
+    container.append('g')
             .attr('transform', `translate(${margin.left},${margin.top})`);
 
     // Extract unique X and Y sets
@@ -360,34 +359,33 @@ function renderMareyChart(filteredCells, nodeMap) {
         const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
 
         // Axes
-        g.append('g')
+        container.append('g')
                 .attr('transform', `translate(0,${innerHeight})`)
                 .call(d3.axisBottom(xScale))
                 .selectAll('text')
                 .attr('class', 'text-xs text-slate-600')
                 .style('text-anchor', 'middle');
 
-        g.append('g')
+        container.append('g')
                 .call(d3.axisLeft(yScale))
                 .selectAll('text')
                 .attr('class', 'text-xs text-slate-600');
 
         // Grid lines
-        g.append('g')
+        container.append('g')
                 .attr('class', 'grid opacity-15')
                 .call(d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(''));
 
         // Draw train tracks / connection paths for items sharing objects
          const lineGen = d3.line(xScale).curveMonotoneX()
 
-        const allTags = performanceData.tags;
-
+        const allTags = Array.from(performanceData.tags);
         // Group cells by shared objects or categories to form "train routes"
         for(let i = 0; i < xScale.length; i++) {
                    g.append('path')
                      .datum(filteredCells.get(xValues[i]))
                       .attr('fill', 'none')
-                      .attr('stroke', allTags.filter(t => t.slug == xValues[i]).map(t => t.color))
+                      .attr('stroke', allTags.filter(t => t.slug == xValues[i]).map((t) => t.color))
                        .attr('stroke-width', 3)
                       .attr('stroke-opacity', 0.4)
                        .attr('d', xScale[i])
@@ -424,14 +422,13 @@ function renderMareyChart(filteredCells, nodeMap) {
 
         // --- 2. Cascaded d3.treemap Visualization ---
 function renderTreemap(filteredCells, nodeMap) {
-    const container = document.getElementById('d3.treemap-container');
+    const container = document.getElementById('treemap-container');
     container.innerHTML = '';
 
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
 
-    const svg = select('#d3.treemap-container')
-                .append('svg')
+   container.append('svg')
                 .attr('width', width)
                 .attr('height', height)
                 .attr('viewBox', [0, 0, width, height])
@@ -458,7 +455,7 @@ function renderTreemap(filteredCells, nodeMap) {
         .paddingInner(2)
         (root);
 
-    const leaf = svg.selectAll('g')
+    const leaf = container.selectAll('g')
             .data(root.leaves())
             .join('g')
             .attr('transform', d => `translate(${d.x0},${d.y0})`)
