@@ -117,7 +117,7 @@ class PortfolioLoader {
   get rawAward() { return this._award }
 
   get award() {
-    return  d3.rollup(this._award, v => tagClean(v.map(d => d.tag_slugs)))
+    return  d3.rollup(this._award, v => tagClean(v.map(d => d.tag_slug)))
   }
 
   get nodeMap() {
@@ -149,7 +149,7 @@ function displayTags(tags) {
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
 }
-async function createSections(key)  {
+sync function createSections(key)  {
     let page = document.getElementById(key)
     let card = document.createElement('ul')
     card.className = 'simple-item'
@@ -161,11 +161,10 @@ async function createSections(key)  {
             postSummary.forEach(p => {
              let child = document.createElement("li")
              child.className = "simple-item"
-             child.insertAdjacentHTML("afterbegin",
-                ```
+             child.setHTML(```
                  <article class="card">
                     <header>
-                    <h3>${p.title}</h3>
+                    <p class='eyebrow'>${p.title}</p>
                     <p class="card-org">${p.org}</p>
                     <p class="card-meta">` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
@@ -189,10 +188,9 @@ async function createSections(key)  {
             certs.forEach(c => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.insertAdjacentHTML("afterbegin",
-                `<article class="card">
+            child.setHTML(`<article class="card">
                     <header>
-                    <h3>${c.cert_name}</h3>` +
+                    <p class= 'eyebrow'>${c.cert_name}</p>`
                     displayTags(c.tag_slugs) +
                     `</header>
                     <p class='tag-org">${c.gov_body}</p>` +
@@ -207,10 +205,10 @@ async function createSections(key)  {
             ed.forEach(e => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.insertAdjacentHTML("afterbegin",
+            child.setHTML(
                 `<article class="card">
                     <header>
-                    <h3>${e.degree}</h3>` +
+                    <p class='eyebrow'>${e.degree}</p>` +
                     e.scholarship ? `<p class='card-org'>${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     `</header>
@@ -225,19 +223,18 @@ async function createSections(key)  {
             const awards =  portfolioData.rawAward
             d3.reverse(awards)
             awards.forEach(a => {
-v
+            let child = document.createElement("li")
             child.className = "simple-item"
-            child.insertAdjacentHTML("afterbegin",
-                `<article class="card">
+            child.setHTML(`<article class="card">
                     <header>
-                    <h3>${a.title}</h3>` +
-                    displayTags(a.tag_slugs) +
+                    <p class='eyebrow'>${a.title}</p>` +
+                    displayTags(a.tag_slug) +
                     `</header>
                     <p class="card-org">${a.org_name}</p>
                     </article>`
            )
           card.appendChild(child)
-          })
+      
           break;
         case 'service':
             const services = portfolioData.rawService;
@@ -245,10 +242,9 @@ v
             services.forEach(s => {
              let child = document.createElement("li")
             child.className = "simple-item"
-            child.insertAdjacentHTML("afterbegin",
-                `<article class="card">
+            child.setHTML(`<article class="card">
                     <header>
-                    <h3>${s.title}</h3>
+                    <p class='eyebrow'>${s.title}</p>
                     <p class="card-org"${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
@@ -268,12 +264,11 @@ v
             projects.forEach(p => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.insertAdjacentHTML("afterbegin",
-                `<article class="card">
+            child.setHTML(`<article class="card">
                     <header>
-                        <h3>` +
+                        <p class=='eyebrow>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
-                    `</h3>` +
+                    `</p>` +
                         p.status ? `<p class="card-meta">${p.status }}</p>` : ``  +
                         displayTags(p.tags) +
                 `</header>
