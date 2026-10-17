@@ -131,11 +131,19 @@ const resetBtn = document.getElementById('reset-filters');
 function displayTags(tags) {
     const allTags = Array.from(portfolioData.tags);
     return `<ul class="tag-chips" aria-label="Tags">` +
+    String(tags).split(',')
+    .map((t) => {
+      // Use .find() instead of .filter() to get the single object directly
+      const tag = allTags.find(t1 => t1.slug === t.trim());
 
-    Array.from(tagClean(Array.from(tags))).map((t) =>  {
-        let tag = allTags.filter(t1 => t1.slug === t)
-        `<li class="tag-chip" style="--chip: "${tag.color}">${tag.name}</li>`
-    }) + `</ul>`
+      // Add a fallback case in case the tag slug isn't found in portfolioData
+      if (!tag) return '';
+
+      // Fix the nested double quotes around the CSS variable
+      return `<li class="tag-chip" style="--chip: ${tag.color}">${tag.name}</li>`;
+    })
+    .join('') + // Use .join('') to combine the array items without commas
+    '</ul>';
 }
 
 async function createSections(key)  {
@@ -164,7 +172,7 @@ async function createSections(key)  {
                     )
                     .map(b =>
                         `<li>${b.bullet_text}</li>`
-                    )
+                    ).join()
                     + '</ul><`/article>'
                 )
                 }
