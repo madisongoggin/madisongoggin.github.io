@@ -190,7 +190,7 @@ async function createSections(key)  {
             child.className = "simple-item"
             child.setHTML(`<article class="card">
                     <header>
-                    <p class= 'eyebrow'>${c.cert_name}</p>`
+                    <p class= 'eyebrow'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
                     <p class='tag-org">${c.gov_body}</p>` +
