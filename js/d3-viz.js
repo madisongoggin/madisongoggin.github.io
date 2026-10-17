@@ -451,8 +451,8 @@ function updateVisualizations(selectedSlug) {
 }
 
 function filterNodeMap(filteredCells) {
-    const nodeMap = portfolioData.nodeMap;
-    const allSlugs = new Set(filteredCells.map(c => c.x), filteredCells.map(c => c.y))
+    const nodeMap = portfolioData.nodeMap;(
+    const allSlugs = Array.from(new Set(filteredCells.map(c => c.x), filteredCells.map(c => c.y)))
     allSlugs.map(s => {
         return nodeMap.get(s)
     })
