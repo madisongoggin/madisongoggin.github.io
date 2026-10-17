@@ -244,7 +244,7 @@ const createSections = (key) => {
     return card;
 }
 
-funtion createBody() => {
+funtion createBody()  {
     connt start = document.getElementById('viz')
     const sections = ['position', 'service', 'awards', 'edu', 'project']
     const body = sections.map(s => createSections(s))
