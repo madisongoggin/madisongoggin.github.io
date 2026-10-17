@@ -58,7 +58,6 @@ class PortfolioLoader {
   #parsePosBullets(row) { return this.#autoClean(row); }
   #parseAward(row) { return this.#autoClean(row); }
   #parseProject(row) { return this.#autoClean(row); }
-}
 
   // Getters allow you to access properties directly without parentheses
   get cell() { return this._cell; }
