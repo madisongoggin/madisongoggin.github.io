@@ -157,7 +157,6 @@ async function createSections(key)  {
         case 'position':
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
-            d3.reverse(postSummary)
             postSummary.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header 'panel-head'>
@@ -175,13 +174,12 @@ async function createSections(key)  {
                         `<li class='simepl-item">${b.bullet_text}</li>`
                     ).join() + '</ul></article>'
                 )
-                card.appendChild(child)
                 }
             )
             break;
         case 'cert':
             const certs = portfolioData.rawCert;
-            d3.reverse(certs)
+            certs.forEach(c => {
             card.setHTML(`<article class="card matrix-legend">
                     <header 'panel-head'>
                     <p class= 'eyebrow'>${c.cert_name}</p>` +
@@ -212,7 +210,6 @@ async function createSections(key)  {
             break;
      case 'award':
             const awards =  portfolioData.rawAward
-            d3.reverse(awards)
             awards.forEach(a => {
              card.setHTML(`<article class="card matrix-legend">
                     <header 'panel-head'>
@@ -226,7 +223,7 @@ async function createSections(key)  {
         break;
         case 'service':
             const services = portfolioData.rawService;
-            d3.reverse(services)
+            services.foreach(s => { 
              card.setHTML(`<article class="card matrix-legend">
                     <header>
                     <p class='eyebrow'>${s.title}</p>
@@ -244,7 +241,6 @@ async function createSections(key)  {
         break;
         case 'project':
             const projects = portfolioData.rawProject;
-            d3.reverse(projects)
             projects.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header>
