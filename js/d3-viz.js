@@ -78,7 +78,7 @@ class PortfolioLoader {
   }
 
   // Getters allow you to access properties directly without parentheses
-  get cell() { return this._cell; }
+  get cells() { return this._cell; }
   get tags() { return this._tags; }
 
  get rawCert() { return this._rawCert }
