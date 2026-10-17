@@ -316,29 +316,7 @@ function renderMareyChart(filteredCells, nodeMap) {
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
-
-   let filteredCells = Array.from(filteredCells)
-
-    let svg = document.createElement('svg')
-   svg.width = width
-   svg.height = height
-   svg.viewBox =  [0, 0, width, height]
-   svg.role='img'
-   svg.ariaLabel = "Marey's schedule timeline showing ."
-         
-   const anyG = document.createElement('g')
-
-    let g =  anyG
-     g.transform=`translate(${margin.left},${margin.top})`
-
-    // Extract unique X and Y sets
-        const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
-        const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
-
-        let scaleFactor = innerWidth / xValues.length
-        const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
-        scaleFactor = innerWidth / yValues.length
-        const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
+                    
         // Axes
 let svg = document.createElement('svg')
    svg.width = width
