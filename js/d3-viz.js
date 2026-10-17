@@ -20,12 +20,12 @@ class PortfolioLoader {
     this._tags = await d3.json('./data/tags.json');
     // Fetch as raw text and parse rows manually to avoid any eval usage
     this._rawCert = await this.#fetchAndParseCSV('./data/certification.csv');
-    this._rawEdu = await this.#fetchAndParseCSV('./education.csv');
-    this._rawService = await this.#fetchAndParseCSV('/professional_service.csv');
-    this._rawPosition = await this.#fetchAndParseCSV('./position.csv');
-    this._posBullets = await this.#fetchAndParseCSV('./position_bullets.csv');
-    this._award = await this.#fetchAndParseCSV('./professional_award.csv');
-    this._project = await this.#fetchAndParseCSV('./projects.csv');
+    this._rawEdu = await this.#fetchAndParseCSV('./data/education.csv');
+    this._rawService = await this.#fetchAndParseCSV('/data/professional_service.csv');
+    this._rawPosition = await this.#fetchAndParseCSV('./data/position.csv');
+    this._posBullets = await this.#fetchAndParseCSV('./data/position_bullets.csv');
+    this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
+    this._project = await this.#fetchAndParseCSV('./data/projects.csv');
   }
 
    async #fetchAndParseCSV(url) {
