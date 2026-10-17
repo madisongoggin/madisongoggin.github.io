@@ -16,8 +16,8 @@ class PortfolioLoader {
   }
    async #init() {
     // Downloads and populates raw data caches asynchronously
-    this._cell = await d3.json('./data/cells.json').then(d3.autoType);
-    this._tags = await d3.json('./data/tags.json').then(d3.autoType);
+    this._cell = await d3.json('./data/cells.json');
+    this._tags = await d3.json('./data/tags.json');
     this._rawCert = await d3.csv('./data/certification.csv').then(d3.autoType);
     this._rawEdu = await d3.csv('./education.csv').then(d3.autoType);
     this._rawService =  await d3.csv('/professional_service.csv').then(d3.autoType)
