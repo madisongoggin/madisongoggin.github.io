@@ -393,9 +393,12 @@ function updateVisualizations(selectedSlug) {
             if (filteredCells.length === 0) {
                     filteredCells = allCells; // Fallback if no direct match
             }
-        }
         renderMareyChart(filteredCells, filterNodeMap(filteredCells));
         renderTreemap(filteredCells, filterNodeMap(filteredCells));
+       } else if (selectedSlug) {
+        renderMareyChart(allCells, filterNodeMap(allCells));
+        renderTreemap(allCells, filterNodeMap(allCells));
+    }
 }
 
 function filterNodeMap(filteredCells) {
