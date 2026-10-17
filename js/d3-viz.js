@@ -380,8 +380,8 @@ let svg = document.createElement('svg')
 
       let pathG = anyG;
       pathG.fill = 'none'
-      pathG.stroke-width = 3
-      pathG.stroke-opacity = 4
+      pathG.setAttribute('stroke-width', '3')
+      pathG.setAttribute('stroke-opacity', '4')
       pathG.d = line(filteredCells)
       pathG.onfocus((e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
@@ -396,7 +396,7 @@ let svg = document.createElement('svg')
       circle.r = (d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
       circle.fill = ( d => d.color || '#3b82f6')
       circle.stroke = '#ffffff'
-      circle.stroke-width = 3;
+      circle.setAttribute('stroke-width', '3')
       circle.class = "transition-transform duration-200 group-hover:scale-125"
       circle.onfocus((e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
@@ -407,8 +407,7 @@ let svg = document.createElement('svg')
 
       g.append(circle)
 
-
-        }
+}
 
         // --- 2. Cascaded d3.treemap Visualization ---
 function renderTreemap(filteredCells, nodeMap) {
@@ -417,15 +416,13 @@ function renderTreemap(filteredCells, nodeMap) {
 
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
-
-  const nodeMap = new Map(Array.from(portfolioData.nodeMap));
-
-   container.append('svg')
-                .attr('width', width)
-                .attr('height', height)
-                .attr('viewBox', [0, 0, width, height])
-                .attr('role', 'img')
-                .attr('aria-label', 'Hierarchical treemap of cross-systems experience and expertise.);
+   
+ let svg = document.createElement('svg')
+   svg.width = width
+   svg.height = height
+   svg.viewBox =  [0, 0, width, height]
+   svg.role='img'
+   svg.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
 
     // Build hierarchical data structure from tags and cells
     const  hierarchicalData = {
@@ -467,6 +464,8 @@ function renderTreemap(filteredCells, nodeMap) {
             .attr('y', 14)
             .text(d => `Skill ${d.parent.name} with depth ${d.depth}`)
             .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none');
+
+ container.append(svg)
     }
 
 
