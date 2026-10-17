@@ -155,17 +155,17 @@ async function createSections(key)  {
     card.className = 'simple-item'
     switch (key) {
         case 'position':
-            const postSummary = portfolioData.rawPosition
-            const posBullets = portfolioData.rawPosBullets
+            const postSummary = Array.from(portfolioData.rawPosition)
+            const posBullets = Array.from(portfolioData.rawPosBullets)
             d3.reverse(postSummary)
             postSummary.forEach(p => {
              let child = document.createElement("li")
              child.className = "simple-item"
-             child.setHTML(```
-                 <article class="card">
+             child.setHTML(`
+                 <article class="card credential-columns">
                     <header>
                     <p class='eyebrow'>${p.title}</p>
-                    <p class="card-org">${p.org}</p>
+                    <p class="lede">${p.org}</p>
                     <p class="card-meta">` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
@@ -175,7 +175,7 @@ async function createSections(key)  {
                         (b) => b.bullet_num
                     )
                     .map(b =>
-                        `<li>${b.bullet_text}</li>`
+                        `<li class="card-links bullets">${b.bullet_text}</li>`
                     ).join() + '</ul><`/article>'
                 )
                 card.appendChild(child)
@@ -188,12 +188,12 @@ async function createSections(key)  {
             certs.forEach(c => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.setHTML(`<article class="card">
+            child.setHTML(`<article class="card credential-columns">
                     <header>
                     <p class= 'eyebrow'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
-                    <p class='tag-org">${c.gov_body}</p>` +
+                    <p class'lede'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             )
@@ -206,10 +206,10 @@ async function createSections(key)  {
             let child = document.createElement("li")
             child.className = "simple-item"
             child.setHTML(
-                `<article class="card">
+                `<article class="card credential-columns">
                     <header>
                     <p class='eyebrow'>${e.degree}</p>` +
-                    e.scholarship ? `<p class='card-org'>${e.scholarship}</p>` : `` +
+                    e.scholarship ? `<p class='lede'>${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     `</header>
                      <p class='card-meta'>${e.school}</p>` +
@@ -225,12 +225,12 @@ async function createSections(key)  {
             awards.forEach(a => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.setHTML(`<article class="card">
+            child.setHTML(`<article class="card credential-columns">
                     <header>
                     <p class='eyebrow'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
-                    <p class="card-org">${a.org_name}</p>
+                    <p class="lede">${a.org_name}</p>
                     </article>`
            )
            card.appendChild(child)
@@ -242,10 +242,10 @@ async function createSections(key)  {
             services.forEach(s => {
              let child = document.createElement("li")
             child.className = "simple-item"
-            child.setHTML(`<article class="card">
+            child.setHTML(`<article class="card credential-columns">
                     <header>
                     <p class='eyebrow'>${s.title}</p>
-                    <p class="card-org"${s.org_name}</p>` +
+                    <p class="lede"${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
                     <p class='card-meta'>` +
@@ -264,7 +264,7 @@ async function createSections(key)  {
             projects.forEach(p => {
             let child = document.createElement("li")
             child.className = "simple-item"
-            child.setHTML(`<article class="card">
+            child.setHTML(`<article class="card .redential-columns">
                     <header>
                         <p class=='eyebrow>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -497,7 +497,7 @@ function updateVisualizations(selectedSlug) {
 }
 
 function filterNodeMap(filteredCells) {
-    const nodeMap = portfolioData.nodeMap;
+    const nodeMap = new Map(Array.from(portfolioData.nodeMap));
     const allSlugs = Array.from(new Set(filteredCells.map(c => c.x), filteredCells.map(c => c.y)))
     allSlugs.map((s) => {
         return nodeMap.get(s)
