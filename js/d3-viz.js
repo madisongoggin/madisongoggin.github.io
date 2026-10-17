@@ -440,11 +440,10 @@ function updateVisualizations(selectedSlug) {
         const allCells = portfolioData.cells;
         if (selectedSlug && selectedSlug !== 'all') {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
-            if (filteredCells.length === 0) {
-                    filteredCells = allCells; // Fallback if no direct match
-            }
-        renderMareyChart(filteredCells, filterNodeMap(filteredCells));
-        renderTreemap(filteredCells, filterNodeMap(filteredCells));
+            if (filteredCells.length != 0) {
+             renderMareyChart(filteredCells, filterNodeMap(filteredCells));
+             renderTreemap(filteredCells, filterNodeMap(filteredCells));
+           }
        } else if (selectedSlug) {
         renderMareyChart(allCells, filterNodeMap(allCells));
         renderTreemap(allCells, filterNodeMap(allCells));
@@ -473,6 +472,7 @@ resetBtn.addEventListener('click', () => {
  window.addEventListener('DOMContentLoaded', () => {
    portfolioData.ready.then(() => {
     initFilters();
+    createbody();
     updateVisualizations('all');
     })
 });
