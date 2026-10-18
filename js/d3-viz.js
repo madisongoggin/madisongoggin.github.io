@@ -501,12 +501,11 @@ function renderTreemap(filteredCells) {
 
    const color = d3.scaleOrdinal(cats);
 
-const data = vals.forEach(v => {
-      {
-        "name" = v,
-        "children"= filteredCells.filter(c => (c.y == v || c.x == y))
-      }
-    })
+const data = vals.map(v => {
+  return {
+        "name" : v,
+        "children": filteredCells.filter(c => (c.y == v || c.x == y))
+    }})
 
 
 
