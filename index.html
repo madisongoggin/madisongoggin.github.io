@@ -61,14 +61,8 @@
                 <span aria-labelledby="mercy-panel-head">
                         <h2 id="marey-heading" class="panel-head">Cross-Systems Graph</h2>
                 </span>
-                 <canvas id="marey-container" class="w-full h-full" role="region" aria-label="Marey's Train Schedule style showing cross-systems experience and expertise."></canvas>
+                 <div id="marey-container" class="w-full h-full" role="region" aria-label="Marey's Train Schedule style showing cross-systems experience and expertise."></div>
                  <caption>Marey's Train Schedule style showing cross-systems experience and expertise.</caption>
-            </section>
-
-            <section class="panel" aria-label="treemap">
-                <h2 id="treemap-heading" class="panel-head">Cross-Systems Treemap</h2>
-                    <canvas id="treemap-container" class="w-full h-full" role="region" aria-label="Cascaded treemap visualization"></canvas>
-                    <caption>Hierarchical treemap of cross-systems experience and expereince.</caption>
             </section>
         </div>
 
@@ -89,20 +83,21 @@
 
 <section aria-label="Professional Awards" class="panel">
     <h2 id="awards" class="header-inner">Professional Awards</h2>
-    <progress  id="award" class="card-grid"></progress>
+    <div  id="award" class="card-grid"></div>
 </section>
+
 
 <section aria-label="Education" class="panel">
     <h2 class="header-inner" id="edus">Education</h2>
-    <progress  class="card-grid" id="edu"> </progress>
+    <div  class="card-grid" id="edu"> </div>
 </section>
 
 <section aria-label="Projects" class="panel">
     <h2 class="header-inner" id="projects">Selected Projects</h2>
-    <progress id="project" class="card-grid"> </progress>
+    <div id="project" class="card-grid"> </div>
 </section>
 
-<div id="floating-tooltip" role="tooltip" aria-hidden="true" class="tooltip-transition">
+<div id="floating-tooltip" aria-hidden="true" class="tooltip-transition">
 </div>
 </main>
   <footer class="site-footer">

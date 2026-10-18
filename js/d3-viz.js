@@ -559,11 +559,11 @@ function updateVisualizations(selectedSlug) {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
              renderMareyChart(filteredCells);
-             renderTreemap(filteredCells);
+         //    renderTreemap(filteredCells);
            }
        } else if (selectedSlug) {
         renderMareyChart(allCells);
-        renderTreemap(allCells);
+       // renderTreemap(allCells);
     }
 }
 
