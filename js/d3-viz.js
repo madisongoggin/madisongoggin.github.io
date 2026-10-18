@@ -66,7 +66,7 @@ class PortfolioLoader {
     const trimmed = value.trim();
 
        // Coerce Basic Dates (YYYY-MM-DD)
-    if (/^\d{4}-\d{2}-\d{2}$/test(trimmed)) {
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
       return new Date(trimmed);
     }
 
@@ -152,7 +152,7 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<li class="tag-chip" style="color : ${tag.color}">${tag.name}</li>`;
+      return `<li class="tag-chip" style="color : ${tag.color}'">${tag.name}</li>`;
     })
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
