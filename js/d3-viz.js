@@ -190,9 +190,9 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                     posBullets.filter((b) => b.bullet_tag === p.bullet_tag).forEach((b) => {
-                        return `<li class='simple-item">${b.bullet_text}</li>`
-                  }).join('') + '</ul></article>'
+                    (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).forEach(b => {
+                        `<li class='simple-item">${b.bullet_text}</li>`
+                  }).join('') || p.bullet_tag) + '</ul></article>'
                   }).join(''), config
             )
             break;
@@ -346,7 +346,7 @@ function renderMareyChart(filteredCells) {
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
         const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
-        const cats = [... new(Set(filteredCells.map(c => c.category)))].sort()
+        const cats = [... new Set(filteredCells.map(c => c.category))].sort()
 
         let scaleFactor = innerWidth / xValues.length
         const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
