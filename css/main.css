@@ -27,6 +27,55 @@
   }
 }
 
+
+.c-sharp { color: #4e79a7 }
+.go { color: #4e79a7 }
+.julia { color: #4e79a7 }
+.powershell { color: #4e79a7 }
+.python { color: #4e79a7 }
+.r { color: #4e79a7 }
+.sql { color: #4e79a7 }
+.agentic-ai { color: #f28e2b }
+.ai { color: #f28e2b }
+.cloud { color: #f28e2b }
+.compliance { color: #f28e2b }
+.cybersecurity { color: #f28e2b }
+.database-administration { color: #f28e2b }
+.devsecaiops { color: #f28e2b }
+.distributed-systems { color: #f28e2b }
+.edge-ai { color: #f28e2b }
+.federated-learning { color: #f28e2b }
+.high-availability { color: #f28e2b }
+.intelligent-process-automation { color: #f28e2b }
+.it-auditing { color: #f28e2b }
+.observability { color: #f28e2b }
+.resilient-architecture { color: #f28e2b }
+.security-engineering { color: #f28e2b }
+.telemetry { color: #f28e2b }
+.adversarial-ml { color: #59a14f }
+.aiot { color: #59a14f }
+.federated-cv { color: #59a14f }
+.federated-nlp { color: #59a14f }
+.multimodal-ai { color: #59a14f }
+.access-governance { color: #e15759 }
+.dast { color: #e15759 }
+.edge-ai-security { color: #e15759 }
+.iam { color: #e15759 }
+.pentest { color: #e15759 }
+.risk-assessment { color: #e15759 }
+.sast { color: #e15759 }
+.sbom { color: #e15759 }
+.tprm { color: #e15759 }
+.aws { color: #76b7b2 }
+.azure { color: #76b7b2 }
+.gcp { color: #76b7b2 }
+.ci-cd { color: #edc948 }
+.iac { color: #edc948 }
+.graphql { color: #b07aa1 }
+.graph-databases { color: #ff9da7 }
+.sql-server { color: #ff9da7 }
+.web-app { color: #ff9da7 }
+
 * { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
@@ -142,6 +191,10 @@ a:hover { text-decoration: underline; }
   border-radius: 999px; padding: .3rem .8rem; font-size: .85rem; font-weight: 600;
 }
 
+
+.ink-soft {
+  color: var(--ink-soft);
+}
 /* Panels */
 .panel {
   background: var(--surface);

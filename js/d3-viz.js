@@ -146,7 +146,6 @@ const portfolioData = new PortfolioLoader()
 
 const config = new Sanitizer({})
 config.allowAttribute('class')
-config.allowAttribute('style')
 config.allowAttribute('aria-label')
 config.setComments(true)
 
@@ -168,7 +167,7 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<li class="tag-chip" style="color : ${tag.color}'">${tag.name}</li>`;
+      return `<li class="tag-chip ${tag.color}">${tag.name}</li>`;
     })
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
@@ -184,8 +183,8 @@ async function createSections(key)  {
             postSummary.map(p => {
               `<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' style="color: '--accent'">${p.title}</p>
-                    <p style='color: "--ink-soft"'>${p.org_name}</p>
+                    <p class='eyebrow">${p.title}</p>
+                    <p class='ink-soft'>${p.org_name}</p>
                     <p>` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
@@ -202,10 +201,10 @@ async function createSections(key)  {
             certs.map(c => {
                 `<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' style="color: '--accent'">${c.cert_name}</p>` +
+                    <p class='eyebrow'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
-                    <p  style='color:"--ink-soft"'>${c.gov_body}</p>` +
+                    <p  class="ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             }).join(''), config
@@ -218,11 +217,11 @@ async function createSections(key)  {
             ed.map(e => {
                `<article class="matrix-legend card">
                     <header class='tag-group'>
-                    <p class='eyebrow' style="color:'--accent'">${e.degree}</p>` +
-                    e.scholarship ? `<p style="color : "--ink-soft"">${e.scholarship}</p>` : `` +
+                    <p class='eyebrow'>${e.degree}</p>` +
+                    e.scholarship ? `<class="--ink-soft">${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     `</header>
-                     <p style="color : "--ink-soft"">${e.school}</p>` +
+                     <p class="ink-soft"">${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`, config
               }).join(''), config)
@@ -233,10 +232,10 @@ async function createSections(key)  {
             awards.map(a => {
            `<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' style='color: "--accent"'>${a.title}</p>` +
+                    <p class='eyebrow'${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
-                    <p style="color : "--ink-soft"">${a.org_name}</p>
+                    <p class="ink-soft"">${a.org_name}</p>
                     </article>`
             }).join(''), config)
             break;
@@ -246,11 +245,11 @@ async function createSections(key)  {
             services.map(s => {
             `<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' style="color: '--accent'">${s.title}</p>
-                    <p style="color: '--ink-soft'">${s.org_name}</p>` +
+                    <p class='eyebrow'>${s.title}</p>
+                    <p class='ink-soft'">${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
-                    <p style='color: "--ink-soft'">` +
+                    <p class="ink-soft'">` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
@@ -263,10 +262,10 @@ async function createSections(key)  {
             projects.map(p => {
                `<article class="card matrix-legend">
                     <header class = 'tag-group'>
-                        <p class='eyebrow'  style='color: '--accent'' >` +
+                        <p class='eyebrow'>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</p>` +
-                        p.status ? `<p style="color: '--ink-soft'">${p.status }}</p>` : ``  +
+                        p.status ? `<p class="ink-soft'">${p.status }}</p>` : ``  +
                         displayTags(p.tags) +
                 `</header>
                 <p>${p.description}</p>` +
@@ -366,7 +365,7 @@ function renderMareyChart(filteredCells) {
   .attr("transform",`translate(0,${margin.height - margin.Bottom})`)
  .data(filteredCells)
    .call(g => g.append("line")
-         .attr("stroke", ( d => d.color || '#3b82f6'))
+         .attr("class", (d => d.x))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
         .call(g => g.append("text")
@@ -376,7 +375,7 @@ function renderMareyChart(filteredCells) {
     ))
  .append('g')
   .call(g => g.append("line")
-         .attr("stroke", ( d => d.color || '#3b82f6'))
+         .attr("class", ( d => d.color))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
          .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
@@ -437,6 +436,7 @@ const line2 = d3.line()
       .enter()
       .append("path")
             .attr("d", d => line2(d))
+            .attr("class", d => d.y)
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
@@ -446,10 +446,10 @@ const line2 = d3.line()
       .on('mousemove', updateTooltipPosition)
       .on('mouseleave', hideTooltip)
 
+
   routes.append("g")
        .selectAll("circle")
-      .attr("stroke", '#ffffff')
-      .attr("fill", d => d.color)
+      .attr("class", d => d.color)
       .attr('stroke-width', '3')
       .attr('stroke-opacity', '4')
       .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
@@ -499,12 +499,10 @@ function renderTreemap(filteredCells) {
     // Build hierarchical data structure from tags and cells
 
 
-   const color = d3.scaleOrdinal(cats);
-
 const data = vals.map(v => {
   return {
         "name" : v,
-        "children": filteredCells.filter(c => (c.y == v || c.x == y))
+        "children": filteredCells.filter(c => (c.y == v || c.x == v))
     }})
 
 
@@ -545,14 +543,12 @@ const data = vals.map(v => {
 
        node.append("clipPath")
       .attr("id", d => (d.clipUid = DOM.uid("clip")).id)
-    .append("use")
       .attr("xlink:href", d => d.nodeUid.href);
 
 
 
               node.append("rect")
         .attr("id", d => (d.nodeUid = DOM.uid("node")).id)
-      .attr("fill", d => color(d.height))
       .attr("width", d => d.x1 - d.x0)
       .attr("height", d => d.y1 - d.y0);
 
