@@ -463,13 +463,11 @@ const line2 = d3.line()
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
-
-    container.append(svgBase.node())
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
-function renderTreemap(filteredCells, nodeMap) {
-    const container = document.getElementById('treemap-container');
+function renderTreemap(filteredCells) {
+  let container =document.getElementById('treemap-container');
     container.innerHTML = '';
 
     const width = container.clientWidth || 400;
@@ -481,6 +479,9 @@ function renderTreemap(filteredCells, nodeMap) {
    container.role='img'
    container.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
 
+
+
+
    const svgBase = d3.select('#treemap-container')
     .append("svg")
     .attr('width', width)
@@ -488,76 +489,90 @@ function renderTreemap(filteredCells, nodeMap) {
      .attr('viewBox', [0, 0, width, height])
      .attr('role', 'img')
     .attr('ariaLabel', "Hierarchical treemap of cross-systems experience and expertise")
+    .attr("style", "max-width: 100%; height: auto; overflow: visible; font: 10px sans-serif;")
 
 
+    const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
+    const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
+    const vals = [... new Set(xValues, yValues)]
+     const cats = [... new Set(filteredCells.map(c => c.category))].sort()
     // Build hierarchical data structure from tags and cells
-    const  hierarchicalData = {
-           name: "Root",
-                children: [...new Set(filteredCells.x, filteredCells.y)].map(tag => {
-                    return {
-                        name: tag,
-                        children: nodeMap.get(tag)
-                        }
-                })
-            };
 
-    const root = d3.hierarchy(hierarchicalData)
-                .sort((a, b) => b.count - a.count);
 
-   const tree = d3.treemap()
+   const color = d3.scaleOrdinal(cats);
+
+const data = vals.forEach(v => {
+      {
+        "name" = v,
+        "children"= filteredCells.filter(c => (c.y == v || c.x == y))
+      }
+    })
+
+
+
+    const treemap = data => d3.treemap()
         .size([width, height])
         .paddingOuter(3)
+        .paddingTop(19)
         .paddingInner(2)
-        (root);
+        .round(true)
+        (d3.hierarchy(data)
+        .sum(d => d.count)
+        .sort((a, b) => b.count - a.count));
 
-    const leaf =  svgBase.selectAll('g')
-            .data(root.leaves())
-            .enter()
-            .append('g')
-            .attr('transform', d => `translate(${d.x0},${d.y0})`)
-            .attr('tabindex', '0')
-            .attr('role', 'button')
-            .attr('aria-label', d => `Skill ${d.parent.name} with depth ${d.depth}`)
-            .on('focus', (e, d) => {
-        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
-      })
-                   .on('click', (e, d) => {
-        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
-      })
-            .on('mousemove', updateTooltipPosition)
-            .on('mouseleave', hideTooltip)
+    const root = treemap(data)
 
-    leaf.append('rect')
-        .attr('fill', d => d.parent.color)
-        .attr('fill-opacity', 0.8)
-        .attr('width', d => Math.max(0, d.x1 - d.x0))
-        .attr('height', d => Math.max(0, d.y1 - d.y0))
-        .attr('class', 'rounded-xs cursor-pointer hover:fill-opacity-100 transition-opacity')
-             .on('focus', (e, d) => {
-        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
-      })
-                   .on('click', (e, d) => {
-        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
-      })
-            .on('mousemove', updateTooltipPosition)
-            .on('mouseleave', hideTooltip)
+      svgBase.append("filter")
+      .attr("id", "treemap-container")
+    .append("feDropShadow")
+      .attr("flood-opacity", 0.3)
+      .attr("dx", 0)
+      .attr("stdDeviation", 3);
 
 
-    leaf.append('text')
-            .attr('x', 4)
-            .attr('y', 14)
-            .text(d => `Skill ${d.parent.name} with depth ${d.depth}`)
-            .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none')
-             .on('focus', (e, d) => {
-        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
-      })
-                   .on('click', (e, d) => {
-        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
-      })
-            .on('mousemove', updateTooltipPosition)
-            .on('mouseleave', hideTooltip)
+       const node = svgBase.selectAll("g")
+        .data(d3.group(root, d => d.height))
+    .join("g")
+      .attr("filter", "treemap-container")
+    .selectAll("g")
+    .data(d => d[1])
+    .join("g")
+      .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
-    container.append(svgBase.node())
+
+       const format = d3.format(",d");
+      node.append("title")
+      .text(d => `${d.ancestors().reverse().map(d => d.data.name).join("/")}\n${format(d.value)}`);
+
+       node.append("clipPath")
+      .attr("id", d => (d.clipUid = DOM.uid("clip")).id)
+    .append("use")
+      .attr("xlink:href", d => d.nodeUid.href);
+
+
+
+              node.append("rect")
+        .attr("id", d => (d.nodeUid = DOM.uid("node")).id)
+      .attr("fill", d => color(d.height))
+      .attr("width", d => d.x1 - d.x0)
+      .attr("height", d => d.y1 - d.y0);
+
+        node.append("text")
+      .attr("clip-path", d => d.clipUid)
+    .selectAll("tspan")
+    .data(d => d.data.name.split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
+    .join("tspan")
+      .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
+      .text(d => d);
+
+  node.filter(d => d.children).selectAll("tspan")
+      .attr("dx", 3)
+      .attr("y", 13);
+
+  node.filter(d => !d.children).selectAll("tspan")
+      .attr("x", 3)
+      .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`);
+
 
     }
 
@@ -571,11 +586,11 @@ function updateVisualizations(selectedSlug) {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
              renderMareyChart(filteredCells);
-             renderTreemap(filteredCells, filterNodeMap(filteredCells));
+             renderTreemap(filteredCells);
            }
        } else if (selectedSlug) {
         renderMareyChart(allCells);
-        renderTreemap(allCells, filterNodeMap(allCells));
+        renderTreemap(allCells);
     }
 }
 
