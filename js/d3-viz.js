@@ -181,8 +181,8 @@ async function createSections(key)  {
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
             page.setHTML(
-            postSummary.forEach(p => {
-             return `<article class="card matrix-legend">
+            postSummary.map(p => {
+              `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${p.title}</p>
                     <p style='color: "--ink-soft"'>${p.org_name}</p>
@@ -190,17 +190,17 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                    (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).forEach(b => {
+                    (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map(b => {
                        return `<li class='simple-item">${b.bullet_text}</li>`
-                  }) || p.bullet_tag).join('') + '</ul></article>'
+                  }).join('')  || p.bullet_tag) + '</ul></article>'
                   }).join(''), config
             )
             break;
         case 'cert':
             const certs = Array.from(portfolioData.rawCert);
             page.setHTML(
-            certs.forEach(c => {
-               return `<article class="card matrix-legend">
+            certs.map(c => {
+                `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
@@ -215,8 +215,8 @@ async function createSections(key)  {
             const ed = Array.from(portfolioData.rawEdu)
           ed.reverse()
           page.setHTML(
-            ed.forEach(e => {
-               return  `<article class="matrix-legend card">
+            ed.map(e => {
+               `<article class="matrix-legend card">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color:'--accent'">${e.degree}</p>` +
                     e.scholarship ? `<p style="color : "--ink-soft"">${e.scholarship}</p>` : `` +
@@ -230,8 +230,8 @@ async function createSections(key)  {
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
             page.setHTML(
-            awards.forEach(a => {
-           return `<article class="card matrix-legend">
+            awards.map(a => {
+           `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style='color: "--accent"'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
@@ -243,8 +243,8 @@ async function createSections(key)  {
         case 'service':
             const services = Array.from(portfolioData.rawService)
             page.setHTML(
-            services.forEach(s => {
-            return  `<article class="card matrix-legend">
+            services.map(s => {
+            `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${s.title}</p>
                     <p style="color: '--ink-soft'">${s.org_name}</p>` +
@@ -260,8 +260,8 @@ async function createSections(key)  {
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
             page.setHTML(
-            projects.forEach(p => {
-            return  `<article class="card matrix-legend">
+            projects.map(p => {
+               `<article class="card matrix-legend">
                     <header class = 'tag-group'>
                         <p class='eyebrow'  style='color: '--accent'' >` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -361,20 +361,17 @@ function renderMareyChart(filteredCells) {
  .selectAll("g")
   .attr("transform",`translate(0,${margin.height - margin.Bottom})`)
  .data(filteredCells)
-.call(g => g.append("line")
+   .call(g => g.append("line")
          .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
         .call(g => g.append("text")
-
           .attr("x", 12)
           .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
           .text(d => d.x)
     ))
- .enter()
  .append('g')
-  .transform(`translate(${margin.left},${margin.top})`)
   .call(g => g.append("line")
          .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
