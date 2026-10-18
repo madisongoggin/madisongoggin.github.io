@@ -371,14 +371,14 @@ function renderMareyChart(filteredCells) {
     .call(g => g.append("text")
              .attr("transform",`translate(0,${height - marginBottom})`)
              .attr("x", 12)
-              .attr("class", "text-xs text-slate-600')
+              .attr("class", 'text-xs text-slate-600')
         .attr("dy", "0.35em")
         .text(d => d.name))
      )
      .call(g => g.append("text")
              .attr("transform", `translate(0,${height - marginBottom})`)
              .attr("x", -12)
-             .attr("class", "text-xs text-slate-600')
+             .attr("class", 'text-xs text-slate-600')
         .attr("dy", "0.35em")
         .text(d => d.name))
      )
@@ -415,12 +415,15 @@ function renderMareyChart(filteredCells) {
   routes.append("path")
       .attr("fill", "none")
       .attr("d", d => line)
-      .onfocus((e, d) => {
+            .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
-      .onmouseleave((e), hideTooltip())
-      .onmousemove(e => updateTooltipPosition(e)
-       .onblur(e => hideTooltip())
+                   .on('click', (e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+            .on('mousemove', updateTooltipPosition)
+            .on('mouseleave', hideTooltip)
+            .on("blur", hideTooltip);
  
   routes.append("g")
       .attr("stroke", '#ffffff')
@@ -435,10 +438,15 @@ function renderMareyChart(filteredCells) {
        .attr("stroke", '#ffffff')
        .attr('stroke-width', '3')
       .attr('stroke-opacity', '4')
-             .onmouseleave((e), hideTooltip())
-      .onmousemove(e => updateTooltipPosition(e)
-       .onblur(e => hideTooltip())
-
+            .on('focus', (e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+                   .on('click', (e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+            .on('mousemove', updateTooltipPosition)
+            .on('mouseleave', hideTooltip)
+            .on("blur", hideTooltip);
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -491,6 +499,15 @@ function renderTreemap(filteredCells, nodeMap) {
             .attr('tabindex', '0')
             .attr('role', 'button')
             .attr('aria-label', d => `Skill ${d.parent.name} with depth ${d.depth}`);
+            .on('focus', (e, d) => {
+        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
+      })
+                   .on('click', (e, d) => {
+        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
+      })
+            .on('mousemove', updateTooltipPosition)
+            .on('mouseleave', hideTooltip)
+            .on("blur", hideTooltip);
 
     leaf.append('rect')
         .attr('fill', d => d.parent.color)
@@ -498,12 +515,30 @@ function renderTreemap(filteredCells, nodeMap) {
         .attr('width', d => Math.max(0, d.x1 - d.x0))
         .attr('height', d => Math.max(0, d.y1 - d.y0))
         .attr('class', 'rounded-xs cursor-pointer hover:fill-opacity-100 transition-opacity');
+             .on('focus', (e, d) => {
+        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
+      })
+                   .on('click', (e, d) => {
+        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
+      })
+            .on('mousemove', updateTooltipPosition)
+            .on('mouseleave', hideTooltip)
+            .on("blur", hideTooltip);
 
     leaf.append('text')
             .attr('x', 4)
             .attr('y', 14)
             .text(d => `Skill ${d.parent.name} with depth ${d.depth}`)
             .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none');
+             .on('focus', (e, d) => {
+        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
+      })
+                   .on('click', (e, d) => {
+        showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
+      })
+            .on('mousemove', updateTooltipPosition)
+            .on('mouseleave', hideTooltip)
+            .on("blur", hideTooltip);
  
  svgBase.append(root)
 
