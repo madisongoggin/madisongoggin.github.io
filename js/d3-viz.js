@@ -42,7 +42,9 @@ class PortfolioLoader {
     
     // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
     // d3.csvParseRows is explicitly CSP-safe.
-    const rows = d3.csvParseRows(await response.text());
+
+    const returnedData = await response.text()
+    const rows = d3.csvParseRows(returnedData)
     
     if (rows.length === 0) return [];
 
