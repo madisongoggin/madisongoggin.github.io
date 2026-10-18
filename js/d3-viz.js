@@ -192,8 +192,8 @@ async function createSections(key)  {
                     `<ul class='simple-item">` +
                      posBullets.filter((b) => b.bullet_tag === p.bullet_tag).map((b) =>
                         `<li class='simple-item">${b.bullet_text}</li>`
-                    ).join() + '</ul></article>'
-                  }).join(), config
+                    ).join('') + '</ul></article>'
+                  }).join(''), config
             )
             break;
         case 'cert':
@@ -208,7 +208,7 @@ async function createSections(key)  {
                     <p  style='color:"--ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
-            }).join(), config
+            }).join(''), config
           )
             break;
         case 'edu':
@@ -225,7 +225,7 @@ async function createSections(key)  {
                      <p style="color : "--ink-soft"">${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`, config
-              }).join(), config)
+              }).join(''), config)
             break;
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
@@ -238,7 +238,7 @@ async function createSections(key)  {
                     `</header>
                     <p style="color : "--ink-soft"">${a.org_name}</p>
                     </article>`
-            }).join(), config)
+            }).join(''), config)
             break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
@@ -255,7 +255,7 @@ async function createSections(key)  {
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
                     </article>`
-            }).join(), config);
+            }).join(''), config);
             break;
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
@@ -272,7 +272,7 @@ async function createSections(key)  {
                 <p>${p.description}</p>` +
                    p.deploy_url ? `<p><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
                + `</article>`
-            }).join(), config)
+            }).join(''), config)
             break;
         default:
             return;
@@ -357,7 +357,7 @@ function renderMareyChart(filteredCells) {
 
  function xAxis(g) {
   g
- .selectAll(g)
+ .selectAll("g")
  .data(xValues)
  .join("g")
   .transform(`translate(${margin.left},${margin.top})`)
