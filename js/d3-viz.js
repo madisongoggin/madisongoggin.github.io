@@ -186,13 +186,13 @@ async function createSections(key)  {
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${p.title}</p>
                     <p style='color: "--ink-soft"'>${p.org_name}</p>
-                    <p>` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
+                    <p>` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
                     (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).forEach(b => {
-                        `<li class='simple-item">${b.bullet_text}</li>`
-                  }).join('') || p.bullet_tag) + '</ul></article>'
+                       return `<li class='simple-item">${b.bullet_text}</li>`
+                  }) || p.bullet_tag).join('') + '</ul></article>'
                   }).join(''), config
             )
             break;
@@ -359,13 +359,14 @@ function renderMareyChart(filteredCells) {
  function xAxis(g) {
   g
  .selectAll("g")
+  .attr("transform",`translate(0,${margin.height - margin.Bottom})`)
  .data(filteredCells)
 .call(g => g.append("line")
          .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
         .call(g => g.append("text")
-          .attr("transform",`translate(0,${margin.height - margin.Bottom})`)
+
           .attr("x", 12)
           .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
@@ -378,8 +379,8 @@ function renderMareyChart(filteredCells) {
          .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
+         .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
          .call(g => g.append("text")
-             .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
              .attr("x", -12)
              .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
