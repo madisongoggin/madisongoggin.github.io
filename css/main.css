@@ -28,6 +28,12 @@
 }
 
 
+svg {
+  background-color: transparent;
+  fill: inherit;
+  display: inline;
+  }
+
 .c-sharp { color: #4e79a7 }
 .go { color: #4e79a7 }
 .julia { color: #4e79a7 }
@@ -75,8 +81,6 @@
 .graph-databases { color: #ff9da7 }
 .sql-server { color: #ff9da7 }
 .web-app { color: #ff9da7 }
-
-* { box-sizing: border-box; }
 
 html { scroll-behavior: smooth; }
 

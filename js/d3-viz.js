@@ -308,13 +308,6 @@ function initFilters() {
     });
  }
 
-function updateTooltipPosition(event) {
-        const pad = 15;
-        const x = event.pageX + pad;
-        const y = event.pageY + pad;
-        tooltip.style.left = `${Math.min(window.innerWidth - tooltip.offsetWidth - 20, x)}px`;
-        tooltip.style.top = `${Math.min(window.innerHeight - tooltip.offsetHeight - 20, y)}px`;
-}
 
 function hideTooltip() {
     tooltip.setAttribute('aria-hidden', 'true');
@@ -375,7 +368,7 @@ function renderMareyChart(filteredCells) {
     ))
  .append('g')
   .call(g => g.append("line")
-         .attr("class", ( d => d.color))
+         .attr("class", ( d => d.y))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
          .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
@@ -431,25 +424,23 @@ const line2 = d3.line()
                    .on('click', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
-      .on('mousemove', updateTooltipPosition)
       .on('mouseleave', hideTooltip)
       .enter()
       .append("path")
             .attr("d", d => line2(d))
-            .attr("class", d => d.y)
+            .attr("class", (d => d.y))
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
                    .on('click', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
-      .on('mousemove', updateTooltipPosition)
       .on('mouseleave', hideTooltip)
 
 
   routes.append("g")
        .selectAll("circle")
-      .attr("class", d => d.color)
+      .attr("class", (d => d.x))
       .attr('stroke-width', '3')
       .attr('stroke-opacity', '4')
       .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
@@ -461,7 +452,6 @@ const line2 = d3.line()
                    .on('click', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
-            .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
 
         svgBase.node().removeAttribute('style')
@@ -491,7 +481,6 @@ function renderTreemap(filteredCells) {
      .attr('viewBox', [0, 0, width, height])
      .attr('role', 'img')
     .attr('ariaLabel', "Hierarchical treemap of cross-systems experience and expertise")
-    .attr("style", "max-width: 100%; height: auto; overflow: visible; font: 10px sans-serif;")
 
 
     const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
@@ -553,7 +542,6 @@ const data = vals.map(v => {
 
         node.append("text")
     .selectAll("tspan")
-    .data(d => d.data.name.split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
     .join("tspan")
       .attr("fill-opacity", (d, i, nodes) => i === nodes.length - 1 ? 0.7 : null)
       .text(d => d);
@@ -567,7 +555,6 @@ const data = vals.map(v => {
       .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`);
 
     svgBase.node().removeAttribute("style");
-    node.removeAttribute("style");
     }
 
 
