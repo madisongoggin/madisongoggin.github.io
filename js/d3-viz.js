@@ -396,9 +396,8 @@ function renderMareyChart(filteredCells) {
   }
 
  const line = d3.line()
-      .x(v => xScale.at(xValues.indexOf(v)))
-      .y(v => yScale.at(yValues.indexOf(v)))
-      .stroke()
+      .x(d => xScale.at(xValues.indexOf(d.x)))
+      .y(d => yScale.at(yValues.indexOf(d.y)))
       .curve(d3.curveMonotoneX);
 
 
@@ -556,7 +555,7 @@ function updateVisualizations(selectedSlug) {
         if (selectedSlug && selectedSlug !== 'all') {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
-             renderMareyChart(filteredCells, filterNodeMap(filteredCells));
+             renderMareyChart(filteredCells);
              renderTreemap(filteredCells, filterNodeMap(filteredCells));
            }
        } else if (selectedSlug) {
