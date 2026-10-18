@@ -182,7 +182,7 @@ async function createSections(key)  {
             const posBullets = Array.from(portfolioData.rawPosBullets)
             page.setHTML(
             postSummary.forEach(p => {
-             `<article class="card matrix-legend">
+             return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${p.title}</p>
                     <p style='color: "--ink-soft"'>${p.org_name}</p>
@@ -190,8 +190,8 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                     posBullets.filter((b) => b.bullet_tag === p.bullet_tag).map((b) => {
-                        `<li class='simple-item">${b.bullet_text}</li>`
+                     posBullets.filter((b) => b.bullet_tag === p.bullet_tag).forEach((b) => {
+                        return `<li class='simple-item">${b.bullet_text}</li>`
                   }).join('') + '</ul></article>'
                   }).join(''), config
             )
@@ -200,7 +200,7 @@ async function createSections(key)  {
             const certs = Array.from(portfolioData.rawCert);
             page.setHTML(
             certs.forEach(c => {
-               `<article class="card matrix-legend">
+               return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
@@ -216,7 +216,7 @@ async function createSections(key)  {
           ed.reverse()
           page.setHTML(
             ed.forEach(e => {
-                `<article class="matrix-legend card">
+               return  `<article class="matrix-legend card">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color:'--accent'">${e.degree}</p>` +
                     e.scholarship ? `<p style="color : "--ink-soft"">${e.scholarship}</p>` : `` +
@@ -231,7 +231,7 @@ async function createSections(key)  {
             const awards =  Array.from(portfolioData.rawAward)
             page.setHTML(
             awards.forEach(a => {
-           `<article class="card matrix-legend">
+           return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style='color: "--accent"'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
@@ -244,7 +244,7 @@ async function createSections(key)  {
             const services = Array.from(portfolioData.rawService)
             page.setHTML(
             services.forEach(s => {
-             `<article class="card matrix-legend">
+            return  `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${s.title}</p>
                     <p style="color: '--ink-soft'">${s.org_name}</p>` +
@@ -261,7 +261,7 @@ async function createSections(key)  {
             const projects = Array.from(portfolioData.rawProject);
             page.setHTML(
             projects.forEach(p => {
-             `<article class="card matrix-legend">
+            return  `<article class="card matrix-legend">
                     <header class = 'tag-group'>
                         <p class='eyebrow'  style='color: '--accent'' >` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -346,6 +346,7 @@ function renderMareyChart(filteredCells) {
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
         const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
+        const cats = [... new(Set(filteredCells.map(c => c.category)))].sort()
 
         let scaleFactor = innerWidth / xValues.length
         const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
@@ -364,7 +365,7 @@ function renderMareyChart(filteredCells) {
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
         .call(g => g.append("text")
-          .attr("transform",`translate(0,${height - marginBottom})`)
+          .attr("transform",`translate(0,${margin.height - margin.Bottom})`)
           .attr("x", 12)
           .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
@@ -378,27 +379,32 @@ function renderMareyChart(filteredCells) {
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
          .call(g => g.append("text")
-             .attr("transform", `translate(0,${height - marginBottom})`)
+             .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
              .attr("x", -12)
              .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
-            .text(d => d.x)
+            .text(d => d.y)
      ))
-    .call(d3.axisBottom(xScale).tickValues(xValues))
-    .call(d3.axisTop(xScale).tickValues(xValues))
+    .call(d3.axisLeft(xScale).tickValues(xValues))
+    .call(d3.axisRight(yScale).tickValues(yValues))
   }
+
+  const catScale = d3.scalePoint(cats, [Math.min(yValues.length, xValues.length), Math.max(yValues.length, xValues.length)])
 
   function  yAxis(g) {
- g
-  .call(d3.axisLeft(yScale).tickValues(yValues))
-   .call(d3.axisRight(yScale).tickValues(yValues))
+    g
+    .call(d3.axisTop(catScale).tickValues(cats))
   }
 
- const line = d3.line()
-      .x(d => xScale.at(xValues.indexOf(d.x)))
-      .y(d => yScale.at(yValues.indexOf(d.y)))
+const line = d3.line()
+      .x(d => xScale.find(xValues.indexOf(d.x))
+      .y(d => catScale(filteredCells.find(d.x).map(c => c.category))))
       .curve(d3.curveMonotoneX);
 
+const line2 = d3.line()
+      .x(d => yScale.find(yValues.indexOf(d.y))
+      .y(d => catScale(filteredCells.find(d.y).map(c => c.category))))
+      .curve(d3.curveMonotoneX);
 
    const svgBase = d3.select('#marey-container')
     .append("svg")
@@ -426,10 +432,19 @@ function renderMareyChart(filteredCells) {
                    .on('click', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
-            .on('mousemove', updateTooltipPosition)
-            .on('mouseleave', hideTooltip)
-
-
+      .on('mousemove', updateTooltipPosition)
+      .on('mouseleave', hideTooltip)
+      .enter()
+      .append("path")
+            .attr("d", d => line2)
+            .on('focus', (e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+                   .on('click', (e, d) => {
+        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
+      })
+      .on('mousemove', updateTooltipPosition)
+      .on('mouseleave', hideTooltip)
 
   routes.append("g")
        .selectAll("circle")
