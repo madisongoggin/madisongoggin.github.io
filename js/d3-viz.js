@@ -348,11 +348,15 @@ function renderMareyChart(filteredCells) {
         const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
         const cats = [... new Set(filteredCells.map(c => c.category))].sort()
 
-        let scaleFactor = innerWidth / xValues.length
-        const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
-        scaleFactor = innerWidth / yValues.length
-        const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})
 
+        const xScale =  d3.scaleOrdinal(xValues)
+        .domain(cats)
+        const yScale =  d3.scaleOrdinal(yValues)
+        .domain(cats)
+
+
+        const catScale = d3.scalePoint()
+        .domain(cats)
 
         // Axes
 
@@ -387,7 +391,7 @@ function renderMareyChart(filteredCells) {
     .call(d3.axisRight(yScale).tickValues(yValues))
   }
 
-  const catScale = d3.scalePoint(cats, [Math.min(yValues.length, xValues.length), Math.max(yValues.length, xValues.length)])
+
 
   function  yAxis(g) {
     g
@@ -395,13 +399,13 @@ function renderMareyChart(filteredCells) {
   }
 
 const line = d3.line()
-      .x(d => xScale.find(xValues.indexOf(d.x))
-      .y(d => catScale(filteredCells.find(d.x).map(c => c.category))))
+      .x(d => xScale(d.x))
+      .y(d => catScale(d.domain))
       .curve(d3.curveMonotoneX);
 
 const line2 = d3.line()
-      .x(d => yScale.find(yValues.indexOf(d.y))
-      .y(d => catScale(filteredCells.find(d.y).map(c => c.category))))
+      .x(d => yScale(d.y))
+      .y(d => catScale(d.domain))
       .curve(d3.curveMonotoneX);
 
    const svgBase = d3.select('#marey-container')
@@ -451,8 +455,8 @@ const line2 = d3.line()
       .attr('stroke-width', '3')
       .attr('stroke-opacity', '4')
       .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
-      .attr('cx', v => xScale.at(xValues.indexOf(v.x)))
-       .attr('cy', v => yScale.at(yValues.indexOf(v.y)))
+      .attr('cx', v => xScale(xValues.indexOf(v.x)))
+       .attr('cy', v => yScale(yValues.indexOf(v.y)))
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
