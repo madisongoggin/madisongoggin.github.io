@@ -463,6 +463,9 @@ const line2 = d3.line()
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
+
+        svgBase.node().removeAttribute('style')
+        routes.removeAttribute('style')
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -542,18 +545,14 @@ const data = vals.map(v => {
       .text(d => `${d.ancestors().reverse().map(d => d.data.name).join("/")}\n${format(d.value)}`);
 
        node.append("clipPath")
-      .attr("id", d => (d.clipUid = DOM.uid("clip")).id)
-      .attr("xlink:href", d => d.nodeUid.href);
 
 
 
               node.append("rect")
-        .attr("id", d => (d.nodeUid = DOM.uid("node")).id)
       .attr("width", d => d.x1 - d.x0)
       .attr("height", d => d.y1 - d.y0);
 
         node.append("text")
-      .attr("clip-path", d => d.clipUid)
     .selectAll("tspan")
     .data(d => d.data.name.split(/(?=[A-Z][^A-Z])/g).concat(format(d.value)))
     .join("tspan")
@@ -568,7 +567,8 @@ const data = vals.map(v => {
       .attr("x", 3)
       .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`);
 
-
+    svgBase.node().removeAttribute("style");
+    node.removeAttribute("style");
     }
 
 
