@@ -37,12 +37,12 @@ class PortfolioLoader {
   async #fetchAndParseCSV(url) {
     // 1. Download the file purely as raw string text
     const request = new Request(url)
-
-    await fetch(request, this.reqHeader).response((response) => {
+                                
+    fetch(request, this.reqHeader).then((response) => {
     
     // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
     // d3.csvParseRows is explicitly CSP-safe.
-    const rows = d3.csvParseRows(response.body);
+    const rows = d3.csvParseRows(await response.text());
     
     if (rows.length === 0) return [];
 
@@ -76,7 +76,7 @@ class PortfolioLoader {
     }
 
     // Coerce Numbers
-    if (!isNaN(trimmed) && trimed.length === 1 && !isNaN(parseFloat(trimmed))) {
+    if (!isNaN(trimmed) && trimmed.length === 1 && !isNaN(parseFloat(trimmed))) {
       return Number(trimmed);
     }
     // Coerce Booleans
