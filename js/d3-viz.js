@@ -188,7 +188,7 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                     posBullets.fitler((b) => b.bullet_tag === p.bullet_tag).map((b) =>
+                     posBullets.filter((b) => b.bullet_tag === p.bullet_tag).map((b) =>
                         `<li class='simple-item">${b.bullet_text}</li>`
                     ).join() + '</ul></article>', config
                 )
@@ -227,7 +227,7 @@ async function createSections(key)  {
             })
             break;
      case 'award':
-            const awards =  Array.from(portfolioData.rawAwar
+            const awards =  Array.from(portfolioData.rawAward)
             awards.forEach(a => {
              page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
@@ -324,15 +324,23 @@ function hideTooltip() {
 }
 
 // --- 1. Marey's Train Schedule Timeline Chart ---
-function renderMareyChart(filteredCells, nodeMap) {
+function renderMareyChart(filteredCells) {
     const container = document.getElementById('marey-container');
     container.innerHTML = '';
+
+ 
 
     const width = container.clientWidth || 600;
     const height = container.clientHeight || 350;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
+
+    container.width = width
+   container.height = height
+  container.viewBox =  [0, 0, width, height]
+   contianer.role='img'
+   container.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
 
  
     // Extract unique X and Y sets
@@ -346,13 +354,6 @@ function renderMareyChart(filteredCells, nodeMap) {
 
                     
         // Axes
-let svg = document.createElement('svg')
-   svg.width = width
-   svg.height = height
-   svg.viewBox =  [0, 0, width, height]
-   svg.role='img'
-   svg.id = 'marey-viz'
-   svg.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
 
  xAxis = g => g
  .selectAll(g)
@@ -370,12 +371,14 @@ let svg = document.createElement('svg')
     .call(g => g.append("text")
              .attr("transform",`translate(0,${height - marginBottom})`)
              .attr("x", 12)
+              .attr("class", "text-xs text-slate-600')
         .attr("dy", "0.35em")
         .text(d => d.name))
      )
      .call(g => g.append("text")
              .attr("transform", `translate(0,${height - marginBottom})`)
              .attr("x", -12)
+             .attr("class", "text-xs text-slate-600')
         .attr("dy", "0.35em")
         .text(d => d.name))
      )
@@ -386,24 +389,31 @@ let svg = document.createElement('svg')
   .call(d3.axisLeft(yScale).tickValues(yValues)
    .call(d3.axisRight(yScale).tickValues(yValues))
 
- line = d3.line()
-      .x(d => d.x)
-      .y(d => d.y)
+ const line = d3.line()
+      .x(v => xScale.at(xValues.indexOf(v)))
+      .y(v => yScale.at(yValues.indexOf(v)))
+      .stroke()
+      .curve(d3.curveMonotoneX);
    
 
-   const svgBase = d3.select('.marey-viz')
+   const svgBase = d3.select('#marey-container')
+    .append("svg")
+    .attr('width', width)
+    .attr('height', height)
+     .attr('viewBox', [0, 0, width, height])
+     .attr('role', 'img')
+    .attr('ariaLabel', "Marey's Train Schedule style showing cross-systems experience and expertise.")
   .call(xAxis)
   .call(yAxis)
   
  const routes = svgBase
   .append('g')
-   .selectAll("g)
+   .selectAll("g")
    .data(filteredCells)
    .join("g")
 
   routes.append("path")
       .attr("fill", "none")
-      .attr("stroke", d => d[count])
       .attr("d", d => line)
       .onfocus((e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
@@ -428,8 +438,6 @@ let svg = document.createElement('svg')
              .onmouseleave((e), hideTooltip())
       .onmousemove(e => updateTooltipPosition(e)
        .onblur(e => hideTooltip())
- 
- container.appendChild(svgBase)
 
 }
 
@@ -440,13 +448,21 @@ function renderTreemap(filteredCells, nodeMap) {
 
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
+
+ container.width = width
+  container.height = height
+   container.viewBox =  [0, 0, width, height]
+   container.role='img'
+   container.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
    
- let svg = document.createElement('svg')
-   svg.width = width
-   svg.height = height
-   svg.viewBox =  [0, 0, width, height]
-   svg.role='img'
-   svg.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
+   const svgBase = d3.select('#treemap-container')
+    .append("svg")
+    .attr('width', width)
+    .attr('height', height)
+     .attr('viewBox', [0, 0, width, height])
+     .attr('role', 'img')
+    .attr('ariaLabel', "Hierarchical treemap of cross-systems experience and expertise")
+
 
     // Build hierarchical data structure from tags and cells
     const  hierarchicalData = {
@@ -488,10 +504,12 @@ function renderTreemap(filteredCells, nodeMap) {
             .attr('y', 14)
             .text(d => `Skill ${d.parent.name} with depth ${d.depth}`)
             .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none');
+ 
+ svgBase.append(root)
 
- svg.appendChild(root)
- container.appendChild(svg)
     }
+
+
 
 
 // --- Interactivity & Event Handling ---
