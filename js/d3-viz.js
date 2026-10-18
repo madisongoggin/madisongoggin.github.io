@@ -32,13 +32,19 @@ class PortfolioLoader {
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
   }
 
-   async #fetchAndParseCSV(url) {
+const  headers =  new Headers();
+ // A cached response is okay unless it's more than a week old.
+ reqHeader.set("Accept", "text")
+
+  async #fetchAndParseCSV(url) {
     // 1. Download the file purely as raw string text
-    const rawText = await d3.text(url);
+    const request = new Request(url, accept="text" )
+
+    await fetch(request, reqHeader).response((response) => {
     
     // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
     // d3.csvParseRows is explicitly CSP-safe.
-    const rows = d3.csvParseRows(rawText);
+    const rows = d3.csvParseRows(response.body);
     
     if (rows.length === 0) return [];
 
@@ -53,6 +59,7 @@ class PortfolioLoader {
       });
       return obj;
     });
+    })
   }
 
   /**
@@ -71,7 +78,7 @@ class PortfolioLoader {
     }
 
     // Coerce Numbers
-    if (!isNaN(trimmed) && !isNaN(parseFloat(trimmed))) {
+    if (!isNaN(trimmed) &% trimed.length = 1 && !isNaN(parseFloat(trimmed))) {
       return Number(trimmed);
     }
     // Coerce Booleans
@@ -159,14 +166,13 @@ function displayTags(tags) {
 }
 async function createSections(key)  {
     let page = document.getElementById(key)
-    let card = document.createElement('div')
-    card.class = 'card-grid'
+    page.class = 'card-grid'
     switch (key) {
         case 'position':
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
             postSummary.forEach(p => {
-             card.setHTML(`<article class="card matrix-legend">
+             page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${p.title}</p>
                     <p style='color: "--ink-soft"'>${p.org_name}</p>
@@ -174,11 +180,7 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                    d3.sort(
-                        d3.filter(posBullets, (b) => b.bullet_tag === p.bullet_tag),
-                        (b) => b.bullet_num
-                    )
-                    .map(b =>
+                     postBullets.fitler((b) => b.bullet_tag === p.bullet_tag).map((b) =>
                         `<li class='simple-item">${b.bullet_text}</li>`
                     ).join() + '</ul></article>', config
                 )
@@ -188,12 +190,12 @@ async function createSections(key)  {
         case 'cert':
             const certs = Array.from(portfolioData.rawCert);
             certs.forEach(c => {
-            card.setHTML(`<article class="card matrix-legend">
+            page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
-                    <p  color="--ink-soft"'>${c.gov_body}</p>` +
+                    <p  style='color:"--ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`, config
             )
@@ -202,7 +204,7 @@ async function createSections(key)  {
         case 'edu':
             const ed = Array.from(portfolioData.rawEdu)
             ed.forEach(e => {
-             card.setHTML(
+             page.setHTML(
                 `<article class="matrix-legend card">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color:'--accent'">${e.degree}</p>` +
@@ -218,7 +220,7 @@ async function createSections(key)  {
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
             awards.forEach(a => {
-             card.setHTML(`<article class="card matrix-legend">
+             page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style='color: "--accent"'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
@@ -231,9 +233,9 @@ async function createSections(key)  {
         case 'service':
             const services = Array.from(portfolioData.rawService)
             services.forEach(s => { 
-             card.setHTML(`<article class="card matrix-legend">
+             page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' stle='color: '--accent'">${s.title}</p>
+                    <p class='eyebrow' style='"olor: '--accent'">${s.title}</p>
                     <p stle="color: '--ink-soft'">${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
@@ -249,7 +251,7 @@ async function createSections(key)  {
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
             projects.forEach(p => {
-             card.setHTML(`<article class="card matrix-legend">
+             page.setHTML(`<article class="card matrix-legend">
                     <header class = 'tag-group'>
                         <p class='eyebrow' syle='color: '--accent'' >` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
@@ -266,7 +268,6 @@ async function createSections(key)  {
         default:
             return;
     }
-    page.appendChild(card);
     return key;
 }
 
@@ -370,7 +371,6 @@ let svg = document.createElement('svg')
       const line = d3.line()
       .x(v => xScale.at(xValues.indexOf(v)))
       .y(v => yScale.at(yValues.indexOf(v)))
-      .stroke()
       .curve(d3.curveMonotoneX);
 
       let pathG = document.createElement('g')
@@ -402,6 +402,10 @@ let svg = document.createElement('svg')
 
       g.append(circle)
 
+ svg.appendChild(g)
+
+ container.appendChild(svg)
+
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -432,14 +436,14 @@ function renderTreemap(filteredCells, nodeMap) {
 
     const root = d3.hierarchy(hierarchicalData)
                 .sort((a, b) => b.count - b.count);
-
-    d3.treemap()
+  
+ d3.treemap()
         .size([width, height])
         .paddingOuter(3)
         .paddingInner(2)
         (root);
 
-    const leaf = container.selectAll('g')
+    const leaf =  root.selectAll('g')
             .data(root.leaves())
             .join('g')
             .attr('transform', d => `translate(${d.x0},${d.y0})`)
@@ -460,7 +464,8 @@ function renderTreemap(filteredCells, nodeMap) {
             .text(d => `Skill ${d.parent.name} with depth ${d.depth}`)
             .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none');
 
- container.append(svg)
+ svg.appendChild(root)
+ container.appendChild(svg)
     }
 
 
