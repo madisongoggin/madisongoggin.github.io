@@ -465,7 +465,6 @@ const line2 = d3.line()
             .on('mouseleave', hideTooltip)
 
         svgBase.node().removeAttribute('style')
-        routes.removeAttribute('style')
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
