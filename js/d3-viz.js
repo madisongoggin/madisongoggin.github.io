@@ -146,7 +146,7 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<li class="tag-chip" style="--chip: ${tag.color}">${tag.name}</li>`;
+      return `<li class="tag-chip" style="color : ${tag.color}">${tag.name}</li>`;
     })
     .join('') + // Use .join('') to combine the array items without commas
     '</ul>';
@@ -162,8 +162,8 @@ async function createSections(key)  {
             postSummary.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='--accent">${p.title}</p>
-                    <p color="--ink-soft"'>${p.org_name}</p>
+                    <p class='eyebrow' style="color: '--accent'">${p.title}</p>
+                    <p style='color: "--ink-soft"'>${p.org_name}</p>
                     <p>` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
@@ -184,7 +184,7 @@ async function createSections(key)  {
             certs.forEach(c => {
             card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow'  color='--accent'>${c.cert_name}</p>` +
+                    <p class='eyebrow' style="color: '--accent'">${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
                     <p  color="--ink-soft"'>${c.gov_body}</p>` +
@@ -199,11 +199,11 @@ async function createSections(key)  {
              card.setHTML(
                 `<article class="matrix-legend card">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='--accent">${e.degree}</p>` +
-                    e.scholarship ? `<p color="--ink-soft"'>${e.scholarship}</p>` : `` +
+                    <p class='eyebrow' style="color:'--accent'">${e.degree}</p>` +
+                    e.scholarship ? `<p style="color : "--ink-soft"">${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     `</header>
-                     <p color="--ink-soft"'>${e.school}</p>` +
+                     <p style="color : "--ink-soft"">${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`
                 )
@@ -214,10 +214,10 @@ async function createSections(key)  {
             awards.forEach(a => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color="--accent">${a.title}</p>` +
+                    <p class='eyebrow' style='color: "--accent"'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
-                    <p color="--ink-soft">${a.org_name}</p>
+                    <p style="color : "--ink-soft"">${a.org_name}</p>
                     </article>`
             )
         })
@@ -227,11 +227,11 @@ async function createSections(key)  {
             services.forEach(s => { 
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='--accent'>${s.title}</p>
-                    <p color = '--ink-soft'>${s.org_name}</p>` +
+                    <p class='eyebrow' stle='color: '--accent'">${s.title}</p>
+                    <p stle="color: '--ink-soft'">${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
-                    <p  color="--ink-soft">` +
+                    <p style='color: "--ink-soft'">` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
@@ -245,10 +245,10 @@ async function createSections(key)  {
             projects.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class = 'tag-group'>
-                        <p class='eyebrow' color='--accent'>` +
+                        <p class='eyebrow' syle='color: '--accent'' >` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</p>` +
-                        p.status ? `<p color='--ink-soft'>${p.status }}</p>` : ``  +
+                        p.status ? `<p style="color: '--ink-soft'">${p.status }}</p>` : ``  +
                         displayTags(p.tags) +
                 `</header>
                 <p>${p.description}</p>` +
@@ -357,7 +357,6 @@ let svg = document.createElement('svg')
 
       let gridG =document.createElement('g')
       gridG.class ='grid opacity-15'
-      gridG.call(d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(''))
 
       g.append(gridD)
 
