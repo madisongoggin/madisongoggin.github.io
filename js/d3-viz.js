@@ -144,12 +144,13 @@ class PortfolioLoader {
 
 const portfolioData = new PortfolioLoader()
 
-const config = {
-  allowAttributes: {
-    'class': ['*'], // Allows the 'class' attribute on any element
-    'style': ['*']  // Allows inline 'style' attributes on any element
-  }
-};
+const config = new Sanitizer({})
+config.allowAttribute('class')
+config.allowAttribute('style')
+config.allowAttribute('aria-label')
+config.setComments(true)
+
+
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
 const tagFilterSelect = document.getElementById('tag-filter');
@@ -179,8 +180,9 @@ async function createSections(key)  {
         case 'position':
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
+            page.setHTML(
             postSummary.forEach(p => {
-             page.setHTML(`<article class="card matrix-legend">
+             `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${p.title}</p>
                     <p style='color: "--ink-soft"'>${p.org_name}</p>
@@ -190,30 +192,30 @@ async function createSections(key)  {
                     `<ul class='simple-item">` +
                      posBullets.filter((b) => b.bullet_tag === p.bullet_tag).map((b) =>
                         `<li class='simple-item">${b.bullet_text}</li>`
-                    ).join() + '</ul></article>', config
-                )
-                }
+                    ).join() + '</ul></article>'
+                  }).join(), config
             )
             break;
         case 'cert':
             const certs = Array.from(portfolioData.rawCert);
+            page.setHTML(
             certs.forEach(c => {
-            page.setHTML(`<article class="card matrix-legend">
+               `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color: '--accent'">${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
                     <p  style='color:"--ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
-                    `</article>`, config
-            )
-        })
+                    `</article>`
+            }).join(), config
+          )
             break;
         case 'edu':
             const ed = Array.from(portfolioData.rawEdu)
           ed.reverse()
+          page.setHTML(
             ed.forEach(e => {
-             page.setHTML(
                 `<article class="matrix-legend card">
                     <header class='tag-group'>
                     <p class='eyebrow' style="color:'--accent'">${e.degree}</p>` +
@@ -223,46 +225,45 @@ async function createSections(key)  {
                      <p style="color : "--ink-soft"">${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`, config
-                )
-            })
+              }).join(), config)
             break;
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
+            page.setHTML(
             awards.forEach(a => {
-             page.setHTML(`<article class="card matrix-legend">
+           `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style='color: "--accent"'>${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
                     <p style="color : "--ink-soft"">${a.org_name}</p>
-                    </article>`, config
-            )
-        })
-        break;
+                    </article>`
+            }).join(), config)
+            break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
+            page.setHTML(
             services.forEach(s => {
-             page.setHTML(`<article class="card matrix-legend">
+             `<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' style='"olor: '--accent'">${s.title}</p>
-                    <p stle="color: '--ink-soft'">${s.org_name}</p>` +
+                    <p class='eyebrow' style="color: '--accent'">${s.title}</p>
+                    <p style="color: '--ink-soft'">${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
                     <p style='color: "--ink-soft'">` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
-                    </article>`, config
-            )
-        });
-
-        break;
+                    </article>`
+            }).join(), config);
+            break;
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
+            page.setHTML(
             projects.forEach(p => {
-             page.setHTML(`<article class="card matrix-legend">
+             `<article class="card matrix-legend">
                     <header class = 'tag-group'>
-                        <p class='eyebrow' syle='color: '--accent'' >` +
+                        <p class='eyebrow'  style='color: '--accent'' >` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</p>` +
                         p.status ? `<p style="color: '--ink-soft'">${p.status }}</p>` : ``  +
@@ -270,9 +271,8 @@ async function createSections(key)  {
                 `</header>
                 <p>${p.description}</p>` +
                    p.deploy_url ? `<p><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
-               + `</article>`, config
-            )
-        });
+               + `</article>`
+            }).join(), config)
             break;
         default:
             return;
@@ -355,7 +355,8 @@ function renderMareyChart(filteredCells) {
 
         // Axes
 
- xAxis = g => g
+ function xAxis(g) {
+  g
  .selectAll(g)
  .data(xValues)
  .join("g")
@@ -386,10 +387,13 @@ function renderMareyChart(filteredCells) {
      )
     .call(d3.axisBottom(xScale).tickValues(xValues))
     .call(d3.axisTop(xScale).tickValues(xValues))
+  }
 
- yAxis = g =>  g
+  function  yAxis(g) {
+ g
   .call(d3.axisLeft(yScale).tickValues(yValues))
    .call(d3.axisRight(yScale).tickValues(yValues))
+  }
 
  const line = d3.line()
       .x(v => xScale.at(xValues.indexOf(v)))
@@ -556,7 +560,7 @@ function updateVisualizations(selectedSlug) {
              renderTreemap(filteredCells, filterNodeMap(filteredCells));
            }
        } else if (selectedSlug) {
-        renderMareyChart(allCells, filterNodeMap(allCells));
+        renderMareyChart(allCells);
         renderTreemap(allCells, filterNodeMap(allCells));
     }
 }
