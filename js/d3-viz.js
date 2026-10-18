@@ -425,7 +425,7 @@ function renderMareyChart(filteredCells) {
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
-            .on("blur", hideTooltip);
+
  
   routes.append("g")
       .attr("stroke", '#ffffff')
@@ -448,7 +448,6 @@ function renderMareyChart(filteredCells) {
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
-            .on("blur", hideTooltip);
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -509,7 +508,6 @@ function renderTreemap(filteredCells, nodeMap) {
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
-            .on("blur", hideTooltip);
 
     leaf.append('rect')
         .attr('fill', d => d.parent.color)
@@ -525,7 +523,7 @@ function renderTreemap(filteredCells, nodeMap) {
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
-            .on("blur", hideTooltip);
+
 
     leaf.append('text')
             .attr('x', 4)
@@ -540,7 +538,6 @@ function renderTreemap(filteredCells, nodeMap) {
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
-            .on("blur", hideTooltip);
  
  svgBase.append(root)
 
