@@ -162,9 +162,9 @@ async function createSections(key)  {
             postSummary.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='#1a7f37'>${p.title}</p>
-                    <p color="#4b5563;'>${p.org_name}</p>
-                    <p color= '#0b5fa5;'>` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
+                    <p class='eyebrow' color='--accent">${p.title}</p>
+                    <p color="--ink-soft"'>${p.org_name}</p>
+                    <p>` + formatDate(p.start_date) + ' -'  + formatDate(p.end_Date) + `</p>
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
@@ -184,10 +184,10 @@ async function createSections(key)  {
             certs.forEach(c => {
             card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='#1a7f37>${c.cert_name}</p>` +
+                    <p class='eyebrow'  color='--accent'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
                     `</header>
-                    <p color="#4b5563;'>${c.gov_body}</p>` +
+                    <p  color="--ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>`
             )
@@ -199,15 +199,14 @@ async function createSections(key)  {
              card.setHTML(
                 `<article class="matrix-legend card">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='#1a7f37>${e.degree}</p>` +
-                    e.scholarship ? `<p color="#4b5563;'>>${e.scholarship}</p>` : `` +
+                    <p class='eyebrow' color='--accent">${e.degree}</p>` +
+                    e.scholarship ? `<p color="--ink-soft"'>${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     `</header>
-                     <p color="#4b5563;'>${e.school}</p>` +
+                     <p color="--ink-soft"'>${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`
                 )
-                card.appendChild(child)
             })
             break;
      case 'award':
@@ -215,10 +214,10 @@ async function createSections(key)  {
             awards.forEach(a => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='#1a7f37;'>${a.title}</p>` +
+                    <p class='eyebrow' color="--accent">${a.title}</p>` +
                     displayTags(a.tag_slug) +
                     `</header>
-                    <p color="#4b5563;'>${a.org_name}</p>
+                    <p color="--ink-soft">${a.org_name}</p>
                     </article>`
             )
         })
@@ -228,11 +227,11 @@ async function createSections(key)  {
             services.forEach(s => { 
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow' color='#1a7f37;'>${s.title}</p>
-                    <p color ='#0b5fa5;'>${s.org_name}</p>` +
+                    <p class='eyebrow' color='--accent'>${s.title}</p>
+                    <p color = '--ink-soft'>${s.org_name}</p>` +
                     displayTags(s.tag_slugs) +
                     `</header>
-                    <p  color="#4b5563;">` +
+                    <p  color="--ink-soft">` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
@@ -246,14 +245,14 @@ async function createSections(key)  {
             projects.forEach(p => {
              card.setHTML(`<article class="card matrix-legend">
                     <header class = 'tag-group'>
-                        <p class='eyebrow' color='#1a7f37'>` +
+                        <p class='eyebrow' color='--accent'>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</p>` +
-                        p.status ? `<p color="#4b5563;">${p.status }}</p>` : ``  +
+                        p.status ? `<p color='--ink-soft'>${p.status }}</p>` : ``  +
                         displayTags(p.tags) +
                 `</header>
                 <p>${p.description}</p>` +
-                   p.deploy_url ? `<p class="card-links"><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
+                   p.deploy_url ? `<p><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
                + `</article>`
             )
         });
@@ -327,9 +326,7 @@ let svg = document.createElement('svg')
    svg.role='img'
    svg.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
          
-   const anyG = () => document.createElement('g')
-
-    let g =  anyG
+    let g = document.createElement('g')
      g.transform=`translate(${margin.left},${margin.top})`
 
     // Extract unique X and Y sets
@@ -343,7 +340,7 @@ let svg = document.createElement('svg')
 
 
         // Axes
-       let xG = anyG
+       let xG = document.createElement('g')
        xG.transform = `translate(0,${innerHeight})`
        Array.from(xG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
@@ -351,7 +348,7 @@ let svg = document.createElement('svg')
        })
       g.append(xG)
          
-       let yG = anyG
+       let yG =document.createElement('g')
        Array.from(yG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
        })
@@ -359,13 +356,13 @@ let svg = document.createElement('svg')
        
       g.append(yG)
 
-      let gridG = anyG
+      let gridG =document.createElement('g')
       gridG.class ='grid opacity-15'
       gridG.call(d3.axisLeft(yScale).tickSize(-innerWidth).tickFormat(''))
 
       g.append(gridD)
 
-      let dataG = anyG
+      let dataG = document.createElement('g')
       dataG.fill = 'none'
       dataG.stoke = 'none'
       dataG.dataset = filteredCells;
@@ -378,7 +375,7 @@ let svg = document.createElement('svg')
       .stroke()
       .curve(d3.curveMonotoneX);
 
-      let pathG = anyG;
+      let pathG = document.createElement('g')
       pathG.fill = 'none'
       pathG.setAttribute('stroke-width', '3')
       pathG.setAttribute('stroke-opacity', '4')
