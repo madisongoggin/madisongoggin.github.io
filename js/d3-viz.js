@@ -17,6 +17,7 @@ class PortfolioLoader {
    // Class constructor triggers the parallel download
   constructor() {
     this.ready = this.#init();
+   this.requestHeader = new Headers({'Accept' : 'text');
   }
  async #init() {
     // Downloads and populates raw data caches asynchronously
@@ -31,16 +32,13 @@ class PortfolioLoader {
     this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
   }
-
-const  headers =  new Headers();
- // A cached response is okay unless it's more than a week old.
- reqHeader.set("Accept", "text")
+ 
 
   async #fetchAndParseCSV(url) {
     // 1. Download the file purely as raw string text
-    const request = new Request(url, accept="text" )
+    const request = new Request(url)
 
-    await fetch(request, reqHeader).response((response) => {
+    await fetch(request, this.reqHeader).response((response) => {
     
     // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
     // d3.csvParseRows is explicitly CSP-safe.
