@@ -373,7 +373,6 @@ function renderMareyChart(filteredCells) {
           .attr("x", 12)
           .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
-          .text(d => d.x)
     ))
  .append('g')
   .call(g => g.append("line")
@@ -385,7 +384,6 @@ function renderMareyChart(filteredCells) {
              .attr("x", -12)
              .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
-            .text(d => d.y)
      ))
     .call(d3.axisLeft(xScale).tickValues(xValues))
     .call(d3.axisRight(yScale).tickValues(yValues))
@@ -465,6 +463,8 @@ const line2 = d3.line()
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
+
+    container.append(svgBase.node())
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -504,13 +504,13 @@ function renderTreemap(filteredCells, nodeMap) {
     const root = d3.hierarchy(hierarchicalData)
                 .sort((a, b) => b.count - a.count);
 
- d3.treemap()
+   const tree = d3.treemap()
         .size([width, height])
         .paddingOuter(3)
         .paddingInner(2)
         (root);
 
-    const leaf =  root.selectAll('g')
+    const leaf =  tree.selectAll('g')
             .data(root.leaves())
             .enter()
             .append('g')
@@ -557,7 +557,7 @@ function renderTreemap(filteredCells, nodeMap) {
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
 
- svgBase.append(root)
+    container.append(svgBase.node())
 
     }
 
