@@ -66,7 +66,7 @@ class PortfolioLoader {
     const trimmed = value.trim();
 
        // Coerce Basic Dates (YYYY-MM-DD)
-    if (/^\d{4}/.test(trimmed)) {
+    if (/^\d{4}-\d{2}-\d{2}$/test(trimmed)) {
       return new Date(trimmed);
     }
 
@@ -241,7 +241,7 @@ async function createSections(key)  {
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
-                    </article>`, comnfig
+                    </article>`, config
             )
         });
 
@@ -366,12 +366,6 @@ let svg = document.createElement('svg')
 
       g.append(gridG)
 
-      let dataG = document.createElement('g')
-      dataG.fill = 'none'
-      dataG.stoke = 'none'
-      dataG.dataset = filteredCells;
-
-      g.append(dataG)
 
       const line = d3.line()
       .x(v => xScale.at(xValues.indexOf(v)))
