@@ -188,7 +188,7 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                     postBullets.fitler((b) => b.bullet_tag === p.bullet_tag).map((b) =>
+                     posBullets.fitler((b) => b.bullet_tag === p.bullet_tag).map((b) =>
                         `<li class='simple-item">${b.bullet_text}</li>`
                     ).join() + '</ul></article>', config
                 )
@@ -211,6 +211,7 @@ async function createSections(key)  {
             break;
         case 'edu':
             const ed = Array.from(portfolioData.rawEdu)
+          ed.reverse()
             ed.forEach(e => {
              page.setHTML(
                 `<article class="matrix-legend card">
@@ -226,7 +227,7 @@ async function createSections(key)  {
             })
             break;
      case 'award':
-            const awards =  Array.from(portfolioData.rawAward)
+            const awards =  Array.from(portfolioData.rawAwar
             awards.forEach(a => {
              page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
@@ -332,18 +333,8 @@ function renderMareyChart(filteredCells, nodeMap) {
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
-                    
-        // Axes
-let svg = document.createElement('svg')
-   svg.width = width
-   svg.height = height
-   svg.viewBox =  [0, 0, width, height]
-   svg.role='img'
-   svg.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
-         
-    let g = document.createElement('g')
-     g.transform=`translate(${margin.left},${margin.top})`
 
+ 
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
         const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
@@ -353,66 +344,92 @@ let svg = document.createElement('svg')
         scaleFactor = innerWidth / yValues.length
         const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
 
-
+                    
         // Axes
-       let xG = document.createElement('g')
-       xG.transform = `translate(0,${innerHeight})`
-       Array.from(xG.getElementsByTagName('text')).forEach(t => {
-        t.class = 'text-xs text-slate-600'
-        t.style = 'text-anchor, middle'
-       })
-      g.append(xG)
-         
-       let yG =document.createElement('g')
-       Array.from(yG.getElementsByTagName('text')).forEach(t => {
-        t.class = 'text-xs text-slate-600'
-       })
-       
-      g.append(yG)
+let svg = document.createElement('svg')
+   svg.width = width
+   svg.height = height
+   svg.viewBox =  [0, 0, width, height]
+   svg.role='img'
+   svg.id = 'marey-viz'
+   svg.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
 
-      let gridG =document.createElement('g')
-      gridG.class ='grid opacity-15'
+ xAxis = g => g
+ .selectAll(g)
+ .data(xValues)
+ .join("g")
+  .transform(`translate(${margin.left},${margin.top})`)
+   .call(g => g.append("line")
+         .attt("stroke", ( d => d.color || '#3b82f6'))
+        .attr('stroke-width', '3')
+         .attr('stroke-opacity', '4'))
+   .call(g => g.append("line")
+         .attt("stroke", ( d => d.color || '#3b82f6'))
+        .attr('stroke-width', '3')
+         .attr('stroke-opacity', '4'))
+    .call(g => g.append("text")
+             .attr("transform",`translate(0,${height - marginBottom})`)
+             .attr("x", 12)
+        .attr("dy", "0.35em")
+        .text(d => d.name))
+     )
+     .call(g => g.append("text")
+             .attr("transform", `translate(0,${height - marginBottom})`)
+             .attr("x", -12)
+        .attr("dy", "0.35em")
+        .text(d => d.name))
+     )
+    .call(d3.axisBottom(xScale).tickValues(xValues))
+    .call(d3.axisTop(xScale).tickValues(xValues))
 
-      g.append(gridG)
+ yAxis = g =>  g
+  .call(d3.axisLeft(yScale).tickValues(yValues)
+   .call(d3.axisRight(yScale).tickValues(yValues))
 
+ line = d3.line()
+      .x(d => d.x)
+      .y(d => d.y)
+   
 
-      const line = d3.line()
-      .x(v => xScale.at(xValues.indexOf(v)))
-      .y(v => yScale.at(yValues.indexOf(v)))
-      .curve(d3.curveMonotoneX);
+   const svgBase = d3.select('.marey-viz')
+  .call(xAxis)
+  .call(yAxis)
+  
+ const routes = svgBase
+  .append('g')
+   .selectAll("g)
+   .data(filteredCells)
+   .join("g")
 
-      let pathG = document.createElement('g')
-      pathG.fill = 'none'
-      pathG.setAttribute('stroke-width', '3')
-      pathG.setAttribute('stroke-opacity', '4')
-      pathG.d = line(filteredCells)
-      pathG.onfocus((e, d) => {
+  routes.append("path")
+      .attr("fill", "none")
+      .attr("stroke", d => d[count])
+      .attr("d", d => line)
+      .onfocus((e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
-      pathG.onmouseleave((e), hideTooltip())
-      pathG.onmousemove(e => updateTooltipPosition())
-      pathG.onblur(e => hideTooltip())
-
-            g.append(pathG);
-
-      let circle = document.createElement('circle')
-      circle.r = (d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
-      circle.fill = ( d => d.color || '#3b82f6')
-      circle.stroke = '#ffffff'
-      circle.setAttribute('stroke-width', '3')
-      circle.class = "transition-transform duration-200 group-hover:scale-125"
-      circle.onfocus((e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-      circle.onmouseleave((e), hideTooltip())
-      circle.onmousemove(e => updateTooltipPosition())
-      circle.onblur(e => hideTooltip())
-
-      g.append(circle)
-
- svg.appendChild(g)
-
- container.appendChild(svg)
+      .onmouseleave((e), hideTooltip())
+      .onmousemove(e => updateTooltipPosition(e)
+       .onblur(e => hideTooltip())
+ 
+  routes.append("g")
+      .attr("stroke", '#ffffff')
+      .attr("fill", d => d.color)
+     .selectAll("circle")
+      .data(d => d.y)
+    .join("circle")
+      .attr("fill", d => d.color)
+      .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4))
+      .attr('cx', v => xScale.at(xValues.indexOf(v)))
+       .attr('cy', v => yScale.at(yValues.indexOf(v)))
+       .attr("stroke", '#ffffff')
+       .attr('stroke-width', '3')
+      .attr('stroke-opacity', '4')
+             .onmouseleave((e), hideTooltip())
+      .onmousemove(e => updateTooltipPosition(e)
+       .onblur(e => hideTooltip())
+ 
+ container.appendChild(svgBase)
 
 }
 
