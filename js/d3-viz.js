@@ -129,6 +129,12 @@ class PortfolioLoader {
 
 const portfolioData = new PortfolioLoader()
 
+const config = {
+  allowAttributes: {
+    'class': ['*'], // Allows the 'class' attribute on any element
+    'style': ['*']  // Allows inline 'style' attributes on any element
+  }
+};
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
 const tagFilterSelect = document.getElementById('tag-filter');
@@ -174,7 +180,7 @@ async function createSections(key)  {
                     )
                     .map(b =>
                         `<li class='simple-item">${b.bullet_text}</li>`
-                    ).join() + '</ul></article>'
+                    ).join() + '</ul></article>', config
                 )
                 }
             )
@@ -189,7 +195,7 @@ async function createSections(key)  {
                     `</header>
                     <p  color="--ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
-                    `</article>`
+                    `</article>`, config
             )
         })
             break;
@@ -205,7 +211,7 @@ async function createSections(key)  {
                     `</header>
                      <p style="color : "--ink-soft"">${e.school}</p>` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
-                    `</article>`
+                    `</article>`, config
                 )
             })
             break;
@@ -218,7 +224,7 @@ async function createSections(key)  {
                     displayTags(a.tag_slug) +
                     `</header>
                     <p style="color : "--ink-soft"">${a.org_name}</p>
-                    </article>`
+                    </article>`, config
             )
         })
         break;
@@ -235,7 +241,7 @@ async function createSections(key)  {
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     `</p>
-                    </article>`
+                    </article>`, comnfig
             )
         });
 
@@ -253,7 +259,7 @@ async function createSections(key)  {
                 `</header>
                 <p>${p.description}</p>` +
                    p.deploy_url ? `<p><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
-               + `</article>`
+               + `</article>`, config
             )
         });
             break;
@@ -358,7 +364,7 @@ let svg = document.createElement('svg')
       let gridG =document.createElement('g')
       gridG.class ='grid opacity-15'
 
-      g.append(gridD)
+      g.append(gridG)
 
       let dataG = document.createElement('g')
       dataG.fill = 'none'
