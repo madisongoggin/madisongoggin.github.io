@@ -34,11 +34,17 @@ class PortfolioLoader {
   }
  
 
+ 
   async #fetchAndParseCSV(url) {
+    try {
     // 1. Download the file purely as raw string text
     const request = new Request(url)
                                 
-    fetch(request, this.reqHeader).then((response) => {
+    const response = await  fetch(request, this.reqHeader)
+
+     if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
     
     // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
     // d3.csvParseRows is explicitly CSP-safe.
@@ -58,8 +64,10 @@ class PortfolioLoader {
         obj[header] = this.#cleanValue(rowValues[index]);
       });
       return obj;
-    });
-    })
+    }); 
+   } catch (error) {
+    console.error("Failed to fetch and parse with:", error);
+    }
   }
 
   /**
