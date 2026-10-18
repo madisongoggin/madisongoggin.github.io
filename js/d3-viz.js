@@ -225,7 +225,7 @@ async function createSections(key)  {
         break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
-            services.foreach(s => { 
+            services.forEach(s => { 
              card.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' color='#1a7f37;'>${s.title}</p>
@@ -327,7 +327,7 @@ let svg = document.createElement('svg')
    svg.role='img'
    svg.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
          
-   const anyG = document.createElement('g')
+   const anyG = () => document.createElement('g')
 
     let g =  anyG
      g.transform=`translate(${margin.left},${margin.top})`
