@@ -510,7 +510,7 @@ function renderTreemap(filteredCells, nodeMap) {
         .paddingInner(2)
         (root);
 
-    const leaf =  tree.selectAll('g')
+    const leaf =  svgBase.selectAll('g')
             .data(root.leaves())
             .enter()
             .append('g')
