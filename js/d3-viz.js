@@ -32,26 +32,26 @@ class PortfolioLoader {
     this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
   }
- 
 
- 
+
+
   async #fetchAndParseCSV(url) {
     try {
     // 1. Download the file purely as raw string text
     const request = new Request(url)
-                                
+
     const response = await  fetch(request, this.reqHeader)
 
      if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    
+
     // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
     // d3.csvParseRows is explicitly CSP-safe.
 
     const returnedData = await response.text()
     const rows = d3.csvParseRows(returnedData)
-    
+
     if (rows.length === 0) return [];
 
     // 3. Extract the headers (first row)
@@ -64,7 +64,7 @@ class PortfolioLoader {
         obj[header] = this.#cleanValue(rowValues[index]);
       });
       return obj;
-    }); 
+    });
    } catch (error) {
     console.error("Failed to fetch and parse with:", error);
     }
@@ -241,7 +241,7 @@ async function createSections(key)  {
         break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
-            services.forEach(s => { 
+            services.forEach(s => {
              page.setHTML(`<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow' style='"olor: '--accent'">${s.title}</p>
@@ -328,7 +328,7 @@ function renderMareyChart(filteredCells) {
     const container = document.getElementById('marey-container');
     container.innerHTML = '';
 
- 
+
 
     const width = container.clientWidth || 600;
     const height = container.clientHeight || 350;
@@ -339,10 +339,10 @@ function renderMareyChart(filteredCells) {
     container.width = width
    container.height = height
   container.viewBox =  [0, 0, width, height]
-   contianer.role='img'
+   container.role='img'
    container.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
 
- 
+
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
         const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
@@ -350,9 +350,9 @@ function renderMareyChart(filteredCells) {
         let scaleFactor = innerWidth / xValues.length
         const xScale =  Array.from(xValues, (e, i) => { (i + 1)  * scaleFactor})
         scaleFactor = innerWidth / yValues.length
-        const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})                       
+        const yScale =  Array.from(yValues, (e, i) => { (i + 1)  * scaleFactor})
 
-                    
+
         // Axes
 
  xAxis = g => g
@@ -361,12 +361,12 @@ function renderMareyChart(filteredCells) {
  .join("g")
   .transform(`translate(${margin.left},${margin.top})`)
    .call(g => g.append("line")
-         .attt("stroke", ( d => d.color || '#3b82f6'))
+         .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
     )
    .call(g => g.append("line")
-         .attt("stroke", ( d => d.color || '#3b82f6'))
+         .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
     )
@@ -396,7 +396,7 @@ function renderMareyChart(filteredCells) {
       .y(v => yScale.at(yValues.indexOf(v)))
       .stroke()
       .curve(d3.curveMonotoneX);
-   
+
 
    const svgBase = d3.select('#marey-container')
     .append("svg")
@@ -407,7 +407,7 @@ function renderMareyChart(filteredCells) {
     .attr('ariaLabel', "Marey's Train Schedule style showing cross-systems experience and expertise.")
   .call(xAxis)
   .call(yAxis)
-  
+
  const routes = svgBase
   .append('g')
    .selectAll("g")
@@ -426,7 +426,7 @@ function renderMareyChart(filteredCells) {
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
 
- 
+
   routes.append("g")
       .attr("stroke", '#ffffff')
       .attr("fill", d => d.color)
@@ -434,9 +434,9 @@ function renderMareyChart(filteredCells) {
       .data(d => d.y)
     .join("circle")
       .attr("fill", d => d.color)
-      .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4))
-      .attr('cx', v => xScale.at(xValues.indexOf(v))
-       .attr('cy', v => yScale.at(yValues.indexOf(v))
+      .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
+      .attr('cx', v => xScale.at(xValues.indexOf(v)))
+       .attr('cy', v => yScale.at(yValues.indexOf(v)))
        .attr("stroke", '#ffffff')
        .attr('stroke-width', '3')
       .attr('stroke-opacity', '4')
@@ -463,7 +463,7 @@ function renderTreemap(filteredCells, nodeMap) {
    container.viewBox =  [0, 0, width, height]
    container.role='img'
    container.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
-   
+
    const svgBase = d3.select('#treemap-container')
     .append("svg")
     .attr('width', width)
@@ -485,8 +485,8 @@ function renderTreemap(filteredCells, nodeMap) {
             };
 
     const root = d3.hierarchy(hierarchicalData)
-                .sort((a, b) => b.count - b.count);
-  
+                .sort((a, b) => b.count - a.count);
+
  d3.treemap()
         .size([width, height])
         .paddingOuter(3)
@@ -499,7 +499,7 @@ function renderTreemap(filteredCells, nodeMap) {
             .attr('transform', d => `translate(${d.x0},${d.y0})`)
             .attr('tabindex', '0')
             .attr('role', 'button')
-            .attr('aria-label', d => `Skill ${d.parent.name} with depth ${d.depth}`);
+            .attr('aria-label', d => `Skill ${d.parent.name} with depth ${d.depth}`)
             .on('focus', (e, d) => {
         showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
       })
@@ -514,7 +514,7 @@ function renderTreemap(filteredCells, nodeMap) {
         .attr('fill-opacity', 0.8)
         .attr('width', d => Math.max(0, d.x1 - d.x0))
         .attr('height', d => Math.max(0, d.y1 - d.y0))
-        .attr('class', 'rounded-xs cursor-pointer hover:fill-opacity-100 transition-opacity');
+        .attr('class', 'rounded-xs cursor-pointer hover:fill-opacity-100 transition-opacity')
              .on('focus', (e, d) => {
         showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
       })
@@ -529,7 +529,7 @@ function renderTreemap(filteredCells, nodeMap) {
             .attr('x', 4)
             .attr('y', 14)
             .text(d => `Skill ${d.parent.name} with depth ${d.depth}`)
-            .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none');
+            .attr('class', 'text-[10px] font-semibold fill-white drop-shadow-xs pointer-events-none')
              .on('focus', (e, d) => {
         showTooltip(`Skill ${d.parent.name} with depth ${d.depth}`)
       })
@@ -538,7 +538,7 @@ function renderTreemap(filteredCells, nodeMap) {
       })
             .on('mousemove', updateTooltipPosition)
             .on('mouseleave', hideTooltip)
- 
+
  svgBase.append(root)
 
     }

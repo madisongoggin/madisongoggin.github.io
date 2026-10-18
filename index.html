@@ -9,7 +9,7 @@
     <meta name="description" content="Portfolio of Madison Goggin, MS, CISSP, Multi-Disciplinary Cybersecurity and AI Cross-Systems and Services Engineer.">
     <meta http-equiv="content-security-policy" content="default-src https://madisongoggin.github.io"/>
     <title>Madison Goggin, MS, CISSP</title>
-    <script type="module" crossorigin="anonymous" referrerpolicy="same-origin" src="https://madisongoggin.github.io/js/d3.v7.min.js"></script>)
+    <script type="module" crossorigin="anonymous" referrerpolicy="same-origin" src="https://madisongoggin.github.io/js/d3.v7.min.js"></script>
     <script type="module" async, crossorigin="anonymous" referrerpolicy="same-origin" src="https://madisongoggin.github.io/js/d3-viz.js"></script>
     <link rel="stylesheet" type="text/css" href="https://madisongoggin.github.io/css/main.css">
 </head>
@@ -48,7 +48,6 @@
                         <label for="tag-filter " class="legend-item">Filter Category:</label>
                         <select id="tag-filter" class="legend-item">
                             <option value="all">All Skill Categories</option>
-                            <!-- Populated dynamically via JS from Flask data -->
                     </select>
                     <button id="reset-filters" >
                         Reset Filters
@@ -58,9 +57,8 @@
 
           <!-- Grid Layout for Visualizations -->
         <div id="viz">
-            <!-- Left / Top Column: Marey's Train Schedule Style Timeline (Span 7) -->
             <section class="panel" aria-labelledby="marey">
-                <span aria-labelledby="mercy-panel-head"></span>
+                <span aria-labelledby="mercy-panel-head">
                         <h2 id="marey-heading" class="panel-head">Cross-Systems Graph</h2>
                         <p class='panel-sub'>Marey's Train Schedule style showing cross-systems experience and expertise.</p>
                 </span>
@@ -74,9 +72,9 @@
             </section>
         </div>
 
-<section aria-label="Experience" class="panel card-grid">
-    <h2 id="expereince">Experience</h2>
-    <label for="experience" id="position"> </label>
+<section aria-label="Experience" class="panel">
+    <h2 id="expereince"class="header-inner">Experience</h2>
+    <label for="experience" class="card-grid" id="position"> </label>
 </section>
 <section aria-label="certifications" class="panel">
     <h2 class="header-inner" id="certs">Certifications</h2>
@@ -84,7 +82,7 @@
 </section>
 
 <section aria-label="Professional Service" class="panel">
-    <h2 id="services" class="header-inner">Professional Service</h2>    
+    <h2 id="services" class="header-inner">Professional Service</h2>
     <label for="services" id="service" class="card-grid"> </label>
 </section>
 
@@ -94,20 +92,18 @@
 </section>
 
 <section aria-label="Education" class="panel">
-    <h2 class="header-inner" id="edus">Education</h2> 
+    <h2 class="header-inner" id="edus">Education</h2>
     <label for="edus" class="card-grid" id="edu"> </label>
 </section>
 
 <section aria-label="Projects" class="panel">
-    <h2 class="header-inner" id="projects">Selected Projects</h2>    
+    <h2 class="header-inner" id="projects">Selected Projects</h2>
     <label for="projects" id="project" class="card-grid"> </label>
 </section>
-    
+
 <div id="floating-tooltip" role="tooltip" aria-hidden="true" class="absolute z-50 pointer-events-none opacity-0 transform scale-95 bg-slate-900 text-white text-xs rounded-lg shadow-xl p-3 max-w-xs tooltip-transition">
-    <!-- Tooltip dynamic content loaded by JS -->
 </div>
 </main>
-
   <footer class="site-footer">
       <p class="brand-text"><strong>Madison Goggin, MS, CISSP</strong>Accessible by design. Secure by default.</p>
     </div>
