@@ -17,7 +17,7 @@ class PortfolioLoader {
    // Class constructor triggers the parallel download
   constructor() {
     this.ready = this.#init();
-   this.requestHeader = new Headers({'Accept' : 'text');
+   this.requestHeader = new Headers({'Accept' : 'text'});
   }
  async #init() {
     // Downloads and populates raw data caches asynchronously
