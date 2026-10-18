@@ -352,7 +352,6 @@ let svg = document.createElement('svg')
        Array.from(yG.getElementsByTagName('text')).forEach(t => {
         t.class = 'text-xs text-slate-600'
        })
-       yG.text.class = 'text-xs text-slate-600'
        
       g.append(yG)
 
