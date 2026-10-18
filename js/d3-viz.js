@@ -190,9 +190,9 @@ async function createSections(key)  {
                     </header>` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
-                     posBullets.filter((b) => b.bullet_tag === p.bullet_tag).map((b) =>
+                     posBullets.filter((b) => b.bullet_tag === p.bullet_tag).map((b) => {
                         `<li class='simple-item">${b.bullet_text}</li>`
-                    ).join('') + '</ul></article>'
+                  }).join('') + '</ul></article>'
                   }).join(''), config
             )
             break;
@@ -358,33 +358,32 @@ function renderMareyChart(filteredCells) {
  function xAxis(g) {
   g
  .selectAll("g")
- .data(xValues)
- .join("g")
+ .data(filteredCells)
+.call(g => g.append("line")
+         .attr("stroke", ( d => d.color || '#3b82f6'))
+        .attr('stroke-width', '3')
+         .attr('stroke-opacity', '4')
+        .call(g => g.append("text")
+          .attr("transform",`translate(0,${height - marginBottom})`)
+          .attr("x", 12)
+          .attr("class", 'text-xs text-slate-600')
+            .attr("dy", "0.35em")
+          .text(d => d.x)
+    ))
+ .enter()
+ .append('g')
   .transform(`translate(${margin.left},${margin.top})`)
-   .call(g => g.append("line")
+  .call(g => g.append("line")
          .attr("stroke", ( d => d.color || '#3b82f6'))
         .attr('stroke-width', '3')
          .attr('stroke-opacity', '4')
-    )
-   .call(g => g.append("line")
-         .attr("stroke", ( d => d.color || '#3b82f6'))
-        .attr('stroke-width', '3')
-         .attr('stroke-opacity', '4')
-    )
-    .call(g => g.append("text")
-             .attr("transform",`translate(0,${height - marginBottom})`)
-             .attr("x", 12)
-              .attr("class", 'text-xs text-slate-600')
-        .attr("dy", "0.35em")
-        .text(d => d.name)
-     )
-     .call(g => g.append("text")
+         .call(g => g.append("text")
              .attr("transform", `translate(0,${height - marginBottom})`)
              .attr("x", -12)
              .attr("class", 'text-xs text-slate-600')
-        .attr("dy", "0.35em")
-        .text(d => d.name)
-     )
+            .attr("dy", "0.35em")
+            .text(d => d.x)
+     ))
     .call(d3.axisBottom(xScale).tickValues(xValues))
     .call(d3.axisTop(xScale).tickValues(xValues))
   }
@@ -415,7 +414,8 @@ function renderMareyChart(filteredCells) {
   .append('g')
    .selectAll("g")
    .data(filteredCells)
-   .join("g")
+   .enter()
+   .append('g')
 
   routes.append("path")
       .attr("fill", "none")
@@ -430,19 +430,16 @@ function renderMareyChart(filteredCells) {
             .on('mouseleave', hideTooltip)
 
 
+
   routes.append("g")
+       .selectAll("circle")
       .attr("stroke", '#ffffff')
       .attr("fill", d => d.color)
-     .selectAll("circle")
-      .data(d => d.y)
-    .join("circle")
-      .attr("fill", d => d.color)
-      .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
-      .attr('cx', v => xScale.at(xValues.indexOf(v)))
-       .attr('cy', v => yScale.at(yValues.indexOf(v)))
-       .attr("stroke", '#ffffff')
-       .attr('stroke-width', '3')
+      .attr('stroke-width', '3')
       .attr('stroke-opacity', '4')
+      .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
+      .attr('cx', v => xScale.at(xValues.indexOf(v.x)))
+       .attr('cy', v => yScale.at(yValues.indexOf(v.y)))
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
@@ -498,7 +495,8 @@ function renderTreemap(filteredCells, nodeMap) {
 
     const leaf =  root.selectAll('g')
             .data(root.leaves())
-            .join('g')
+            .enter()
+            .append('g')
             .attr('transform', d => `translate(${d.x0},${d.y0})`)
             .attr('tabindex', '0')
             .attr('role', 'button')
