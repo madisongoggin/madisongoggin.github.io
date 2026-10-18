@@ -427,7 +427,7 @@ const line2 = d3.line()
 
   routes.append("path")
       .attr("fill", "none")
-      .attr("d", d => line)
+      .attr("d", d => line(d))
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
@@ -438,7 +438,7 @@ const line2 = d3.line()
       .on('mouseleave', hideTooltip)
       .enter()
       .append("path")
-            .attr("d", d => line2)
+            .attr("d", d => line2(d))
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
       })
@@ -493,7 +493,7 @@ function renderTreemap(filteredCells, nodeMap) {
     // Build hierarchical data structure from tags and cells
     const  hierarchicalData = {
            name: "Root",
-                children: [...new Set(filteredCells.x, filteredCells.y).map(tag => {
+                children: [...new Set(filteredCells.x, filteredCells.y)].map(tag => {
                     return {
                         name: tag,
                         children: nodeMap.get(tag)
