@@ -181,7 +181,7 @@ async function createSections(key)  {
             const posBullets = Array.from(portfolioData.rawPosBullets)
             page.setHTML(
             postSummary.map(p => {
-              `<article class="card matrix-legend">
+              return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow">${p.title}</p>
                     <p class='ink-soft'>${p.org_name}</p>
@@ -199,7 +199,7 @@ async function createSections(key)  {
             const certs = Array.from(portfolioData.rawCert);
             page.setHTML(
             certs.map(c => {
-                `<article class="card matrix-legend">
+                return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow'>${c.cert_name}</p>` +
                     displayTags(c.tag_slugs) +
@@ -215,7 +215,7 @@ async function createSections(key)  {
           ed.reverse()
           page.setHTML(
             ed.map(e => {
-               `<article class="matrix-legend card">
+               return `<article class="matrix-legend card">
                     <header class='tag-group'>
                     <p class='eyebrow'>${e.degree}</p>` +
                     e.scholarship ? `<class="--ink-soft">${e.scholarship}</p>` : `` +
@@ -230,7 +230,7 @@ async function createSections(key)  {
             const awards =  Array.from(portfolioData.rawAward)
             page.setHTML(
             awards.map(a => {
-           `<article class="card matrix-legend">
+           return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow'${a.title}</p>` +
                     displayTags(a.tag_slug) +
@@ -243,7 +243,7 @@ async function createSections(key)  {
             const services = Array.from(portfolioData.rawService)
             page.setHTML(
             services.map(s => {
-            `<article class="card matrix-legend">
+           return `<article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow'>${s.title}</p>
                     <p class='ink-soft'">${s.org_name}</p>` +
@@ -260,7 +260,7 @@ async function createSections(key)  {
             const projects = Array.from(portfolioData.rawProject);
             page.setHTML(
             projects.map(p => {
-               `<article class="card matrix-legend">
+               return `<article class="card matrix-legend">
                     <header class = 'tag-group'>
                         <p class='eyebrow'>` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
