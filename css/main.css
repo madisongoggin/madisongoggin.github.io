@@ -27,12 +27,21 @@
   }
 }
 
+.tooltip-transition {
+  position: relative;
+}
 
 svg {
   background-color: transparent;
-  fill: inherit;
+  fill: transparent;
+
   display: inline;
   }
+
+g {
+  background-color: inherit;
+  fill: inherit;
+}
 
 .c-sharp { color: #4e79a7 }
 .go { color: #4e79a7 }

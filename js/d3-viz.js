@@ -416,7 +416,6 @@ const line2 = d3.line()
    .append('g')
 
   routes.append("path")
-      .attr("fill", "none")
       .attr("d", d => line(d))
             .on('focus', (e, d) => {
         showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
@@ -493,7 +492,8 @@ function renderTreemap(filteredCells) {
 const data = vals.map(v => {
   return {
         "name" : v,
-        "children": filteredCells.filter(c => (c.y == v || c.x == v))
+        "children": filteredCells.filter(c => (c.y == v || c.x == v)),
+        "style": "none"
     }})
 
 
@@ -511,7 +511,6 @@ const data = vals.map(v => {
     const root = treemap(data)
 
       svgBase.append("filter")
-      .attr("id", "treemap-container")
     .append("feDropShadow")
       .attr("flood-opacity", 0.3)
       .attr("dx", 0)
@@ -521,18 +520,11 @@ const data = vals.map(v => {
        const node = svgBase.selectAll("g")
         .data(d3.group(root, d => d.height))
     .join("g")
-      .attr("filter", "treemap-container")
     .selectAll("g")
     .data(d => d[1])
     .join("g")
       .attr("transform", d => `translate(${d.x0},${d.y0})`);
 
-
-       const format = d3.format(",d");
-      node.append("title")
-      .text(d => `${d.ancestors().reverse().map(d => d.data.name).join("/")}\n${format(d.value)}`);
-
-       node.append("clipPath")
 
 
 
