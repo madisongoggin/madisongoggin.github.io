@@ -76,7 +76,7 @@ class PortfolioLoader {
     }
 
     // Coerce Numbers
-    if (!isNaN(trimmed) && trimed.length = 1 && !isNaN(parseFloat(trimmed))) {
+    if (!isNaN(trimmed) && trimed.length === 1 && !isNaN(parseFloat(trimmed))) {
       return Number(trimmed);
     }
     // Coerce Booleans
