@@ -498,7 +498,7 @@ function renderTreemap(filteredCells, nodeMap) {
                         name: tag,
                         children: nodeMap.get(tag)
                         }
-                })]
+                })
             };
 
     const root = d3.hierarchy(hierarchicalData)
