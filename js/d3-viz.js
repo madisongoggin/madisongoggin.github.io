@@ -277,12 +277,12 @@ async function createBody() {
 
 // Populate dropdown filter options
 function initFilters() {
-    const categories = [...new Set(portfolioData.tags.map(t => t.category))];
+    const allTags = Array.from(portfolioData.tags);
+    const categories = new Set(allTags.map(t => t.category))
     categories.forEach(cat => {
         const optGroup = document.createElement('optgroup');
         optGroup.label = cat.toUpperCase()
-        portfolioData.tags
-        .filter(t => t.category === cat)
+        allTags.filter(t => t.category === cat)
         .forEach(tag => {
             const option = document.createElement('option');
             option.value = tag.slug;
@@ -525,13 +525,13 @@ function treemap(data) {
 // --- Interactivity & Event Handling ---
 function updateVisualizations(selectedSlug) {
         const allCells = portfolioData.cells;
-        if (selectedSlug && selectedSlug !== 'all') {
+        if (selectedSlug !== 'all') {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
              renderMareyChart(filteredCells);
              renderTreemap(filteredCells);
            }
-       } else if (selectedSlug) {
+       } else if (selectedSlug === 'all') {
         renderMareyChart(allCells);
         renderTreemap(allCells);
     }
@@ -587,7 +587,11 @@ window.addEventListener('DOMContentLoaded', () => {
     initFilters(),
     createBody(),
     updateVisualizations('all')])
-    }).then(AddTooltips())
+    }).catch(err => {
+      console.log("error", err)
+    }).then(AddTooltips()).catch(err => {
+       console.log("error", err)
+    })
 });
 
 
