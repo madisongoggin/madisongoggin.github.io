@@ -4,6 +4,7 @@
 * Handles data parsing, state management, v7 chart rendering, accessibility attributes, and interactivity.
 */
 
+
 function tagClean(t) {
  if (String(t).includes(',')) {
     return Array.from(new Set(t.map((e) => (e.split(',').map((i) => i.trim())))))
@@ -12,12 +13,17 @@ function tagClean(t) {
 }
 
 class CSVParser {
+    constructor() {
+      this.QUOTE = '""'
+      this.NEWLINE = '\n'
+    }
     // Private cleaning method
     #cleanValue(value) {
+
         if (value === null || value === undefined || value.trim() === "") {
             return null;
         }
-        const trimmed = value.trim();
+        const trimmed = value.trim().replaceAll(this.QUOTE, '');
 
         // Coerce Basic Dates (YYYY-MM-DD)
         if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
@@ -37,13 +43,15 @@ class CSVParser {
     }
 
     parse(csvText) {
-        return d3.csvParse(csvText, (row) => {
-            const cleanedRow = {};
-            for (const [key, value] of Object.entries(row)) {
-                cleanedRow[key] = this.#cleanValue(value);
-            }
-            return cleanedRow;
-        });
+      let lines = csvText.split(this.NEWLINE)
+      let header = lines[0].split(',')
+      return lines.slice(1).forEach((row, i) => {
+        let cleanedLine = {};
+        row.split(',').forEach(c => {
+          cleanedLine[header[i]] = this.#cleanValue(c)
+        })
+        return cleanedLine
+      })
     }
 }
 
