@@ -50,13 +50,11 @@ class CSVParser {
 class PortfolioLoader {
    // Class constructor triggers the parallel download
   constructor() {
-    this.ready = false;
-    (this.#init().then(this.ready = true))
    this.requestHeader = new Headers({'Accept' : 'text'});
     this.parser = new CSVParser();
   }
  async #init() {
-    // Downloads and populates raw data caches asynchronously
+    // Downloads and populates rawdata caches asynchronously
     this._cell = await d3.json('./data/cells.json');
     this._tags = await d3.json('./data/tags.json');
     // Fetch as raw text and parse rows manually to avoid any eval usage
@@ -69,7 +67,6 @@ class PortfolioLoader {
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
   }
   async #fetchAndParseCSV(url) {
-    try {
     // 1. Download the file purely as raw string text
     const request = new Request(url)
 
@@ -77,17 +74,15 @@ class PortfolioLoader {
 
 
      if (!response.ok) {
-      throw new Error(`HTTP error! Status: ${response.status}`);
+      console.log(`HTTP error! Status: ${response.status}`)
+      return ;
     }
        const text = await response.text()
         return this.parser.parse(text)
 
-    } catch (error) {
-      console.log(`Error ${error}`)
-     }
-  }
+    }
 
-
+  async LoadAll () {await this.#init }
 
   // Getters allow you to access properties directly without parentheses
   get cells() { return this._cell; }
@@ -587,7 +582,7 @@ resetBtn.addEventListener('click', () => {
 
 
 window.addEventListener('DOMContentLoaded', () => {
-   portfolioData.ready.then(() => {
+   portfolioData.LoadAll().then(() => {
     Promise.allSettled([
     initFilters(),
     createBody(),
