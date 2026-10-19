@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="type text/html; charset=utf-8" >
     <meta name="referrer" content="same-origin">
     <meta name="description" content="Portfolio of Madison Goggin, MS, CISSP, Multi-Disciplinary Cybersecurity and AI Cross-Systems and Services Engineer.">
-    <meta http-equiv="content-security-policy" content="default-src 'self'; style-src 'self';"/>
+    <meta http-equiv="content-security-policy" content="default-src 'https://madisongoggin.github.io';"/>
     <title>Madison Goggin, MS, CISSP</title>
     <script type="module" crossorigin="anonymous" referrerpolicy="same-origin" src="https://madisongoggin.github.io/js/d3.v7.min.js"></script>
     <script type="module" async, crossorigin="anonymous" referrerpolicy="same-origin" src="https://madisongoggin.github.io/js/d3-viz.js"></script>
@@ -15,14 +15,12 @@
 </head>
 <body>
 <header class="site-header">
-    <div class="header-inner">
         <span class="brand-mark" aria-hidden="true">MG</span>
-        <span class="brand-text">
+        <span role="contentinfo" class="brand-text header-inner">
           <strong>Madison Goggin, MS, CISSP</strong>
           <summary> Cybersecurity and AI Cross-Systems and Services Engineer</summary>
         </span>
-        </div>
-  <ul class="hero-tags" aria-label="Focus areas">
+  <ul class="hero-tag" role="doc-toc" aria-label="Focus areas">
     <li>AI Safety</li>
     <li>Security Engineering</li>
     <li>DevSecAIOps</li>
@@ -32,72 +30,73 @@
   </ul>
 </header>
 <main>
-<section aria-label="about" class="panel">
-        <h2>Summary</h2>
-        <p>
+<section aria-label="about" role="doc-prologue" class="panel">
+        <h2 role="definition">Summary</h2>
+        <p role="contentinfo">
             I am a strategic technologist and multi-disciplinary, cross-systems Cybersecurity and AI  Engineer with over seven years of experience driving secure high availability, system, and database administration, intelligent process automation, and bespoke security tool development across complex state infrastructure. This page doubles a live map of my work: every tag below is drawn from a professional experience.</p>
 </section>
-<section aria-labelledby="controls-heading" class="panel">
+<section aria-labelledby="controls-heading" role="navigation" class="panel">
     <h2 id="controls-heading">Dashboard Controls and Filters</h2>
         <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <section aria-label="explore connections">
+            <section aria-label="explore connections" role="definition">
                     <h3> Explore Connections</h3>
                         <p class="text-sm text-slate-500">Click elements or use keyboard navigation to cross-filter projects, skill groups, and dependency structures.</p>
                 </section>
-                <section aria-label="Filters" class="flex flex-wrap items-center gap-3">
-                        <label for="tag-filter " class="legend-item">Filter Category:</label>
-                        <select id="tag-filter" class="legend-item">
-                            <option value="all">All Skill Categories</option>
+                <section aria-label="Filters" role="menuitemcheckbox" class="flex flex-wrap items-center gap-3">
+                        <label for="tag-filter" role="option" class="legend-item">Filter Category:</label>
+                        <select id="tag-filter" role="option" class="legend-item">
+                            <option value="all" role="option">All Skill Categories</option>
                     </select>
                     <button id="reset-filters" >
                         Reset Filters
                     </button>
             </div>
         </section>
+<section role="feed" class="panel" aria-label="marey">
+            <h2 id="marey-heading" class="panel-head">Cross-Systems Graph</h2>
+            <svg id="marey-container" class="visual" role="presentation" aria-label="Marey's Train Schedule style showing cross-systems experience and expertise."></svg>
+            <caption role="complementary">Marey's Train Schedule style showing cross-systems experience and expertise.</caption>
+</section>
 
-          <!-- Grid Layout for Visualizations -->
-        <div id="viz">
-            <section class="panel" aria-labelledby="marey">
-                <span aria-labelledby="mercy-panel-head">
-                        <h2 id="marey-heading" class="panel-head">Cross-Systems Graph</h2>
-                </span>
-                 <div id="marey-container" class="w-full h-full" role="region" aria-label="Marey's Train Schedule style showing cross-systems experience and expertise."></div>
-                 <caption>Marey's Train Schedule style showing cross-systems experience and expertise.</caption>
-            </section>
-        </div>
+<section role="feed" class="panel" aria-label="treemap">
+                <h2 id="treemap-heading" class="panel-head">Cross-Systems Treemap</h2>
+                    <svg id="treemap-container" class="visual" role="presentation" aria-label="Cascaded treemap visualization">
+                    </svg>
+                    <caption role="complementary">Hierarchical treemap of cross-systems experience and expertise.</caption>
+</section>
 
-<section aria-label="Experience" class="panel">
+<article aria-label="Experience" class="panel">
     <h2 id="expereince" class="header-inner">Experience</h2>
-    <dov class="card-grid" id="position"></div>
-</section>
+    <div class="card-grid" id="position" role="feed"></div>
+</article>
 
-<section aria-label="certifications" class="panel">
+<article aria-label="certifications" class="panel">
     <h2 class="header-inner" id="certs">Certifications</h2>
-    <div id='cert' class="card-grid"> </div>
-</section>
+    <div id='cert' class="card-grid" role="feed"> </div>
+</article>
 
-<section aria-label="Professional Service" class="panel">
+<article aria-label="Professional Service" class="panel">
     <h2 id="services" class="header-inner">Professional Service</h2>
-    <dov id="service" class="card-grid"></dov>
-</section>
+    <div id="service" class="card-grid" role="feed"></div>
+</article>
 
-<section aria-label="Professional Awards" class="panel">
+<article aria-label="Professional Awards" class="panel">
     <h2 id="awards" class="header-inner">Professional Awards</h2>
-    <div  id="award" class="card-grid"></div>
-</section>
+    <div id="award" class="card-grid" role="feed"></div>
+</article>
 
 
-<section aria-label="Education" class="panel">
+<article aria-label="Education" class="panel">
     <h2 class="header-inner" id="edus">Education</h2>
-    <div  class="card-grid" id="edu"> </div>
-</section>
+    <div  class="card-grid" id="edu" role="feed"> </div>
+</article>
 
-<section aria-label="Projects" class="panel">
+<article aria-label="Projects" class="panel">
     <h2 class="header-inner" id="projects">Selected Projects</h2>
-    <div id="project" class="card-grid"> </div>
-</section>
+    <div id="project" class="card-grid" role="feed"> </div>
+</article>
 
-<div id="floating-tooltip" aria-hidden="true" class="tooltip-transition">
+<div id="floating-tooltip" aria-hidden="true" role="tooltip" class="tooltip-transition">
 </div>
 </main>
   <footer class="site-footer">

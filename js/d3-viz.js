@@ -144,10 +144,9 @@ class PortfolioLoader {
 
 const portfolioData = new PortfolioLoader()
 
-const config = new Sanitizer('default')
-config.allowAttribute('class')
-config.allowAttribute('aria-label')
-
+const config = new Sanitizer({
+  attributes: ['class', 'role', 'aria-label']
+});
 
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
@@ -156,7 +155,7 @@ const resetBtn = document.getElementById('reset-filters');
 
 function displayTags(tags) {
     const allTags = Array.from(portfolioData.tags);
-    return `<ul class="tag-chips" aria-label="Tags">` +
+    return `<dl role='list' class="tag-chips" aria-label="Tags">` +
     String(tags).split(',')
     .map((t) => {
       // Use .find() instead of .filter() to get the single object directly
@@ -166,10 +165,10 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<li class="tag-chip ${tag.color}">${tag.name}</li>`;
+      return `<dt> <kbd class="${tag.color}">${tag.name}</dt></kbd> <dd>${tag.category}</dd>`;
     })
     .join(' ') + // Use .join('') to combine the array items without commas
-    '</ul>';
+    '</dl>';
 }
 async function createSections(key)  {
     let page = document.getElementById(key)
@@ -181,18 +180,17 @@ async function createSections(key)  {
             page.setHTML(
             postSummary.map(p => {
               return ```
-                <article class="card matrix-legend">
-                    <header class='tag-group'>
-                    <p class='eyebrow">${p.title}</p>
-                    <p class='ink-soft'>${p.org_name}</p>
-                    <p>``` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + ```</p>
-                    </header>``` +
+                <article role='feed' class="card matrix-legend">
+                    <h3 class='eyebrow">${p.title}</h3>
+                    <samp class='ink-soft'>${p.org_name}</samp>
+                    <p>``` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + `</p>` +
                     displayTags(p.tags) +
-                    `<ul class='simple-item">` +
+                    `<dl name='tasks' class='simple-item'>
+                    <dt>Major Tasks</dt>` +
                     (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map(b => {
-                       return `<li class='simple-item">${b.bullet_text}</li>`
-                  }).join(' ')  || p.bullet_tag) + '</ul></article>'
-                  }).join(' '), config
+                       return `<dd class='simple-item">${b.bullet_text}</dd>`
+                  }).join(' ')) + `</dl> </article>```
+                }).join('<hr />'), config
             )
             break;
         case 'cert':
@@ -200,15 +198,13 @@ async function createSections(key)  {
             page.setHTML(
             certs.map(c => {
                 return ```
-                <article class="card matrix-legend">
-                    <header class='tag-group'>
-                    <p class='eyebrow'>${c.cert_name}</p>``` +
+                <article role='feed' class="card matrix-legend">
+                    <h3 class='eyebrow">$${c.cert_name}</h3>``` +
                     displayTags(c.tag_slugs) +
-                    `</header>
-                    <p  class="ink-soft"'>${c.gov_body}</p>` +
+                    `<samp class="ink-soft"'>${c.gov_body}</samp>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
                     `</article>```
-            }).join(''), config
+            }).join('<hr />'), config
           )
             break;
         case 'edu':
@@ -217,67 +213,61 @@ async function createSections(key)  {
           page.setHTML(
             ed.map(e => {
                return ```
-                   <article class="matrix-legend card">
-                    <summary class='tag-group'>
-                    <p class='eyebrow'>${e.degree}</p>` +
-                    e.scholarship ? `<class="--ink-soft">${e.scholarship}</p>` : `` +
+                <article role='feed' class="card matrix-legend">
+                    <h3 class='eyebrow'>${e.degree}</p>` +
+                    e.scholarship ? `<p class="--ink-soft">${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     ```
-                    </summary>
-                     <p class="ink-soft"">${e.school}</p>``` +
+                     <samp class="ink-soft">${e.school}</samp>``` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`, config
-              }).join(' '), config)
+              }).join('<hr />'), config)
             break;
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
             page.setHTML(
             awards.map(a => {
            return ```
-                <article class="card matrix-legend">
-                    <summary class='tag-group'>
-                    <p class='eyebrow>'${a.title}</p>``` +
+                <article role='feed' class="card matrix-legend">
+                    <h3 class='eyebrow>'${a.title}</p>``` +
                     displayTags(a.tag_slug) +
-                    ```</summary>
-                    <p class="ink-soft"">${a.org_name}</p>
+                    ```
+                    <samp class="ink-soft"">${a.org_name}</samp>
                     </article>```
-            }).join(' '), config)
+            }).join('<hr />'), config)
             break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
             page.setHTML(
             services.map(s => {
            return ```
-                  <article class="card matrix-legend">
-                    <summary class='tag-group'>
-                    <p class='eyebrow'>${s.title}</p>
-                    <p class='ink-soft'">${s.org_name}</p>``` +
+                  <article role='feed' class="card matrix-legend">
+                    <h3 class='eyebrow'>${s.title}</h3>
+                    <samp class='ink-soft'">${s.org_name}</samp>``` +
                     displayTags(s.tag_slugs) +
-                    ```</summary>
-                    <p class="ink-soft'">``` +
+                    ``` <p class="ink-soft'">``` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
                     ```</p>
                     </article>```
-            }).join(' '), config);
+            }).join('<hr />'), config);
             break;
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
             page.setHTML(
             projects.map(p => {
                return ```
-                     <article class="card matrix-legend">
-                    <summary class = 'tag-group'>
-                        <p class='eyebrow'>``` +
+                  <article role='feed' class="card matrix-legend">
+                    <h3 class='eyebrow'>``` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
-                    `</p>` +
+                    `</h3>` +
                         p.status ? `<p class="ink-soft'">${p.status}</p>` : ``  +
                         displayTags(p.tags) +
-                ```</summary>
-                <p>${p.description}</p>``` +
-                   p.deploy_url ? `<p><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
+                ```
+                <samp>${p.description}</samp>``` +
+                   p.deploy_url ? `<samp><a target="_blank" href=${p.deploy_url}">Live demo</a></samp>` : ``
                + `</article>`
-            }).join(' '), config)
+            }).join('<hr />'), config)
             break;
         default:
             return;
@@ -301,25 +291,19 @@ function initFilters() {
     const categories = [...new Set(portfolioData.tags.map(t => t.category))];
     categories.forEach(cat => {
         const optGroup = document.createElement('optgroup');
-        optGroup.label = cat.toUpperCase();
+        optGroup.label = cat.toUpperCase()
         portfolioData.tags
         .filter(t => t.category === cat)
         .forEach(tag => {
             const option = document.createElement('option');
             option.value = tag.slug;
             option.textContent = tag.name;
+            option.role = "option"
             optGroup.appendChild(option);
         });
         tagFilterSelect.appendChild(optGroup);
     });
  }
-
-
-function hideTooltip() {
-    tooltip.setAttribute('aria-hidden', 'true');
-    tooltip.classList.remove('opacity-100', 'scale-100');
-    tooltip.classList.add('opacity-0', 'scale-95');
-}
 
 // --- 1. Marey's Train Schedule Timeline Chart ---
 function renderMareyChart(filteredCells) {
@@ -337,7 +321,7 @@ function renderMareyChart(filteredCells) {
     container.width = width
    container.height = height
   container.viewBox =  [0, 0, width, height]
-   container.role='img'
+   container.role='presentation'
    container.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
 
 
@@ -366,21 +350,19 @@ function renderMareyChart(filteredCells) {
    .call(g => g.append("line")
          .attr("class", (d => d.x))
         .attr('stroke-width', '3')
-         .attr('stroke-opacity', '4')
+         .attr('stroke-opacity', '0.7')
         .call(g => g.append("text")
           .attr("x", 12)
-          .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
     ))
  .append('g')
   .call(g => g.append("line")
          .attr("class", ( d => d.y))
         .attr('stroke-width', '3')
-         .attr('stroke-opacity', '4')
+         .attr('stroke-opacity', '0.7')
          .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
          .call(g => g.append("text")
              .attr("x", -12)
-             .attr("class", 'text-xs text-slate-600')
             .attr("dy", "0.35em")
      ))
     .call(d3.axisLeft(xScale).tickValues(xValues))
@@ -405,11 +387,12 @@ const line2 = d3.line()
       .curve(d3.curveMonotoneX);
 
    const svgBase = d3.select('#marey-container')
-    .append("svg")
     .attr('width', width)
     .attr('height', height)
      .attr('viewBox', [0, 0, width, height])
-     .attr('role', 'img')
+     .attr("preserveAspectRatio", "none")
+     .attr('role', 'presentation')
+     .attr('opacity', 1)
     .attr('ariaLabel', "Marey's Train Schedule style showing cross-systems experience and expertise.")
   .call(xAxis)
   .call(yAxis)
@@ -423,41 +406,27 @@ const line2 = d3.line()
 
   routes.append("path")
       .attr("d", d => line(d))
-            .on('focus', (e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-                   .on('click', (e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-      .on('mouseleave', hideTooltip)
+      .class("has-tooltip", true)
+      .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
+      .attr("text", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
       .enter()
       .append("path")
             .attr("d", d => line2(d))
             .attr("class", (d => d.y))
-            .on('focus', (e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-                   .on('click', (e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-      .on('mouseleave', hideTooltip)
-
+            .class("has-tooltip", true)
+            .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
+           .attr("text", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
 
   routes.append("g")
        .selectAll("circle")
       .attr("class", (d => d.x))
+      .class("has-tooltip", true)
       .attr('stroke-width', '3')
-      .attr('stroke-opacity', '4')
+      .attr('stroke-opacity', '.7')
+      .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
       .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
       .attr('cx', v => xScale(xValues.indexOf(v.x)))
-       .attr('cy', v => yScale(yValues.indexOf(v.y)))
-            .on('focus', (e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-                   .on('click', (e, d) => {
-        showTooltip(`Intersection of ${d.x} and ${d.y} with weight count ${d.count}`)
-      })
-            .on('mouseleave', hideTooltip)
+      .attr('cy', v => yScale(yValues.indexOf(v.y)))
 
         svgBase.node().removeAttribute('style')
 }
@@ -473,18 +442,17 @@ function renderTreemap(filteredCells) {
  container.width = width
   container.height = height
    container.viewBox =  [0, 0, width, height]
-   container.role='img'
+   container.role='presentation'
    container.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
 
 
 
 
    const svgBase = d3.select('#treemap-container')
-    .append("svg")
     .attr('width', width)
     .attr('height', height)
+      .attr('role', 'presentation')
      .attr('viewBox', [0, 0, width, height])
-     .attr('role', 'img')
     .attr('ariaLabel', "Hierarchical treemap of cross-systems experience and expertise")
 
 
@@ -499,28 +467,31 @@ const data = vals.map(v => {
   return {
         "name" : v,
         "children": filteredCells.filter(c => (c.y == v || c.x == v)),
-        "style": "none"
     }})
 
 
 
     const treemap = data => d3.treemap()
+        .attr('style', null)
         .size([width, height])
         .paddingOuter(3)
         .paddingTop(19)
         .paddingInner(2)
         .round(true)
-        (d3.hierarchy(data)
+        (d3.hierarchy({"name" : "root", children: [data]})
         .sum(d => d.count)
         .sort((a, b) => b.count - a.count));
 
-    const root = treemap(data)
 
-      svgBase.append("filter")
+      svgBase
+      .call(treemap)
+      .attr('style', null)
+      .append("filter")
     .append("feDropShadow")
       .attr("flood-opacity", 0.3)
       .attr("dx", 0)
-      .attr("stdDeviation", 3);
+      .attr("stdDeviation", 3)
+
 
 
        const node = svgBase.selectAll("g")
@@ -570,11 +541,11 @@ function updateVisualizations(selectedSlug) {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
              renderMareyChart(filteredCells);
-         //    renderTreemap(filteredCells);
+             renderTreemap(filteredCells);
            }
        } else if (selectedSlug) {
         renderMareyChart(allCells);
-       // renderTreemap(allCells);
+        renderTreemap(allCells);
     }
 }
 
@@ -585,6 +556,31 @@ function filterNodeMap(filteredCells) {
         return nodeMap.get(s)
     })
  }
+
+function AddTooltips() {
+    document.getElementsByClassName("has-tooltip").forEach((target) => {
+    target.addEventListener("mouseenter", (e) => {
+      const text = target.getAttribute("data-tooltip");
+      tooltip.textContent = text;
+
+      // Calculate coordinates relative to the target element
+      const rect = target.getBoundingClientRect();
+
+      // Position tooltip above the element, centered horizontally
+      const topPosition = rect.top + window.scrollY - tooltip.offsetHeight - 8;
+      const leftPosition = rect.left + window.scrollX + (rect.width / 2) - (tooltip.offsetWidth / 2);
+
+      tooltip.style.top = `${topPosition}px`;
+      tooltip.style.left = `${leftPosition}px`;
+
+      tooltip.classList.add("tooltip-visible");
+    });
+
+    target.addEventListener("mouseleave", () => {
+      tooltip.classList.remove("tooltip-visible");
+    });
+  })
+}
 
 
 tagFilterSelect.addEventListener('change', (e) => {
@@ -599,12 +595,14 @@ resetBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', () => {
    portfolioData.ready.then(() => {
-    Promise.any([
+    Promise.allSettled([
     initFilters(),
     createBody(),
     updateVisualizations('all')])
-    })
+    }).then(AddTooltips())
 });
+
+
 
 // Responsive resize listener
 window.addEventListener('resize', () => {
