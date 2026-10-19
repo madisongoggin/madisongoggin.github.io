@@ -12,8 +12,6 @@ function tagClean(t) {
  return Array.from(String(t.trim()))
 }
 
-const formatDate = d3.timeFormat("%b %Y");
-// Validate and sanitize incoming data structure
 
 class PortfolioLoader {
    // Class constructor triggers the parallel download
@@ -154,6 +152,12 @@ const config = new Sanitizer({
 const tooltip = document.getElementById('floating-tooltip');
 const tagFilterSelect = document.getElementById('tag-filter');
 const resetBtn = document.getElementById('reset-filters');
+
+
+const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' })
+function formatDate(date) {
+  return dateFormat.format(date)
+}
 
 function displayTags(tags) {
     const allTags = Array.from(portfolioData.tags);
@@ -320,11 +324,11 @@ function renderMareyChart(filteredCells) {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    container.width = width
-   container.height = height
-  container.viewBox =  [0, 0, width, height]
-   container.role='presentation'
-   container.ariaLabel = "Marey's Train Schedule style showing cross-systems experience and expertise."
+    container.setAttribute("width",width)
+   container.setAttribute("height", height)
+   container.setAttribute("viewBox",  [0, 0, width, height])
+  container.setAttribute("role", 'presentation')
+   container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
 
     // Extract unique X and Y sets
@@ -441,13 +445,13 @@ function renderTreemap(filteredCells) {
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
 
- container.width = width
-  container.height = height
-   container.viewBox =  [0, 0, width, height]
-   container.role='presentation'
-   container.ariaLabel = "Hierarchical treemap of cross-systems experience and expertise"
 
 
+    container.setAttribute("width",width)
+   container.setAttribute("height", height)
+   container.setAttribute("viewBox",  [0, 0, width, height])
+  container.setAttribute("role", 'presentation')
+  container.setAttribute("ariaLabel", "Hierarchical treemap of cross-systems experience and expertise")
 
 
    const svgBase = d3.select('#treemap-container')
