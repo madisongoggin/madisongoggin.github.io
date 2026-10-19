@@ -3,6 +3,8 @@
 * Secure Portfolio Visualization Module
 * Handles data parsing, state management, v7 chart rendering, accessibility attributes, and interactivity.
 */
+import * as d3 from './d3.v7.min.js';
+
 function tagClean(t) {
  if (String(t).includes(',')) {
     return Array.from(new Set(t.map((e) => (e.split(',').map((i) => i.trim())))))
