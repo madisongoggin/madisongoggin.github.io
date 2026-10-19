@@ -260,7 +260,7 @@ async function createSections(key)  {
             break;
         case 'project':
             const projects = portfolioData.rawProject;
-            const ProjectsHTML =  projects.map(p => {
+            const ProjectsHTML = projects.map(p => {
                return ```
                   <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>
@@ -269,7 +269,7 @@ async function createSections(key)  {
                         <p class="ink-soft'">${p.status ?? ''} </p>
                        ${displayTags(p.tags)}
                    <samp>${p.description}</samp>
-                   ${'<samp><a target="_blank" href="' + p.deploy_url + '>Live demo</a></samp>' ?? ''}
+                   ${'<samp><a target="_blank" href="' + p.deploy_url + '">Live demo</a></samp>' ?? ''}
                    </article>`
             }).join('<hr />')
             page.setHTML(ProjectsHTML, config)
@@ -281,13 +281,25 @@ async function createSections(key)  {
 }
 
 async function createBody() {
-    const sections = ['position', 'cert', 'service', 'award', 'edu', 'project']
-    const result = await Promise.all(
+    const sections = ['position', 'cert', 'service', 'award', 'edu', 'project'];
+
+    const result = await Promise.allSettled(
         sections.map(async (s) => {
-            return await createSections(s)
+            try {
+                console.log(`Starting section: ${s}`);
+                const res = await createSections(s);
+                console.log(`Successfully completed section: ${s}`);
+                return res;
+            } catch (err) {
+                console.error(`Error in section [${s}]:`, err);
+                throw err; // Ensures allSettled catches it properly
+            }
         })
     );
-    return result
+
+    // Optional: Log overall results to see what passed/failed
+    console.log("All sections settled:", result);
+    return result;
 }
 
 
@@ -609,8 +621,8 @@ window.addEventListener('DOMContentLoaded', async () => {
         await Promise.allSettled([
             initFilters(),
             createBody(),
-            Promise.all([updateVisualizations('all'), AddTooltips()])
-        ]);
+            updateVisualizations('all')
+        ]).then(() => AddTooltips())
 
     } catch (err) {
         console.log("error", err);
