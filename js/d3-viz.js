@@ -11,6 +11,42 @@ function tagClean(t) {
  return Array.from(String(t.trim()))
 }
 
+class CSVParser {
+      // Private cleaning method
+  #cleanValue(value) {
+    if (value === null || value === undefined || value.trim() === "") {
+      return null;
+    }
+    const trimmed = value.trim();
+
+    // Coerce Basic Dates (YYYY-MM-DD)
+    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+      return new Date(trimmed);
+    }
+
+    // Coerce Numbers (ensure it's numeric and not empty)
+    if (!isNaN(trimmed) && trimmed.length > 0 && !isNaN(parseFloat(trimmed))) {
+      return Number(trimmed);
+    }
+
+    // Coerce Booleans
+    if (trimmed.toLowerCase() === "true") return true;
+    if (trimmed.toLowerCase() === "false") return false;
+
+    return trimmed;
+   }
+  parse(csvText) {
+    return d3.csvParse(csvText, (row) => {
+      const cleanedRow = {};
+      for (const [key, value] of Object.entries(row)) {
+        cleanedRow[key] = this.#cleanValue(value);
+      }
+      return cleanedRow;
+    });
+  }
+}
+
+
 
 class PortfolioLoader {
    // Class constructor triggers the parallel download
@@ -30,10 +66,8 @@ class PortfolioLoader {
     this._posBullets = await this.#fetchAndParseCSV('./data/position_bullet.csv');
     this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
+    this.parser = new CSVParser()
   }
-
-
-
   async #fetchAndParseCSV(url) {
     try {
     // 1. Download the file purely as raw string text
@@ -44,58 +78,13 @@ class PortfolioLoader {
      if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-
-    // 2. Parse into a simple matrix of strings: [["header1", "header2"], ["row1col1", "row1col2"]]
-    // d3.csvParseRows is explicitly CSP-safe.
-
-    const returnedData = await response.text()
-    const rows = d3.csvParseRows(returnedData)
-
-    if (rows.length === 0) throw new Error(`No data returned for ${url}`)
-
-    // 3. Extract the headers (first row)
-    const headers = rows[0].split(',');
-
-    // 4. Map the remaining rows into objects and apply type casting manually
-    return rows.slice(1).map(rowValues => {
-      const obj = {};
-      headers.forEach((header, index) => {
-        obj[header] = this.#cleanValue(rowValues[index]);
-      });
-      return obj;
-    });
-   } catch (error) {
-    console.error(`Failed to fetch and parse with error ${error}`);
-    }
+    return this.parser.parse(response)
+    } catch (error) {
+      console.log(`Error ${error}`)
+     }
   }
 
-  /**
-   * Inline data coercion replacing d3.autoType safely
-   */
-  #cleanValue(value) {
-    if (value === null || value === undefined || value.trim() === "") {
-      return null;
-    }
-    // Clean whitespace
-    const trimmed = value.trim();
 
-       // Coerce Basic Dates (YYYY-MM-DD)
-    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
-      return new Date(trimmed);
-    }
-
-    // Coerce Numbers
-    if (!isNaN(trimmed) && trimmed.length === 1 && !isNaN(parseFloat(trimmed))) {
-      return Number(trimmed);
-    }
-    // Coerce Booleans
-    if (trimmed.toLowerCase() === "true") return true;
-    if (trimmed.toLowerCase() === "false") return false;
-
-
-
-    return trimmed;
-  }
 
   // Getters allow you to access properties directly without parentheses
   get cells() { return this._cell; }
@@ -485,7 +474,7 @@ function treemap(data) {
 
 
       svgBase
-      .call(treemap(data))
+      .call(treemap, data)
       .attr('style', null)
       .append("filter")
     .append("feDropShadow")
