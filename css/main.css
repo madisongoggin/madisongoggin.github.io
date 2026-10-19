@@ -308,17 +308,20 @@ thead th { background: var(--bg); }
   border: 1px solid color-mix(in srgb, var(--chip, var(--accent)) 45%, transparent);
   background: color-mix(in srgb, var(--chip, var(--accent)) 12%, transparent);
   border-bottom-width: 2px; border-radius: 4px; padding: .05em .35em;
+  marker: none;
 }
 
 
-.tag-chip dd {
+.tag-chips dd {
   display: none;
+  marker: none;
 }
 
 .tag-chips dt.active + dd {
   display: block;
   color: var(--ink-soft);
   font-size: .9rem;
+  marker: none;
 }
 
 .eyebrow h3 { padding-bottom: .4rem; border-bottom: 2px solid var(--accent-soft); }

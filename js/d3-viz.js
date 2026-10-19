@@ -3,7 +3,6 @@
 * Secure Portfolio Visualization Module
 * Handles data parsing, state management, v7 chart rendering, accessibility attributes, and interactivity.
 */
-import * as d3 from './d3.v7.min.js';
 
 function tagClean(t) {
  if (String(t).includes(',')) {
@@ -191,10 +190,10 @@ async function createSections(key)  {
                     <samp class='ink-soft'>${p.org_name}</samp>
                     <p>``` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + `</p>` +
                     displayTags(p.tags) +
-                    `<dl name='tasks' class='simple-item'>
+                    `<dl name='tasks'>
                     <dt>Major Tasks</dt>` +
                     (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map((b) => {
-                       return `<dd class='simple-item">${b.bullet_text}</dd>`
+                       return `<dd>${b.bullet_text}</dd>`
                   }).join(' ')) + `</dl> </article>```
                 }).join('<hr />'), config
             )
@@ -220,7 +219,7 @@ async function createSections(key)  {
             ed.map((e) => {
                return ```
                 <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>${e.degree}</p>` +
+                    <h3 class='eyebrow'>${e.degree}</h3>` +
                     e.scholarship ? `<p class="--ink-soft">${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
                     ```
@@ -235,7 +234,7 @@ async function createSections(key)  {
             awards.map((a) => {
            return ```
                 <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow>'${a.title}</p>``` +
+                    <h3 class='eyebrow>'${a.title}</h3>``` +
                     displayTags(a.tag_slug) +
                     ```
                     <samp class="ink-soft"">${a.org_name}</samp>
