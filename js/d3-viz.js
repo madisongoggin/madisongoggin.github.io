@@ -315,9 +315,9 @@ function renderMareyChart(filteredCells) {
 
 
     // Extract unique X and Y sets
-        const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
-        const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
-        const cats = [... new Set(filteredCells.map(c => c.category))].sort()
+        const xValues = [...new Set(filteredCells.x].sort();
+        const yValues = [...new Set(filteredCells.y)].sort();
+        const cats = [... new Set(filteredCells.category)].sort()
 
 
         const xScale =  d3.scaleOrdinal(xValues)
@@ -443,10 +443,10 @@ function renderTreemap(filteredCells) {
     .attr('ariaLabel', "Hierarchical treemap of cross-systems experience and expertise")
 
 
-    const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
-    const yValues = [...new Set(filteredCells.map(d => d.y))].sort();
+    const xValues = [...new Set(filteredCells.x)].sort();
+    const yValues = [...new Set(filteredCells.y)].sort();
     const vals = [... new Set(xValues, yValues)]
-     const cats = [... new Set(filteredCells.map(c => c.category))].sort()
+     const cats = [... new Set(filteredCells.category))].sort()
     // Build hierarchical data structure from tags and cells
 
 
@@ -539,7 +539,7 @@ function updateVisualizations(selectedSlug) {
 
 function filterNodeMap(filteredCells) {
     const nodeMap = new Map(Array.from(portfolioData.nodeMap));
-    const allSlugs = Array.from(new Set(filteredCells.map(c => c.x), filteredCells.map(c => c.y)))
+    const allSlugs = Array.from(new Set(filteredCells.x, filteredCells.y))
     allSlugs.map((s) => {
         return nodeMap.get(s)
     })
