@@ -51,10 +51,10 @@ class PortfolioLoader {
     const returnedData = await response.text()
     const rows = d3.csvParseRows(returnedData)
 
-    if (rows.length === 0) return [];
+    if (rows.length === 0) throw new Error(`No data returned for ${url}`)
 
     // 3. Extract the headers (first row)
-    const headers = rows[0];
+    const headers = rows[0].split(',');
 
     // 4. Map the remaining rows into objects and apply type casting manually
     return rows.slice(1).map(rowValues => {
@@ -65,7 +65,7 @@ class PortfolioLoader {
       return obj;
     });
    } catch (error) {
-    console.error("Failed to fetch and parse with:", error);
+    console.error(`Failed to fetch and parse with error ${error}`);
     }
   }
 
@@ -473,7 +473,6 @@ const data = vals.map(v => {
 
 function treemap(data) {
      return  d3.treemap()
-        .attr('style', null)
         .size([width, height])
         .paddingOuter(3)
         .paddingTop(19)
