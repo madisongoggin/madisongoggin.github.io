@@ -47,7 +47,7 @@ class CSVParser {
       let header = lines[0].split(',')
       return lines.slice(1).forEach((row, i) => {
         let cleanedLine = {};
-        row.split(',').forEach(c => {
+        row.split(',', header.length).forEach(c => {
           cleanedLine[header[i]] = this.#cleanValue(c)
         })
         return cleanedLine
@@ -598,7 +598,7 @@ resetBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        await portfolioData.LoadAll().catch((err) => console.log(err))
+        await portfolioData.LoadAll()
         console.log("Data loaded");
 
         // Define filteredCells here after data is available,
