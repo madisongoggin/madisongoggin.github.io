@@ -299,8 +299,6 @@ function renderMareyChart(filteredCells) {
     const container = document.getElementById('marey-container');
     container.innerHTML = '';
 
-
-
     const width = container.clientWidth || 600;
     const height = container.clientHeight || 350;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
