@@ -47,12 +47,12 @@ class CSVParser {
 }
 
 
-
 class PortfolioLoader {
    // Class constructor triggers the parallel download
   constructor() {
-    this.ready = this.#init();
+    this.ready = Promise.allSettled(this.#init());
    this.requestHeader = new Headers({'Accept' : 'text'});
+    this.parser = new CSVParser();
   }
  async #init() {
     // Downloads and populates raw data caches asynchronously
@@ -66,7 +66,6 @@ class PortfolioLoader {
     this._posBullets = await this.#fetchAndParseCSV('./data/position_bullet.csv');
     this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
     this._project = await this.#fetchAndParseCSV('./data/projects.csv');
-    this.parser = new CSVParser()
   }
   async #fetchAndParseCSV(url) {
     try {
@@ -79,8 +78,9 @@ class PortfolioLoader {
      if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    const text = await response.text()
-    return this.parser.parse(text)
+       const text = await response.text()
+        return this.parser.parse(text)
+
     } catch (error) {
       console.log(`Error ${error}`)
      }
