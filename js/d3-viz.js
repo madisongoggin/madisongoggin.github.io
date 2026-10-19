@@ -484,7 +484,7 @@ const data = vals.map(v => {
 
 
       svgBase
-      .call(treemap)
+      .call(treemap(data))
       .attr('style', null)
       .append("filter")
     .append("feDropShadow")
