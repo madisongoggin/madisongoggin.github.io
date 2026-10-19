@@ -568,6 +568,7 @@ function AddTooltips() {
       tooltip.classList.remove("tooltip-visible");
     });
   })
+  return 0
 }
 
 
@@ -581,17 +582,18 @@ resetBtn.addEventListener('click', () => {
 });
 
 
-window.addEventListener('DOMContentLoaded', () => {
-   portfolioData.LoadAll().then(() => {
+window.addEventListener('DOMContentLoaded', async () => {
+   await portfolioData.LoadAll().then(() => {
+    console.log("Data loaded")
     Promise.allSettled([
     initFilters(),
     createBody(),
-    updateVisualizations('all')])
+    updateVisualizations('all')]).then(AddTooltips()).catch(err => {
+      console.log(err);
     }).catch(err => {
       console.log("error", err)
-    }).then(AddTooltips()).catch(err => {
-       console.log("error", err)
-    })
+    });
+  })
 });
 
 
