@@ -471,7 +471,8 @@ const data = vals.map(v => {
 
 
 
-    const treemap = data => d3.treemap()
+function treemap(data) {
+     return  d3.treemap()
         .attr('style', null)
         .size([width, height])
         .paddingOuter(3)
@@ -481,6 +482,7 @@ const data = vals.map(v => {
         (d3.hierarchy({"name" : "root", children: [data]})
         .sum(d => d.count)
         .sort((a, b) => b.count - a.count));
+}
 
 
       svgBase
