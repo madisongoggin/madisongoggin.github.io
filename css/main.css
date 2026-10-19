@@ -31,17 +31,14 @@
   position: relative;
 }
 
-svg {
-  background-color: transparent;
-  fill: transparent;
-
-  display: inline;
+svg, g, path, line, text {
+  --current-color: unset;
+  background-color: unset;
+  fill: unset;
+  stroke: unset;
+  display: unset;
   }
 
-g {
-  background-color: inherit;
-  fill: inherit;
-}
 
 .c-sharp { color: #4e79a7 }
 .go { color: #4e79a7 }

@@ -144,10 +144,9 @@ class PortfolioLoader {
 
 const portfolioData = new PortfolioLoader()
 
-const config = new Sanitizer({})
+const config = new Sanitizer('default')
 config.allowAttribute('class')
 config.allowAttribute('aria-label')
-config.setComments(true)
 
 
 // DOM elements
@@ -157,7 +156,7 @@ const resetBtn = document.getElementById('reset-filters');
 
 function displayTags(tags) {
     const allTags = Array.from(portfolioData.tags);
-    return `<ul class="tag-chips aria-label="Tags">` +
+    return `<ul class="tag-chips" aria-label="Tags">` +
     String(tags).split(',')
     .map((t) => {
       // Use .find() instead of .filter() to get the single object directly
@@ -169,7 +168,7 @@ function displayTags(tags) {
       // Fix the nested double quotes around the CSS variable
       return `<li class="tag-chip ${tag.color}">${tag.name}</li>`;
     })
-    .join('') + // Use .join('') to combine the array items without commas
+    .join(' ') + // Use .join('') to combine the array items without commas
     '</ul>';
 }
 async function createSections(key)  {
@@ -181,32 +180,34 @@ async function createSections(key)  {
             const posBullets = Array.from(portfolioData.rawPosBullets)
             page.setHTML(
             postSummary.map(p => {
-              return `<article class="card matrix-legend">
+              return ```
+                <article class="card matrix-legend">
                     <header class='tag-group'>
                     <p class='eyebrow">${p.title}</p>
                     <p class='ink-soft'>${p.org_name}</p>
-                    <p>` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + `</p>
-                    </header>` +
+                    <p>``` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + ```</p>
+                    </header>``` +
                     displayTags(p.tags) +
                     `<ul class='simple-item">` +
                     (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map(b => {
                        return `<li class='simple-item">${b.bullet_text}</li>`
-                  }).join('')  || p.bullet_tag) + '</ul></article>'
-                  }).join(''), config
+                  }).join(' ')  || p.bullet_tag) + '</ul></article>'
+                  }).join(' '), config
             )
             break;
         case 'cert':
             const certs = Array.from(portfolioData.rawCert);
             page.setHTML(
             certs.map(c => {
-                return `<article class="card matrix-legend">
+                return ```
+                <article class="card matrix-legend">
                     <header class='tag-group'>
-                    <p class='eyebrow'>${c.cert_name}</p>` +
+                    <p class='eyebrow'>${c.cert_name}</p>``` +
                     displayTags(c.tag_slugs) +
                     `</header>
                     <p  class="ink-soft"'>${c.gov_body}</p>` +
                     c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
-                    `</article>`
+                    `</article>```
             }).join(''), config
           )
             break;
@@ -215,63 +216,68 @@ async function createSections(key)  {
           ed.reverse()
           page.setHTML(
             ed.map(e => {
-               return `<article class="matrix-legend card">
-                    <header class='tag-group'>
+               return ```
+                   <article class="matrix-legend card">
+                    <summary class='tag-group'>
                     <p class='eyebrow'>${e.degree}</p>` +
                     e.scholarship ? `<class="--ink-soft">${e.scholarship}</p>` : `` +
                     displayTags(e.tag_slugs) +
-                    `</header>
-                     <p class="ink-soft"">${e.school}</p>` +
+                    ```
+                    </summary>
+                     <p class="ink-soft"">${e.school}</p>``` +
                      e.capiton ? `<p>${e.capiton}</p>` : `` +
                     `</article>`, config
-              }).join(''), config)
+              }).join(' '), config)
             break;
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
             page.setHTML(
             awards.map(a => {
-           return `<article class="card matrix-legend">
-                    <header class='tag-group'>
-                    <p class='eyebrow'${a.title}</p>` +
+           return ```
+                <article class="card matrix-legend">
+                    <summary class='tag-group'>
+                    <p class='eyebrow>'${a.title}</p>``` +
                     displayTags(a.tag_slug) +
-                    `</header>
+                    ```</summary>
                     <p class="ink-soft"">${a.org_name}</p>
-                    </article>`
-            }).join(''), config)
+                    </article>```
+            }).join(' '), config)
             break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
             page.setHTML(
             services.map(s => {
-           return `<article class="card matrix-legend">
-                    <header class='tag-group'>
+           return ```
+                  <article class="card matrix-legend">
+                    <summary class='tag-group'>
                     <p class='eyebrow'>${s.title}</p>
-                    <p class='ink-soft'">${s.org_name}</p>` +
+                    <p class='ink-soft'">${s.org_name}</p>``` +
                     displayTags(s.tag_slugs) +
-                    `</header>
-                    <p class="ink-soft'">` +
+                    ```</summary>
+                    <p class="ink-soft'">``` +
                  formatDate(s.start_date) +
              s.end_date ? ' -' + formatDate(s.end_date) : '' +
-                    `</p>
-                    </article>`
-            }).join(''), config);
+                    ```</p>
+                    </article>```
+            }).join(' '), config);
             break;
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
             page.setHTML(
             projects.map(p => {
-               return `<article class="card matrix-legend">
-                    <header class = 'tag-group'>
-                        <p class='eyebrow'>` +
+               return ```
+                     <article class="card matrix-legend">
+                    <summary class = 'tag-group'>
+                        <p class='eyebrow'>``` +
                         p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
                     `</p>` +
-                        p.status ? `<p class="ink-soft'">${p.status }}</p>` : ``  +
+                        p.status ? `<p class="ink-soft'">${p.status}</p>` : ``  +
                         displayTags(p.tags) +
-                `</header>
-                <p>${p.description}</p>` +
+                ```</summary>
+                <p>${p.description}</p>``` +
                    p.deploy_url ? `<p><a target="_blank" href=${p.deploy_url}">Live demo</a></p>` : ``
                + `</article>`
-            }).join(''), config)
+            }).join(' '), config)
             break;
         default:
             return;
@@ -544,9 +550,14 @@ const data = vals.map(v => {
 
   node.filter(d => !d.children).selectAll("tspan")
       .attr("x", 3)
+      .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`)
       .attr("y", (d, i, nodes) => `${(i === nodes.length - 1) * 0.3 + 1.1 + i * 0.9}em`);
 
-    svgBase.node().removeAttribute("style");
+
+      svgBase.node().removeAttribute("style")
+
+
+
     }
 
 
