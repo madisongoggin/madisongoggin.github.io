@@ -75,10 +75,12 @@ class PortfolioLoader {
 
     const response = await  fetch(request, this.reqHeader)
 
+
      if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
     }
-    return this.parser.parse(response)
+    const text = await response.text()
+    return this.parser.parse(text)
     } catch (error) {
       console.log(`Error ${error}`)
      }
@@ -485,7 +487,7 @@ function treemap(data) {
 
 
        const node = svgBase.selectAll("g")
-        .data(d3.group(root, d => d.height))
+        .data(d3.group(data, d => d.name))
     .join("g")
     .selectAll("g")
     .data(d => d[1])
