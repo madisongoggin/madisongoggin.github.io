@@ -50,7 +50,8 @@ class CSVParser {
 class PortfolioLoader {
    // Class constructor triggers the parallel download
   constructor() {
-    this.ready = Promise.allSettled(this.#init());
+    this.ready = false;
+    (this.#init.then(this.ready = true))
    this.requestHeader = new Headers({'Accept' : 'text'});
     this.parser = new CSVParser();
   }
