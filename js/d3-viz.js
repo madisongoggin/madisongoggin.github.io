@@ -12,77 +12,85 @@ function tagClean(t) {
 }
 
 class CSVParser {
-      // Private cleaning method
-  #cleanValue(value) {
-    if (value === null || value === undefined || value.trim() === "") {
-      return null;
+    // Private cleaning method
+    #cleanValue(value) {
+        if (value === null || value === undefined || value.trim() === "") {
+            return null;
+        }
+        const trimmed = value.trim();
+
+        // Coerce Basic Dates (YYYY-MM-DD)
+        if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
+            return new Date(trimmed);
+        }
+
+        // Coerce Numbers (ensure it's numeric and not empty)
+        if (!isNaN(trimmed) && trimmed.length > 0 && !isNaN(parseFloat(trimmed))) {
+            return Number(trimmed);
+        }
+
+        // Coerce Booleans
+        if (trimmed.toLowerCase() === "true") return true;
+        if (trimmed.toLowerCase() === "false") return false;
+
+        return trimmed;
     }
-    const trimmed = value.trim();
 
-    // Coerce Basic Dates (YYYY-MM-DD)
-    if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
-      return new Date(trimmed);
+    parse(csvText) {
+        return d3.csvParse(csvText, (row) => {
+            const cleanedRow = {};
+            for (const [key, value] of Object.entries(row)) {
+                cleanedRow[key] = this.#cleanValue(value);
+            }
+            return cleanedRow;
+        });
     }
-
-    // Coerce Numbers (ensure it's numeric and not empty)
-    if (!isNaN(trimmed) && trimmed.length > 0 && !isNaN(parseFloat(trimmed))) {
-      return Number(trimmed);
-    }
-
-    // Coerce Booleans
-    if (trimmed.toLowerCase() === "true") return true;
-    if (trimmed.toLowerCase() === "false") return false;
-
-    return trimmed;
-   }
-  parse(csvText) {
-    return d3.csvParse(csvText, (row) => {
-      const cleanedRow = {};
-      for (const [key, value] of Object.entries(row)) {
-        cleanedRow[key] = this.#cleanValue(value);
-      }
-      return cleanedRow;
-    });
-  }
 }
 
-
 class PortfolioLoader {
-   // Class constructor triggers the parallel download
-  constructor() {
-   this.requestHeader = new Headers({'Accept' : 'text'});
-    this.parser = new CSVParser();
-  }
- async #init() {
-    // Downloads and populates rawdata caches asynchronously
-    this._cell = await d3.json('./data/cells.json');
-    this._tags = await d3.json('./data/tags.json');
-    // Fetch as raw text and parse rows manually to avoid any eval usage
-    this._rawCert = await this.#fetchAndParseCSV('./data/certification.csv');
-    this._rawEdu = await this.#fetchAndParseCSV('./data/education.csv');
-    this._rawService = await this.#fetchAndParseCSV('/data/professional_service.csv');
-    this._rawPosition = await this.#fetchAndParseCSV('./data/position.csv');
-    this._posBullets = await this.#fetchAndParseCSV('./data/position_bullet.csv');
-    this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
-    this._project = await this.#fetchAndParseCSV('./data/projects.csv');
-  }
-  async #fetchAndParseCSV(url) {
-    // 1. Download the file purely as raw string text
-    const request = new Request(url)
-
-    const response = await  fetch(request, this.reqHeader)
-
-
-     if (!response.ok) {
-      console.log(`HTTP error! Status: ${response.status}`)
-      return ;
+    constructor() {
+        // Fixed: match property name (requestHeader)
+        this.requestHeader = new Headers({'Accept': 'text'});
+        this.parser = new CSVParser();
     }
-       const text = await response.text()
+
+    async #init() {
+        // Downloads and populates rawdata caches asynchronously
+        this._cell = await d3.json('./data/cells.json');
+        this._tags = await d3.json('./data/tags.json');
+
+        // Fetch as raw text and parse rows manually
+        this._rawCert = await this.#fetchAndParseCSV('./data/certification.csv');
+        this._rawEdu = await this.#fetchAndParseCSV('./data/education.csv');
+
+        // Fixed: changed leading slash to relative path for consistency './data/...'
+        this._rawService = await this.#fetchAndParseCSV('./data/professional_service.csv');
+
+        this._rawPosition = await this.#fetchAndParseCSV('./data/position.csv');
+        this._posBullets = await this.#fetchAndParseCSV('./data/position_bullet.csv');
+        this._award = await this.#fetchAndParseCSV('./data/professional_award.csv');
+        this._project = await this.#fetchAndParseCSV('./data/projects.csv');
+    }
+
+    async #fetchAndParseCSV(url) {
+        const request = new Request(url);
+
+        // Fixed: use this.requestHeader instead of undefined this.reqHeader
+        const response = await fetch(request, { headers: this.requestHeader });
+
+        if (!response.ok) {
+            console.log(`HTTP error! Status: ${response.status} for URL: ${url}`);
+            return;
+        }
+        const text = await response.text();
         return this.parser.parse(text)
 
-    }
+      }
 
-  async LoadAll () {await this.#init }
+      async LoadAll() {
+        // Fixed: added parentheses () so the async method actually executes
+        await this.#init();
+    }
 
   // Getters allow you to access properties directly without parentheses
   get cells() { return this._cell; }
@@ -582,7 +590,7 @@ resetBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        await portfolioData.LoadAll();
+        await portfolioData.LoadAll().catch((err) => console.log(err))
         console.log("Data loaded");
 
         // Define filteredCells here after data is available,
