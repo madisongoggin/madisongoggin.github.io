@@ -543,7 +543,7 @@ function filterNodeMap(filteredCells) {
     })
  }
 
-function AddTooltips() {
+async function AddTooltips() {
     Array.from(document.getElementsByClassName("has-tooltip")).forEach((target) => {
     target.addEventListener("mouseenter", (e) => {
       const text = target.getAttribute("data-tooltip");
@@ -581,20 +581,25 @@ resetBtn.addEventListener('click', () => {
 
 
 window.addEventListener('DOMContentLoaded', async () => {
-   await portfolioData.LoadAll().then(() => {
-    console.log("Data loaded")
-    Promise.allSettled([
-    initFilters(),
-    createBody(),
-    updateVisualizations('all')]).then(AddTooltips()).catch(err => {
-      console.log(err);
-    }).catch(err => {
-      console.log("error", err)
-    });
-  })
+    try {
+        await portfolioData.LoadAll();
+        console.log("Data loaded");
+
+        // Define filteredCells here after data is available,
+        // or ensure it's populated from your loaded data source:
+        // const filteredCells = ...;
+        // const xValues = [...new Set(filteredCells.map(d => d.x))].sort();
+
+        await Promise.allSettled([
+            initFilters(),
+            createBody(),
+            Promise.all([updateVisualizations('all'), AddTooltips()])
+        ]);
+
+    } catch (err) {
+        console.log("error", err);
+    }
 });
-
-
 
 // Responsive resize listener
 window.addEventListener('resize', () => {
