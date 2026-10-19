@@ -146,7 +146,7 @@ function formatDate(date) {
 }
 
 function displayTags(tags) {
-    const allTags = Array.from(portfolioData.tags);
+    const allTags = portfolioData.tags;
     return `<dl role='list' class="tag-chips" aria-label="Tags">` +
     String(tags).split(',')
     .map((t) => {
@@ -167,8 +167,8 @@ async function createSections(key)  {
     page.class = 'card-grid'
     switch (key) {
         case 'position':
-            const postSummary = Array.from(portfolioData.rawPosition)
-            const posBullets = Array.from(portfolioData.rawPosBullets)
+            const postSummary = portfolioData.rawPosition
+            const posBullets = portfolioData.rawPosBullets
             const postHTML =  postSummary.map(p => {
               return ```
                 <article role='feed' class="card matrix-legend">
@@ -188,7 +188,7 @@ async function createSections(key)  {
             page.setHTML(postHTML, config)
             break;
         case 'cert':
-            const certs = Array.from(portfolioData.rawCert);
+            const certs = portfolioData.rawCert;
              const certHtml =  certs.map(c => {
                 return ```
                 <article role='feed' class="card matrix-legend">
@@ -201,7 +201,7 @@ async function createSections(key)  {
             page.setHTML(certHtml, config)
             break;
         case 'edu':
-            const ed = Array.from(portfolioData.rawEdu)
+            const ed =  portfolioData.rawEdu
           ed.reverse()
           const edHtml = d.map(e => {
                return ```
@@ -215,7 +215,7 @@ async function createSections(key)  {
           page.setHTML(edHtml, config)
             break;
      case 'award':
-            const awards =  Array.from(portfolioData.rawAward)
+            const awards = portfolioData.rawAward
             const awardsHTML = awards.map(a => {
            return ```
                 <article role='feed' class="card matrix-legend">
@@ -227,7 +227,7 @@ async function createSections(key)  {
             page.setHTML(awardsHTML, config);
             break;
         case 'service':
-            const services = Array.from(portfolioData.rawService)
+            const services = portfolioData.rawService
             const serviceHTML = services.map(s => {
            return ```
                   <article role='feed' class="card matrix-legend">
@@ -243,7 +243,7 @@ async function createSections(key)  {
             page.setHTML(serviceHTML, config)
             break;
         case 'project':
-            const projects = Array.from(portfolioData.rawProject);
+            const projects = portfolioData.rawProject;
             const ProjectsHTML =  projects.map(p => {
                return ```
                   <article role='feed' class="card matrix-legend">
@@ -277,7 +277,7 @@ async function createBody() {
 
 // Populate dropdown filter options
 function initFilters() {
-    const allTags = Array.from(portfolioData.tags);
+    const allTags = portfolioData.tags;
     const categories = new Set(allTags.map(t => t.category))
     categories.forEach(cat => {
         const optGroup = document.createElement('optgroup');
