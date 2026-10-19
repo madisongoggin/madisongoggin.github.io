@@ -182,97 +182,94 @@ async function createSections(key)  {
         case 'position':
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
-            page.setHTML(
-            postSummary.map((p) => {
+            const postHTML =  postSummary.map(p => {
               return ```
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow">${p.title}</h3>
                     <samp class='ink-soft'>${p.org_name}</samp>
-                    <p>``` + formatDate(p.start_date) + ' - '  + formatDate(p.end_Date) + `</p>` +
-                    displayTags(p.tags) +
-                    `<dl name='tasks'>
-                    <dt>Major Tasks</dt>` +
-                    (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map((b) => {
-                       return `<dd>${b.bullet_text}</dd>`
-                  }).join(' ')) + `</dl> </article>```
-                }).join('<hr />'), config
-            )
+                    <p>${formatDate(p.start_date)}  - ${formatDate(p.end_Date)} </p>
+                    ${displayTags(p.tags)}
+                    <dl name='tasks'>
+                    <dt>Major Tasks</dt>
+                    ${
+                      posBullets.filter(
+                        b => b.bullet_tag.includes(p.bullet_tag))
+                        .map(b => `<dd>${b.bullet_text}</dd>`
+                      ).join(' ')
+                  }</dl> </article>```
+                }).join('<hr />')
+            page.setHTML(postHTML, config)
             break;
         case 'cert':
             const certs = Array.from(portfolioData.rawCert);
-            page.setHTML(
-            certs.map((c) => {
+             const certHtml =  certs.map(c => {
                 return ```
                 <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow">$${c.cert_name}</h3>``` +
-                    displayTags(c.tag_slugs) +
-                    `<samp class="ink-soft"'>${c.gov_body}</samp>` +
-                    c.earn_date ? `<p>`+ formatDate(c.earn_date) +` </p>` : `` +
-                    `</article>```
-            }).join('<hr />'), config
-          )
+                    <h3 class='eyebrow">$${c.cert_name}</h3>
+                    ${displayTags(c.tag_slugs)}
+                    <samp class="ink-soft"'>${c.gov_body}</samp>
+                    <p>${formatDate(c.earn_date) ?? ''}</p>
+                    </article>```
+            }).join('<hr />')
+            page.setHTML(certHtml, config)
             break;
         case 'edu':
             const ed = Array.from(portfolioData.rawEdu)
           ed.reverse()
-          page.setHTML(
-            ed.map((e) => {
+          const edHtml = d.map(e => {
                return ```
                 <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>${e.degree}</h3>` +
-                    e.scholarship ? `<p class="--ink-soft">${e.scholarship}</p>` : `` +
-                    displayTags(e.tag_slugs) +
-                    ```
-                     <samp class="ink-soft">${e.school}</samp>``` +
-                     e.capiton ? `<p>${e.capiton}</p>` : `` +
-                    `</article>`, config
-              }).join('<hr />'), config)
+                    <h3 class='eyebrow'>${e.degree}</h3>
+                    <p class="--ink-soft">${e.scholarship ?? ''}</p>
+                    ${displayTags(e.tag_slugs)}
+                     <samp class="ink-soft">${e.school}</samp>
+                    <p>${e.capiton ?? '' }</p></article>`
+              }).join('<hr />')
+          page.setHTML(edHtml, config)
             break;
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
-            page.setHTML(
-            awards.map((a) => {
+            const awardsHTML = awards.map(a => {
            return ```
                 <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow>'${a.title}</h3>``` +
-                    displayTags(a.tag_slug) +
-                    ```
+                    <h3 class='eyebrow>'${a.title}</h3>
+                    ${displayTags(a.tag_slug)}
                     <samp class="ink-soft"">${a.org_name}</samp>
                     </article>```
-            }).join('<hr />'), config)
+            }).join('<hr />')
+            page.setHTML(awardsHTML, config);
             break;
         case 'service':
             const services = Array.from(portfolioData.rawService)
-            page.setHTML(
-            services.map((s) => {
+            const serviceHTML = services.map(s => {
            return ```
                   <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>${s.title}</h3>
-                    <samp class='ink-soft'">${s.org_name}</samp>``` +
-                    displayTags(s.tag_slugs) +
-                    ``` <p class="ink-soft'">``` +
-                 formatDate(s.start_date) +
-             s.end_date ? ' -' + formatDate(s.end_date) : '' +
-                    ```</p>
+                    <samp class='ink-soft'">${s.org_name}</samp>
+                    ${displayTags(s.tag_slugs)}
+                     <p class="ink-soft'">
+                     ${formatDate(s.start_date)}
+                    ' -' ${formatDate(s.end_date) ?? 'Present'}
+                    </p>
                     </article>```
-            }).join('<hr />'), config);
+            }).join('<hr />')
+            page.setHTML(serviceHTML, config)
             break;
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
-            page.setHTML(
-            projects.map((p) => {
+            const ProjectsHTML =  projects.map(p => {
                return ```
                   <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>``` +
-                        p.repo_url ? `<a target="_blank" href="${p.repo_url}">${p.name}</a>` : p.name
-                    `</h3>` +
-                        p.status ? `<p class="ink-soft'">${p.status}</p>` : ``  +
-                        displayTags(p.tags) +
-                ```
-                <samp>${p.description}</samp>``` +
-                   p.deploy_url ? `<samp><a target="_blank" href=${p.deploy_url}">Live demo</a></samp>` : ``
-               + `</article>`
-            }).join('<hr />'), config)
+                    <h3 class='eyebrow'>
+                        ${`<a target="_blank" href="` + p.repo_url + `">${p.name}</a>`?? p.name}
+                    </h3>
+                        <p class="ink-soft'">${p.status ?? ''} </p>
+                       ${displayTags(p.tags)}
+                   <samp>${p.description}</samp>
+                   ${'<samp><a target="_blank" href="' + p.deploy_url + '>Live demo</a></samp>' ?? ''}
+                   </article>`
+            }).join('<hr />')
+            page.setHTML(ProjectsHTML, config)
             break;
         default:
             return;
@@ -411,21 +408,19 @@ const line2 = d3.line()
 
   routes.append("path")
       .attr("d", d => line(d))
-      .class("has-tooltip", true)
+      .attr("class", "has-toolip")
       .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
       .attr("text", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
       .enter()
       .append("path")
             .attr("d", d => line2(d))
-            .attr("class", (d => d.y))
-            .class("has-tooltip", true)
+            .attr("class", (d => ("has-tooltip", d.y)))
             .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
            .attr("text", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
 
   routes.append("g")
        .selectAll("circle")
-      .attr("class", (d => d.x))
-      .class("has-tooltip", true)
+      .attr("class", (d => ("has-tooltip", d.x)))
       .attr('stroke-width', '3')
       .attr('stroke-opacity', '.7')
       .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
