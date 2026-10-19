@@ -165,7 +165,7 @@ function displayTags(tags) {
       if (!tag) return '';
 
       // Fix the nested double quotes around the CSS variable
-      return `<dt> <kbd class="${tag.color}">${tag.name}</dt></kbd> <dd>${tag.category}</dd>`;
+       return `<dt> <kbd class="${tag.color}">${tag.name}</dt></kbd> <dd>${tag.category}</dd>`;
     })
     .join(' ') + // Use .join('') to combine the array items without commas
     '</dl>';
@@ -178,7 +178,7 @@ async function createSections(key)  {
             const postSummary = Array.from(portfolioData.rawPosition)
             const posBullets = Array.from(portfolioData.rawPosBullets)
             page.setHTML(
-            postSummary.map(p => {
+            postSummary.map((p) => {
               return ```
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow">${p.title}</h3>
@@ -187,7 +187,7 @@ async function createSections(key)  {
                     displayTags(p.tags) +
                     `<dl name='tasks' class='simple-item'>
                     <dt>Major Tasks</dt>` +
-                    (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map(b => {
+                    (posBullets.filter(b => b.bullet_tag.includes(p.bullet_tag)).map((b) => {
                        return `<dd class='simple-item">${b.bullet_text}</dd>`
                   }).join(' ')) + `</dl> </article>```
                 }).join('<hr />'), config
@@ -196,7 +196,7 @@ async function createSections(key)  {
         case 'cert':
             const certs = Array.from(portfolioData.rawCert);
             page.setHTML(
-            certs.map(c => {
+            certs.map((c) => {
                 return ```
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow">$${c.cert_name}</h3>``` +
@@ -211,7 +211,7 @@ async function createSections(key)  {
             const ed = Array.from(portfolioData.rawEdu)
           ed.reverse()
           page.setHTML(
-            ed.map(e => {
+            ed.map((e) => {
                return ```
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>${e.degree}</p>` +
@@ -226,7 +226,7 @@ async function createSections(key)  {
      case 'award':
             const awards =  Array.from(portfolioData.rawAward)
             page.setHTML(
-            awards.map(a => {
+            awards.map((a) => {
            return ```
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow>'${a.title}</p>``` +
@@ -239,7 +239,7 @@ async function createSections(key)  {
         case 'service':
             const services = Array.from(portfolioData.rawService)
             page.setHTML(
-            services.map(s => {
+            services.map((s) => {
            return ```
                   <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>${s.title}</h3>
@@ -255,7 +255,7 @@ async function createSections(key)  {
         case 'project':
             const projects = Array.from(portfolioData.rawProject);
             page.setHTML(
-            projects.map(p => {
+            projects.map((p) => {
                return ```
                   <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>``` +
@@ -560,7 +560,7 @@ function filterNodeMap(filteredCells) {
  }
 
 function AddTooltips() {
-    document.getElementsByClassName("has-tooltip").forEach((target) => {
+    Array.from(document.getElementsByClassName("has-tooltip")).forEach((target) => {
     target.addEventListener("mouseenter", (e) => {
       const text = target.getAttribute("data-tooltip");
       tooltip.textContent = text;
