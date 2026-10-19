@@ -278,7 +278,7 @@ async function createBody() {
 // Populate dropdown filter options
 function initFilters() {
     const allTags = portfolioData.tags;
-    const categories = new Set(allTags.map(t => t.category))
+    const categories = new Set(allTags.category)
     categories.forEach(cat => {
         const optGroup = document.createElement('optgroup');
         optGroup.label = cat.toUpperCase()
@@ -446,7 +446,7 @@ function renderTreemap(filteredCells) {
     const xValues = [...new Set(filteredCells.x)].sort();
     const yValues = [...new Set(filteredCells.y)].sort();
     const vals = [... new Set(xValues, yValues)]
-     const cats = [... new Set(filteredCells.category))].sort()
+     const cats = [... new Set(filteredCells.category)].sort()
     // Build hierarchical data structure from tags and cells
 
 
