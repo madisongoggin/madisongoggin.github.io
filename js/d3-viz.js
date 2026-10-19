@@ -315,7 +315,7 @@ function renderMareyChart(filteredCells) {
 
 
     // Extract unique X and Y sets
-        const xValues = [...new Set(filteredCells.x].sort();
+        const xValues = [...new Set(filteredCells.x)].sort();
         const yValues = [...new Set(filteredCells.y)].sort();
         const cats = [... new Set(filteredCells.category)].sort()
 
