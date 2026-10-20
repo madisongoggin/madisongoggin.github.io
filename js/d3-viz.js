@@ -231,7 +231,7 @@ function displayTags(tags) {
       const item = document.createElement('dt')
       item.ariaLabel = 'Tag'
       item.role = 'group'
-      item.textContent = t.slug.trim().replace('-', ' ')
+      item.textContent = t.trim().replace('-', ' ')
 
       const desc = document.createElement('dd')
       desc.className = 'tag-chips'
@@ -494,7 +494,7 @@ function initFilters() {
     const categories = [...new Set(allTags.map(t => t.category))];
     categories.forEach(cat => {
         const optGroup = document.createElement('optgroup');
-        optGroup.label = cat.toUpperCase()
+        optGroup.label = cat.toUpperCase().replace('-', ' ')
         portfolioData.tags
         .filter(t => t.category === cat)
         .forEach(tag => {
