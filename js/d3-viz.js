@@ -225,13 +225,14 @@ function displayTags(tags) {
     tagList.className = 'tag-chips'
     tagList.ariaLabel = 'Tags'
     tagList.role = 'list'
-    item.classList.add(['tag-chips'])
+
     tags.split(',').map (t => {
       // Use .find() instead of .filter() to get the single object directly
       let tag = allTags.find(t1 => t1.slug === t.trim());
       let item = document.createElement('li')
       item.ariaLabel = 'Tag'
       item.textContent = t.trim()
+          item.classList.add(['tag-chips'])
 
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {

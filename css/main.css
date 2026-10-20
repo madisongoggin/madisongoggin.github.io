@@ -37,6 +37,13 @@
   position: relative;
 }
 
+svg {
+  overflow: scroll;
+  overflow-wrap: normal;
+  align-items: start;
+  align-content: start;
+}
+
 
 .flash-error { color: var(--magenta); background-color: var(--accent-soft); border:  1px solid var(--accent-soft);}
 
