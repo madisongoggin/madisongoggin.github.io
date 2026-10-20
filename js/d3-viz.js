@@ -162,7 +162,7 @@ function formatDate(date) {
 }
 
 function displayTags(tags) {
-    const allTags = portfolioData.tags;
+    const allTags = window.portfolioData.tags;
     return `<dl role='list' class="tag-chips" aria-label="Tags">
     ${String(tags).split(',')
     .map((t) => {
@@ -183,12 +183,12 @@ async function createSections(key)  {
     page.class = 'card-grid'
     switch (key) {
         case 'position':
-            const postSummary = portfolioData.rawPosition
+            const postSummary = window.portfolioData.rawPosition
             if(!postSummary) {
               console.warn("Position data not loaded")
               break;
             }
-            const posBullets = portfolioData.rawPosBullets
+            const posBullets = window.portfolioData.rawPosBullets
             const postHTML = postSummary.map(p => {
               return `
                 <article role='feed' class="card matrix-legend">
@@ -208,7 +208,7 @@ async function createSections(key)  {
             page.setHTML(postHTML, config)
             break;
         case 'cert':
-            const certs = portfolioData.rawCert;
+            const certs = window.portfolioData.rawCert;
             if (!certs) {
                 console.warn("Certs data not loaded yet.");
                 break;
@@ -225,7 +225,7 @@ async function createSections(key)  {
             page.setHTML(certHtml, config)
             break;
         case 'edu':
-            const ed =  portfolioData.rawEdu
+            const ed = window.portfolioData.rawEdu
           if (!ed) {
             console.warn("Awards data not loaded yet.");
           break;
@@ -243,7 +243,7 @@ async function createSections(key)  {
           page.setHTML(edHtml, config)
             break;
     case 'award':
-    const awards = portfolioData.rawAward;
+    const awards = window.portfolioData.rawAward;
 
     // Safety check: ensure data is loaded before trying to map
     if (!awards) {
@@ -264,7 +264,7 @@ async function createSections(key)  {
       page.setHTML(awardsHTML, config);
       break;
         case 'service':
-            const services = portfolioData.rawService
+            const services = window.portfolioData.rawService
               if(!services) {
               console.warn("Service data not loaded")
               break;
@@ -284,7 +284,7 @@ async function createSections(key)  {
             page.setHTML(serviceHTML, config)
             break;
         case 'project':
-            const projects = portfolioData.rawProject;
+            const projects = window.portfolioData.rawProject;
                      if(!projects) {
               console.warn("Position data not loaded")
               break;
@@ -334,7 +334,7 @@ async function createBody() {
 
 // Populate dropdown filter options
 function initFilters() {
-    const allTags = portfolioData.tags;
+    const allTags = window.portfolioData.tags;
     const categories = new Set(allTags.category)
     Array.from(categories).forEach(cat => {
         const optGroup = document.createElement('optgroup');
@@ -579,7 +579,7 @@ function treemap(data) {
 
 // --- Interactivity & Event Handling ---
 function updateVisualizations(selectedSlug) {
-        const allCells = portfolioData.cells;
+        const allCells = window.portfolioDataa.cells;
         if (selectedSlug !== 'all') {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
@@ -593,7 +593,7 @@ function updateVisualizations(selectedSlug) {
 }
 
 function filterNodeMap(filteredCells) {
-    const nodeMap = new Map(Array.from(portfolioData.nodeMap));
+    const nodeMap = new Map(Array.from(window.portfolioData.nodeMap));
     const allSlugs = Array.from(new Set(filteredCells.x, filteredCells.y))
     allSlugs.map((s) => {
         return nodeMap.get(s)
@@ -639,7 +639,7 @@ resetBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
-        await portfolioData.LoadAll()
+        await window.portfolioData.LoadAll()
         console.log("Data loaded");
 
         updateVisualizations('all');
