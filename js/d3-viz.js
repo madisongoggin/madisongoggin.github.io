@@ -227,7 +227,7 @@ function displayTags(tags) {
     String(tags).split(',').map((t) => {
       // Use .find() instead of .filter() to get the single object directly
       const tag = allTags.find(t1 => t1.slug === t.trim());
-      const item = document.createElementNS('dt')
+      const item = document.createElement('dt')
       item.className = 'tag-chips'
       item.ariaLabel = 'Tag'
 
@@ -540,91 +540,92 @@ function renderMareyChart(filteredCells) {
         .domain(cats)
 
         // Axes
+function xAxis(g) {
+    g.selectAll("g")
+        .attr("transform", `translate(0,${margin.height - margin.bottom})`)
+        .data(filteredCells)
+        .call(g => g.append("line")
+            .attr("class", d => d.x)
+            .attr('stroke-width', '3')
+            .attr('stroke-opacity', '0.7')
+            .call(g => g.append("text")
+                .attr("x", 12)
+                .attr("dy", "0.35em")
+            )
+        )
+        .append('g')
+        .call(g => g.append("line")
+            .attr("class", d => d.y)
+            .attr('stroke-width', '3')
+            .attr('stroke-opacity', '0.7')
+            .attr("transform", `translate(0,${margin.height - margin.bottom})`)
+            .call(g => g.append("text")
+                .attr("x", -12)
+                .attr("dy", "0.35em")
+            )
+        )
+        .call(d3.axisLeft(xScale).tickValues(xValues))
+        .call(d3.axisRight(yScale).tickValues(yValues));
+}
 
- function xAxis(g) {
-  g
- .selectAll("g")
-  .attr("transform",`translate(0,${margin.height - margin.Bottom})`)
- .data(filteredCells)
-   .call(g => g.append("line")
-         .attr("class", (d => d.x))
-        .attr('stroke-width', '3')
-         .attr('stroke-opacity', '0.7')
-        .call(g => g.append("text")
-          .attr("x", 12)
-            .attr("dy", "0.35em")
-    ))
- .append('g')
-  .call(g => g.append("line")
-         .attr("class", ( d => d.y))
-        .attr('stroke-width', '3')
-         .attr('stroke-opacity', '0.7')
-         .attr("transform", `translate(0,${margin.height - margin.Bottom})`)
-         .call(g => g.append("text")
-             .attr("x", -12)
-            .attr("dy", "0.35em")
-     ))
-    .call(d3.axisLeft(xScale).tickValues(xValues))
-    .call(d3.axisRight(yScale).tickValues(yValues))
-  }
-
-
-
-  function  yAxis(g) {
-    g
-    .call(d3.axisTop(catScale).tickValues(cats))
-  }
+function yAxis(g) {
+    g.call(d3.axisTop(catScale).tickValues(cats));
+}
 
 const line = d3.line()
-      .x(d => xScale(d.x))
-      .y(d => catScale(d.domain))
-      .curve(d3.curveMonotoneX);
+    .x(d => xScale(d.x))
+    .y(d => catScale(d.domain))
+    .curve(d3.curveMonotoneX);
 
 const line2 = d3.line()
-      .x(d => yScale(d.y))
-      .y(d => catScale(d.domain))
-      .curve(d3.curveMonotoneX);
+    .x(d => yScale(d.y))
+    .y(d => catScale(d.domain))
+    .curve(d3.curveMonotoneX);
 
-   const svgBase = d3.select('#marey-container')
+const svgBase = d3.select('#marey-container')
     .attr('width', width)
     .attr('height', height)
-     .attr('viewBox', [0, 0, width, height])
-     .attr("preserveAspectRatio", "none")
-     .attr('role', 'presentation')
-     .attr('opacity', 1)
-    .attr('ariaLabel', "Marey's Train Schedule style showing cross-systems experience and expertise.")
-  .call(xAxis)
-  .call(yAxis)
+    .attr('viewBox', [0, 0, width, height])
+    .attr("preserveAspectRatio", "none")
+    .attr('role', 'presentation')
+    .attr('opacity', 1)
+    .attr('aria-label', "Marey's Train Schedule style showing cross-systems experience and expertise.")
+    .call(xAxis)
+    .call(yAxis);
 
- const routes = svgBase
-  .append('g')
-   .selectAll("g")
-   .data(filteredCells)
-   .enter()
-   .append('g')
+const routes = svgBase.append('g')
+    .selectAll("g")
+    .data(filteredCells)
+    .enter()
+    .append('g');
 
-  routes.append("path")
-      .attr("d", d => line(d))
-      .attr("class", "has-toolip")
-      .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
-      .attr("text", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
-      .enter()
-      .append("path")
-            .attr("d", d => line2(d))
-            .attr("class", (d => ("has-tooltip", d.y)))
-            .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
-           .attr("text", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
+// First path (Line 2)
+routes.append("path")
+    .call(line2)
+    .attr("class", d => `has-tooltip ${d.y}`)
+    .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`)
+    .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`);
 
-  routes.append("g")
-       .selectAll("circle")
-      .attr("class", (d => ("has-tooltip", d.x)))
-      .attr('stroke-width', '3')
-      .attr('stroke-opacity', '.7')
-      .attr("data-tooltip", (d => `Intersection of ${d.x} and ${d.y} with weight count ${d.count}`))
-      .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
-      .attr('cx', v => xScale(xValues.indexOf(v.x)))
-      .attr('cy', v => yScale(yValues.indexOf(v.y)))
+// Second path (Line 1)
+routes.append("path")
+    .call(line)
+    .attr("class", d => `has-tooltip ${d.y}`)
+    .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`)
+    .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`);
 
+// Circles with bound data and class set to d.x
+routes.append("g")
+    .selectAll("circle")
+    .data(d => [d]) // Bind the parent row datum to the circle selection
+    .enter()
+    .append("circle")
+    .attr("class", d => `has-tooltip ${d.x}`)
+    .attr('stroke-width', '3')
+    .attr('stroke-opacity', '.7')
+    .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`)
+    .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
+    .attr('cx', v => xScale(xValues.indexOf(v.x)))
+    .attr('cy', v => yScale(yValues.indexOf(v.y)));
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -738,11 +739,11 @@ function updateVisualizations(selectedSlug) {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
              renderMareyChart(filteredCells);
-             renderTreemap(filteredCells);
+           //  renderTreemap(filteredCells);
            }
        } else if (selectedSlug === 'all') {
         renderMareyChart(allCells);
-        renderTreemap(allCells);
+        //renderTreemap(allCells);
     }
 }
 

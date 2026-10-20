@@ -206,7 +206,7 @@ article {
 .lede { font-size: 1.1rem; color: var(--ink-soft); max-width: 65ch; }
 .hero-tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
 .hero-tags li {
-  background: hsl(calc(var(--i) * 50, 80%, 60%));
+  background: hsl(calc(var(--i) * 50), 80%, 60%);
   color: var(--bg);
   border-radius: 999px; padding: .3rem .8rem; font-size: .85rem; font-weight: 600;
 }
