@@ -219,6 +219,11 @@ function formatDate(date) {
   return dateFormat.format(date)
 }
 
+function shuffleArray(array) {
+return array.sort(() => Math.random() - 0.5);
+}
+
+
 function displayTags(tags) {
     const allTags = window.portfolioData.tags;
     let tagList = document.createElement('ol')
@@ -226,7 +231,7 @@ function displayTags(tags) {
     tagList.ariaLabel = 'Tags'
     tagList.role = 'list'
 
-    tags.split(',').map (t => {
+    shuffleArray(tags.split(',')).map (t => {
       // Use .find() instead of .filter() to get the single object directly
       let tag = allTags.find(t1 => t1.slug === t.trim());
       let item = document.createElement('li')
@@ -537,7 +542,7 @@ function renderMareyChart(filteredCells) {
         // Axes
 function xAxis(g) {
     g.selectAll("g")
-        .attr("transform", `translate(0,${margin.height - margin.bottom})`)
+        .attr("transform", `translateX(${margin.left- margin.right})`)
         .data(filteredCells)
         .call(g => g.append("line")
             .attr("class", d => d.x)
@@ -553,7 +558,7 @@ function xAxis(g) {
             .attr("class", d => d.y)
             .attr('stroke-width', '3')
             .attr('stroke-opacity', '0.7')
-            .attr("transform", `translate(0,${margin.height - margin.bottom})`)
+            .attr("transform", `translateY${margin.top - margin.bottom})`)
             .call(g => g.append("text")
                 .attr("x", -12)
                 .attr("dy", "0.35em")

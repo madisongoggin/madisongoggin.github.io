@@ -116,9 +116,9 @@ path, .graph-databases, .sql-server, .web-app { stroke: #ff9da7; }
 .python, .c-sharp, .go, .julia, .powershell, .r, .sql {
   background-color:  #4e79a7
 }
-.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b   }
+.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering { background-color: #f28e2b   }
  .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f ; }
-.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 }
+.access-governance, .dast, .edge-ai-security, .iam, .ci-cd, .iac, .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 }
  .aws, .azure, .gcp { background-color: #76b7b2 }
 .graphql { background-color: #b07aa1   }
 .graph-databases, .sql-server, .web-app { background-color: #ff9da7;  }
@@ -331,15 +331,12 @@ thead th { background: var(--bg); }
   overflow: scroll;
 }
 
-.tag-chips { list-style: none; display: flex; flex-wrap: wrap; flex-direction: row; padding: .3rem, .9rem; font-weight: 600; font-size: .85rem; border: 999px;}
+.tag-chips { list-style: none; display: flex; flex-wrap: wrap; flex-direction: row; padding: 0}
 
 .tag-chips li {
   marker: none;
   color: var(--bg);
-  padding: .3rem, .9rem;
-  font-weight: 600;
-  font-size: .85rem;
-  border: 999px;
+  border-radius: 999px; padding: .3rem .8rem; font-size: .85rem; font-weight: 600;
 }
 
 
