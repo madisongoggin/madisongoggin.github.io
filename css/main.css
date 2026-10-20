@@ -48,19 +48,17 @@ svg, path, g, line, text {
 
 
 .c-sharp, .python, .go, .julia, .powershell, .r, .sql g {  fill: #4e79a7;
-  border: 1px solid var(--yellow) ;
-  background-color: var(--yellow);
 
 }
 
-.c-sharp, .python, .go, .julia, .powershell, .r, .sql line {  fill: #4e79a7;
-  border: 1px solid var(--yellow) ;
-  background-color: var(--yellow);
+.c-sharp, .python, .go, .julia, .powershell, .r, .sql line {
+  stroke: #4e79a7;
 
 }
 
 
-.c-sharp, .python, .go, .julia, .powershell, .r, .sql path {  fill: #4e79a7;
+path, .c-sharp, .python, .go, .julia, .powershell, .r, .sql {
+  stroke: #4e79a7;
 
 }
 text, .c-sharp, .python, .go, .julia, .powershell, .r, .sql {  fill: #4e79a7;
@@ -68,33 +66,33 @@ text, .c-sharp, .python, .go, .julia, .powershell, .r, .sql {  fill: #4e79a7;
 }
 
 path, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;
+stroke:  #f28e2b;
 }
 
 g, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;
+stroke:  #f28e2b;
 }
 
 line, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;  }
+stroke:  #f28e2b;  }
 
 text, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
 fill:  #f28e2b;
 }
 
-path, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill: #4e79a7 }
+path, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { stroke: #4e79a7 }
 
-g, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm {  fill:   #4e79a7;}
+g, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm {  stroke:   #4e79a7;}
 
-line, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill:  #4e79a7;}
+line, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { stroke:  #4e79a7;}
 
 text, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill:  #4e79a7}
 
-path, .aws, .azure, .gcp { fill: #76b7b2; }
+path, .aws, .azure, .gcp { stroke: #76b7b2; }
 
-g, .aws, .azure, .gcp { fill: #76b7b2; }
+g, .aws, .azure, .gcp { stroke: #76b7b2; }
 
-line, .aws, .azure, .gcp { fill: #76b7b2;}
+line, .aws, .azure, .gcp { stroke: #76b7b2;}
 
 text, .aws, .azure, .gcp { fill: #76b7b2;}
 
@@ -103,13 +101,10 @@ g .graphql { fill: #b07aa1; }
 text .graphql { fill: #b07aa1; }
 path .graphql { fill: #b07aa1;  }
 
-g, .graph-databases, .sql-server, .web-app { fill: #ff9da7;  }
+g, .graph-databases, .sql-server, .web-app { stroke : #ff9da7;  }
 text, .graph-databases, .sql-server, .web-app { fill: #ff9da7; }
-line, .graph-databases, .sql-server, .web-app { fill: #ff9da7;  }
-path, .graph-databases, .sql-server, .web-app { fill: #ff9da7; }
-
-
-
+line, .graph-databases, .sql-server, .web-app { stroke: #ff9da7;  }
+path, .graph-databases, .sql-server, .web-app { stroke: #ff9da7; }
 
 
 
@@ -267,13 +262,13 @@ p .art-sect {
 /* Panels */
 .panel {
   background: var(--surface);
-  border: 1px solid var(--line);
+  border: 1px solid gray;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   padding: 1.75rem;
   margin: 0 auto 1.75rem;
   display: flex;
-  display: flex;
+  flex-direction: column;
   overflow: scroll;
 }
 .panel-head { max-width: 70ch; margin-bottom: 1.25rem; }
@@ -333,7 +328,7 @@ thead th { background: var(--bg); }
 
 .tag-chips { list-style: none; display: flex; flex-wrap: wrap; flex-direction: row; padding: .3rem, .9rem; font-weight: 600; font-size: .85rem; border: 999px;}
 
-dt .tag-chips {
+li .tag-chips {
   cursor: pointer;
   font: inherit;
   marker: none;
@@ -344,25 +339,15 @@ dt .tag-chips {
   .85rem;
   border: 999px;
 }
-dt, .python, .c-sharp, .go, .julia, .powershell, .r, .sql {
+li, .python, .c-sharp, .go, .julia, .powershell, .r, .sql {
   background-color:  #4e79a7 !important;
 }
-dt, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b !important;   }
-dt, .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f !important; }
+li, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b !important;   }
+li, .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f !important; }
 .access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 !important;}
-dt, .aws, .azure, .gcp { background-color: #76b7b2 !important}
-dt, .graphql { background-color: #b07aa1 !important  }
-dt, .graph-databases, .sql-server, .web-app { background-color: #ff9da7 !important  }
-
-dd .tag-chips {
-  display: none;
-  marker: none;
-}
-
-.tag-chips dt.active + dd {
-  display: flex;
-}
-
+li, .aws, .azure, .gcp { background-color: #76b7b2 !important}
+li, .graphql { background-color: #b07aa1 !important  }
+li, .graph-databases, .sql-server, .web-app { background-color: #ff9da7 !important  }
 
 .credential-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 

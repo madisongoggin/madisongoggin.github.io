@@ -221,33 +221,24 @@ function formatDate(date) {
 
 function displayTags(tags) {
     const allTags = window.portfolioData.tags;
-    let tagList = document.createElement('dl')
+    let tagList = document.createElement('ol')
     tagList.className = 'tag-chips'
     tagList.ariaLabel = 'Tags'
     tagList.role = 'list'
     tags.split(',').map (t => {
       // Use .find() instead of .filter() to get the single object directly
       const tag = allTags.find(t1 => t1.slug === t.trim());
-      const item = document.createElement('dt')
+      const item = document.createElement('li')
       item.ariaLabel = 'Tag'
-      item.role = 'group'
       item.textContent = t.trim()
 
-      const desc = document.createElement('dd')
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        item.classList = ['tag-chips', t.trim()]
-        desc.textContent = tag.category
-        desc.classList = ['tag-chips', t.trim()]
+        item.classList['tag-chips', t.trim()]
       }
       else {
         item.classList = ['tag-chips', 'flash-error']
-        desc.classList = ['tag-chips', 'flash-error']
-        desc.textContent = null;
       }
-
-      item.appendChild(desc)
-
       tagList.appendChild(item)
 
     })
