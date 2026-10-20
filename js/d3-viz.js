@@ -227,14 +227,14 @@ function displayTags(tags) {
     tagList.role = 'list'
     tags.split(',').map (t => {
       // Use .find() instead of .filter() to get the single object directly
-      const tag = allTags.find(t1 => t1.slug === t.trim());
-      const item = document.createElement('li')
+      let tag = allTags.find(t1 => t1.slug === t.trim());
+      let item = document.createElement('li')
       item.ariaLabel = 'Tag'
       item.textContent = t.trim()
 
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        item.classList['tag-chips', t.trim()]
+        item.classList = ['tag-chips', t.trim()]
       }
       else {
         item.classList = ['tag-chips', 'flash-error']
@@ -265,7 +265,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = p.title
             let sm = document.createElement('p')
-            sm.classNames = ['art-sect', 'org']
+            sm.className = 'org'
             sm.textContent= p.org_name
             let dates = document.createElement('p')
             dates.className = 'art-sect'
@@ -308,7 +308,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = c.cert_name
             let sm = document.createElement('p')
-            sm.classList = ['art-sect', 'org']
+            sm.className = 'org'
             sm.textContent= c.gov_body
             let dates = document.createElement('p')
             dates.className = 'art-sect'
@@ -336,10 +336,10 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = e.degree
            let scholarship = document.createElement('p')
-           scholarship.classList = ['art-sect', 'org']
+           scholarship.class = 'org'
            scholarship.textContent = e.scholarship
             let sm = document.createElement('p')
-            sm.classList = ['art-sect', 'org']
+            sm.class = 'org'
             sm.textContent= e.school
             let capition = document.createElement('p')
             capition.className = 'art-sect'
@@ -393,7 +393,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = s.title
             let sm = document.createElement('p')
-            sm.classList = ['art-sect', 'org']
+            sm.class =  'org'
             sm.textContent = s.org_name
 
             let dates = document.createElement('p')
@@ -508,11 +508,13 @@ function renderMareyChart(filteredCells) {
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
+    /*
     container.setAttribute("height", innerHeight)
     container.setAttribute("width", innerWidth)
   container.setAttribute("role", 'presentation')
   container.setAttribute("viewbox", [0, 0, innerWidth, innerHeight])
    container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
+   */
 
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.x)].sort();
@@ -573,11 +575,13 @@ const line2 = d3.line()
     .curve(d3.curveMonotoneX);
 
 const svgBase = d3.select('#marey-container')
+/*
     .attr('width', innerWidth)
     .attr("height", innerHeight)
     .attr("viewbox", [0, 0, innerWidth, innerHeight])
     .attr("preserveAspectRatio", "none")
     .attr('role', 'presentation')
+*/
     .attr('opacity', 1)
     .attr('aria-label', "Marey's Train Schedule style showing cross-systems experience and expertise.")
     .call(xAxis)

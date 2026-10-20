@@ -43,15 +43,14 @@
 
 svg, path, g, line, text {
     content-visibility: visible;
-    overflow: visible;
 }
 
 
-.c-sharp, .python, .go, .julia, .powershell, .r, .sql g {  fill: #4e79a7;
+g, .c-sharp, .python, .go, .julia, .powershell, .r, .sql g {  fill: #4e79a7;
 
 }
 
-.c-sharp, .python, .go, .julia, .powershell, .r, .sql line {
+line, .c-sharp, .python, .go, .julia, .powershell, .r, .sql {
   stroke: #4e79a7;
 
 }
@@ -203,28 +202,18 @@ a:hover { text-decoration: underline; }
 .account-name { font-size: .85rem; color: var(--ink-soft); }
 
 
-article .art-sect {
-  border: 1px solid gray;
-  color: var(--ink);
-  border-radius: var(--radius);
-}
-
 .art-sect samp, .art-sect kbd,  .art-sect code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 p .org {
-  font-style: italic;
-  overflow:  show;
+  font-style: oblique !important;
 }
 
-p .art-sect {
-  color: var(--ink);
-}
 
 .art-sect h3 {
  text-transform: uppercase;
- color: var(--accent);
+ color: var(--accent-ink) !important;
  overflow-x: visible;
 }
 
@@ -248,7 +237,7 @@ p .art-sect {
 .hero { padding: 3.5rem 1.25rem 2rem; }
 .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; color: var(--accent); font-weight: 700; }
 .lede { font-size: 1.1rem; color: var(--ink-soft); max-width: 65ch; }
-.hero-tags { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.hero-tags { display: flex; flex-wrap: wrap; list-style: none; padding: 0}
 .hero-tags li {
   background: hsl(calc(var(--i) * 50), 80%, 60%);
   color: var(--bg);
@@ -339,15 +328,15 @@ li .tag-chips {
   .85rem;
   border: 999px;
 }
-li, .python, .c-sharp, .go, .julia, .powershell, .r, .sql {
-  background-color:  #4e79a7 !important;
+.python, .c-sharp, .go, .julia, .powershell, .r, .sql, li {
+  background-color:  #4e79a7
 }
-li, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b !important;   }
-li, .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f !important; }
-.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 !important;}
-li, .aws, .azure, .gcp { background-color: #76b7b2 !important}
-li, .graphql { background-color: #b07aa1 !important  }
-li, .graph-databases, .sql-server, .web-app { background-color: #ff9da7 !important  }
+.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering, li {background-color: #f28e2b   }
+ .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai, li { background-color: #59a14f ; }
+.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 }
+ .aws, .azure, .gcp, li { background-color: #76b7b2 }
+.graphql li  { background-color: #b07aa1   }
+.graph-databases, .sql-server, .web-app, li { background-color: #ff9da7;  }
 
 .credential-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 
