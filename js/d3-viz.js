@@ -5,6 +5,9 @@
 */
 
 
+const portfolioData = new PortfolioLoader();
+window.portfolioData = portfolioData;
+
 function tagClean(t) {
  if (String(t).includes(',')) {
     return Array.from(new Set(t.map((e) => (e.split(',').map((i) => i.trim())))))
@@ -45,13 +48,14 @@ class CSVParser {
     parse(csvText) {
       let lines = csvText.split(this.NEWLINE)
       let header = lines[0].split(',')
-      return lines.slice(1).forEach((row, i) => {
+     let content = lines.slice(1).forEach((row, i) => {
         let cleanedLine = {};
         row.split(',', header.length).forEach(c => {
           return cleanedLine[header[i]] = this.#cleanValue(c)
         })
         return cleanedLine
       })
+      return content
     }
 }
 
@@ -88,7 +92,7 @@ class PortfolioLoader {
 
         if (!response.ok) {
             console.log(`HTTP error! Status: ${response.status} for URL: ${url}`);
-            return;
+            return [];
         }
         const text = await response.text();
         return this.parser.parse(text)
@@ -143,8 +147,6 @@ class PortfolioLoader {
     return new d3.InternSet([...this.cert, ...this.edu, ...this.position, ...this.award, ...this.service, ...this.project]);
   }
 }
-
-window.portfolioData = new PortfolioLoader()
 
 const config = new Sanitizer({
   attributes: ['class', 'role', 'aria-label']
