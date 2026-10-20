@@ -514,15 +514,16 @@ function renderMareyChart(filteredCells) {
     if (container.childNodes) {
       container.replaceChildren()
     }
-    const width = document.clientWidth || 600;
-    const height = document.clientHeight || 350;
+    const width = parent.clientWidth || 600;
+    const height = parent.clientHeight || 350;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    container.setAttribute("width",innerWidth)
-   container.setAttribute("height", innerHeight)
+    container.setAttribute("height", innerHeight)
+    container.setAttribute("width", innerWidth)
   container.setAttribute("role", 'presentation')
+  container.setAttribute("viewbox", [0, 0, innerWidth, innerHeight])
    container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
     // Extract unique X and Y sets
@@ -630,8 +631,8 @@ routes.append("g")
 
         // --- 2. Cascaded d3.treemap Visualization ---
 function renderTreemap(filteredCells) {
-  let container =document.getElementById('treemap-container');
-    const width = container.clientWidth || 400;
+  let container  =document.getElementById('treemap-container');
+    const width = document.clientWidth || 400;
     const height = container.clientHeight || 350;
 
 
