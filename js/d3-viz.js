@@ -503,7 +503,7 @@ function renderMareyChart(filteredCells) {
       container.replaceChildren()
     }
 
-    const parent = container.parentNode()
+    const parent = container.parentNode
 
     const width = parent.offsetWidth
     const height = parent.offSetTop || 350;
