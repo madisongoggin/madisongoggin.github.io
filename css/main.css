@@ -37,6 +37,9 @@
   position: relative;
 }
 
+
+.flash-error { color: var(--magenta); background-color: var(--accent-soft); border:  1px solid var(--accent-soft);}
+
 svg, path, g, line, text {
     display: flex;
     flex: content;
@@ -53,19 +56,32 @@ svg, path, g, line, text {
 }
 
 
+.c-sharp, .go, .julia, .powershell, .r, .sql svg, path, g, line, text {
+  fill: #4e79a7;
+  border: 1px solid var(--yellow) ;
+  background-color: var(--yellow);
+}
+.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering svg, path, g, line, text { fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet); }
+.adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { fill: #59a14f ; background-color: var(--magenta); border: 1px solid var(--magenta);}
+.access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+.aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+.graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
+.graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+
 
 .c-sharp, .go, .julia, .powershell, .r, .sql {
   color: #4e79a7;
   border: 1px solid var(--yellow) ;
   background-color: var(--yellow);
 }
-.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering { color: #f28e2b; background-color: var(--violet); border: 1px solid var(--violet); }
+.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {color: #f28e2b; background-color: var(--violet); border: 1px solid var(--violet); }
 .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { color: #59a14f ; background-color: var(--magenta); border: 1px solid var(--magenta);}
 .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { color: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
 .aws, .azure, .gcp { color: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
 .graphql { color: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
 .graph-databases, .sql-server, .web-app { color: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
-.flash-error { color: var(--magenta); background-color: var(--accent-soft); border:  1px solid var(--accent-soft);}
+
+
 
 html { scroll-behavior: smooth; }
 
@@ -161,7 +177,7 @@ a:hover { text-decoration: underline; }
 .account { margin-left: auto; display: flex; align-items: center; gap: .75rem; }
 .account-name { font-size: .85rem; color: var(--ink-soft); }
 
-article {
+article .art-sect {
   flex: content;
   flex-direction: column;
   align-items: center;
@@ -173,15 +189,22 @@ article {
   border-radius: var(--radius);
 }
 
-
-
-.art-sec h3 {
- text-transform: uppercase;
- color: var(--accent);
+.art-sect samp, kbd, code {
+   font: "Courier New", monospace, monospace;
 }
 
-.art-sect {
-  color: var(--ink-soft);
+.org {
+  font-style: italic;
+}
+
+.art-sect p {
+  color: var(--ink);
+}
+
+.art-sect h3 {
+ text-transform: uppercase;
+ color: var(--accent);
+ overflow-x: visible;
 }
 
 

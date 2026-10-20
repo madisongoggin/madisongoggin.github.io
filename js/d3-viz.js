@@ -224,32 +224,32 @@ function displayTags(tags) {
     let tagList = document.createElement('dl')
     tagList.className = 'tag-chips'
     tagList.ariaLabel = 'Tags'
+    tagList.role = 'list'
     String(tags).split(',').map((t) => {
       // Use .find() instead of .filter() to get the single object directly
       const tag = allTags.find(t1 => t1.slug === t.trim());
       const item = document.createElement('dt')
-      item.className = 'tag-chips'
       item.ariaLabel = 'Tag'
+      item.role = 'group'
+      item.textContent = t.slug.trim().replace('-', ' ')
 
-      const innerText = document.createElement('kbd')
-      const label = document.createElement('dd')
-      label.className = 'tag-chips'
+      const desc = document.createElement('dd')
+      desc.className = 'tag-chips'
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        innerText.className = tag.color;
-        innerText.textContent = tag.name;
-        label.textContent = tag.category;
-
+        item.classList = ['tag-chips', t.slug]
+        desc.textContent = tag.category
+        desc.classList = ['tag-chips', t.slug]
       }
       else {
-          innerText.textContent = t.trim()
-          innerText.classList = 'flash-error'
-          label.textContent = ''
+        item.classList = ['tag-chips', 'flash-error']
+        desc.classList = ['tag-chips', 'flash-error']
+        desc.textContent = null;
       }
 
-      innerText.appendChild(label)
+      item.appendChild(desc)
 
-      tagList.appendChild(innerText)
+      tagList.appendChild(item)
 
     })
     return tagList;
@@ -275,7 +275,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = p.title
             let sm = document.createElement('samp')
-            sm.className= 'art-sect'
+            sm.classNames = ['art-sect', 'org']
             sm.textContent= p.org_name
             let dates = document.createElement('p')
             dates.className = 'art-sect'
@@ -310,6 +310,7 @@ async function createSections(key)  {
                 console.warn("Certs data not loaded yet.");
                 break;
             }
+         certs.reverse()
           certs.map(c => {
              let card = document.createElement('article')
             card.className = 'art-sect'
@@ -318,7 +319,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = c.cert_name
             let sm = document.createElement('samp')
-            sm.className= 'art-sect'
+            sm.classList = ['art-sect', 'org']
             sm.textContent= c.gov_body
             let dates = document.createElement('p')
             dates.className = 'art-sect'
@@ -346,14 +347,14 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = e.degree
            let scholarship = document.createElement('p')
-           scholarship.className = 'art-sect'
+           scholarship.classList = ['art-sect', 'org']
            scholarship.textContent = e.scholarship
             let sm = document.createElement('samp')
-            sm.className= 'art-sect'
+            sm.classList ['art-sect', 'org']
             sm.textContent= e.school
             let capition = document.createElement('p')
-            dates.className = 'art-sect'
-            dates.textContent = e.caption
+            capition.className = 'art-sect'
+            capition.textContent = e.caption
 
             card.appendChild(title)
             card.appendChild(scholarship)
@@ -380,7 +381,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = a.title
             let sm = document.createElement('samp')
-            sm.className= 'art-sect'
+            sm.classList = ['art-sect', 'org']
             sm.textContent= a.org_name
             card.appendChild(title)
             card.appendChild(displayTags(a.tag_slug))
@@ -403,10 +404,10 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = s.title
             let sm = document.createElement('samp')
-            sm.className = 'art-sect'
+            sm.classList = ['art-sect', 'org']
             sm.textContent = s.org_name
 
-              let dates = document.createElement('p')
+            let dates = document.createElement('p')
             dates.className = 'art-sect'
             dates.textContent = s.end_date ? `${formatDate(s.start_date)} - ${formatDate(s.end_date)}`  : formatDate(s.start_date)
 
@@ -416,7 +417,7 @@ async function createSections(key)  {
             card.appendChild(dates)
 
             page.appendChild(card)
-            }).
+            });
             break;
         case 'project':
             const projects = window.portfolioData.rawProject;
@@ -438,7 +439,7 @@ async function createSections(key)  {
             link.textContent = p.title
             title.appendChild(link)
            } else {
-            title.textContent = s.title
+            title.textContent = p.title
            }
             let sm = document.createElement('samp')
             sm.className = 'art-sect'
@@ -452,9 +453,9 @@ async function createSections(key)  {
                let smDeploy = document.createElement('samp')
                 sm.className = 'art-sect'
                 let depLink  = document.createElement('a')
-                link.target = "_blank"
-                link.href = p.deploy_url
-                link.textContent ='Live demo'
+                deplink.target = "_blank"
+                dplink.href = p.deploy_url
+                deplink.textContent ='Live demo'
                 smDeploy.appendChild(depLink)
                 card.appendChild(smDeploy)
             }
@@ -488,14 +489,14 @@ async function createBody() {
     return result;
 }
 
-
-// Populate dropdown filter options
 function initFilters() {
-    const allTags = window.portfolioData.tags;
-    allTags.map(cat => {
+      const allTags = window.portfolioData.tags;
+    const categories = [...new Set(allTags.map(t => t.category))];
+    categories.forEach(cat => {
         const optGroup = document.createElement('optgroup');
         optGroup.label = cat.toUpperCase()
-        allTags.filter(t => t.category === cat)
+        portfolioData.tags
+        .filter(t => t.category === cat)
         .forEach(tag => {
             const option = document.createElement('option');
             option.value = tag.slug;
@@ -510,8 +511,9 @@ function initFilters() {
 // --- 1. Marey's Train Schedule Timeline Chart ---
 function renderMareyChart(filteredCells) {
     const container = document.getElementById('marey-container');
-    container.innerHTML = '';
-
+    if (container.childNodes) {
+      container.replaceChildren()
+    }
     const width = container.clientWidth || 600;
     const height = container.clientHeight || 350;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
@@ -631,8 +633,6 @@ routes.append("g")
         // --- 2. Cascaded d3.treemap Visualization ---
 function renderTreemap(filteredCells) {
   let container =document.getElementById('treemap-container');
-    container.innerHTML = '';
-
     const width = container.clientWidth || 400;
     const height = container.clientHeight || 350;
 
