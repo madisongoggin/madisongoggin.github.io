@@ -16,39 +16,77 @@ function tagClean(t) {
 
 class CSVParser {
     constructor() {
-        this.QUOTE = ['"'];
+        this.QUOTE = '"';
     }
 
     #cleanValue(value) {
-        if (value === null || value === undefined || value.trim() === "") {
+        if (value === null || value === undefined) {
             return null;
         }
-        const trimmed = value.trim().replaceAll(this.QUOTE, String())
 
+        let trimmed = value.trim();
+
+        // Strip outer wrapping quotes if present
+        if (trimmed.startsWith(this.QUOTE) && trimmed.endsWith(this.QUOTE)) {
+            trimmed = trimmed.slice(1, -1).trim();
+        }
+
+        if (trimmed === "") {
+            return null;
+        }
+
+        // Coerce Basic Dates (YYYY-MM-DD)
         if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
             return new Date(trimmed);
         }
+
+        // Coerce Numbers (ensure it's numeric and not empty)
         if (!isNaN(trimmed) && trimmed.length > 0 && !isNaN(parseFloat(trimmed))) {
             return Number(trimmed);
         }
+
+        // Coerce Booleans
         if (trimmed.toLowerCase() === "true") return true;
         if (trimmed.toLowerCase() === "false") return false;
 
         return trimmed;
     }
 
+    // Quote-aware line splitter that ignores commas inside quoted strings
+    #parseLine(line) {
+        const result = [];
+        let current = '';
+        let inQuotes = false;
+
+        for (let i = 0; i < line.length; i++) {
+            const char = line[i];
+
+            if (char === this.QUOTE) {
+                inQuotes = !inQuotes;
+                current += char;
+            } else if (char === ',' && !inQuotes) {
+                result.push(current);
+                current = '';
+            } else {
+                current += char;
+            }
+        }
+        result.push(current);
+        return result;
+    }
+
     parse(csvText) {
-      cleanedText = csvText.replaceAll(this.QUOTE)
         // Handle both Windows (\r\n) and Unix (\n) line endings safely
-        const lines = cleanedText.split(/\r?\n/).filter(line => line.trim() !== "");
+        const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
         if (lines.length === 0) return [];
 
-        const header = lines[0].split(',').map(h => h.trim());
+        // Parse header and remove any wrapping quotes from column names
+        const header = this.#parseLine(lines[0]).map(h => h.replace(/^"|"$/g, '').trim());
 
-        // FIXED: Use .map() instead of .forEach() so it returns the array
+        // Use .map() to return the array of cleaned row objects
         const content = lines.slice(1).map((row) => {
             const cleanedLine = {};
-            const values = row.split(',', header.length);
+            const values = this.#parseLine(row);
 
             values.forEach((c, colIndex) => {
                 const colName = header[colIndex];
@@ -766,19 +804,12 @@ resetBtn.addEventListener('click', () => {
 
 window.addEventListener('DOMContentLoaded', async () => {
     try {
+        AddHeroTags()
         await window.portfolioData.LoadAll()
-
-
         updateVisualizations('all');
-
-
         await createBody();
-
-
         initFilters()
-
         AddTooltips()
-
     } catch (err) {
         console.log("error", err);
     }
