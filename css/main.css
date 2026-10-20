@@ -209,7 +209,7 @@ a:hover { text-decoration: underline; }
 
 
 article .art-sect {
-  border: grey;
+  border: 1px solid gray;
   color: var(--ink);
   border-radius: var(--radius);
 }
@@ -345,14 +345,14 @@ dt .tag-chips {
   border: 999px;
 }
 dt, .python, .c-sharp, .go, .julia, .powershell, .r, .sql {
-  background-color:  #4e79a7;
+  background-color:  #4e79a7 !important;
 }
-dt, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b;   }
-dt, .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f ; }
-.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7;}
-dt, .aws, .azure, .gcp { background-color: #76b7b2}
-dt, .graphql { background-color: #b07aa1  }
-dt, .graph-databases, .sql-server, .web-app { background-color: #ff9da7;  }
+dt, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b !important;   }
+dt, .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f !important; }
+.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 !important;}
+dt, .aws, .azure, .gcp { background-color: #76b7b2 !important}
+dt, .graphql { background-color: #b07aa1 !important  }
+dt, .graph-databases, .sql-server, .web-app { background-color: #ff9da7 !important  }
 
 dd .tag-chips {
   display: none;
@@ -361,14 +361,6 @@ dd .tag-chips {
 
 .tag-chips dt.active + dd {
   display: flex;
-  font-size: .9rem;
-  marker: none;
-  font: inherit;
-  marker: none;
-  color: var(--bg);
-  padding: .3rem, .9rem;
-  font-weight: 600; font-size:
-  .85rem; border: 999px;
 }
 
 

@@ -283,7 +283,6 @@ async function createSections(key)  {
             tasks.className = 'art-sect'
             tasks.ariaLabel = 'Major Tasks'
             let label = document.createElement('dt')
-            label.className = 'art-sect'
             label.textContent = 'Major Tasks'
             posBullets.filter(
                         b => b.bullet_tag.includes(p.bullet_tag))
@@ -484,8 +483,6 @@ async function createBody() {
         })
     );
 
-    // Optional: Log overall results to see what passed/failed
-    console.log("All sections settled:", result);
     return result;
 }
 
@@ -585,8 +582,9 @@ const line2 = d3.line()
     .curve(d3.curveMonotoneX);
 
 const svgBase = d3.select('#marey-container')
-    .attr('width', width)
-    .attr('height', height)
+    .attr('width', innerWidth)
+    .attr("height", innerHeight)
+    .attr("viewbox", [0, 0, innerWidth, innerHeight])
     .attr("preserveAspectRatio", "none")
     .attr('role', 'presentation')
     .attr('opacity', 1)
