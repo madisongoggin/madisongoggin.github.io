@@ -43,6 +43,7 @@
 
 svg, path, g, line, text {
     content-visibility: visible;
+    overflow: visible;
 }
 
 
