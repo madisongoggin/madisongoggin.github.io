@@ -16,28 +16,22 @@ function tagClean(t) {
 
 class CSVParser {
     constructor() {
-      this.QUOTE = '""'
-      this.NEWLINE = '\n'
+        this.QUOTE = '""';
+        this.NEWLINE = '\n';
     }
-    // Private cleaning method
-    #cleanValue(value) {
 
+    #cleanValue(value) {
         if (value === null || value === undefined || value.trim() === "") {
             return null;
         }
         const trimmed = value.trim().replaceAll(this.QUOTE, '');
 
-        // Coerce Basic Dates (YYYY-MM-DD)
         if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
             return new Date(trimmed);
         }
-
-        // Coerce Numbers (ensure it's numeric and not empty)
         if (!isNaN(trimmed) && trimmed.length > 0 && !isNaN(parseFloat(trimmed))) {
             return Number(trimmed);
         }
-
-        // Coerce Booleans
         if (trimmed.toLowerCase() === "true") return true;
         if (trimmed.toLowerCase() === "false") return false;
 
@@ -45,16 +39,27 @@ class CSVParser {
     }
 
     parse(csvText) {
-      let lines = csvText.split(this.NEWLINE)
-      let header = lines[0].split(',')
-     let content = lines.slice(1).forEach((row, i) => {
-        let cleanedLine = {};
-        row.split(',', header.length).forEach(c => {
-          return cleanedLine[header[i]] = this.#cleanValue(c)
-        })
-        return cleanedLine
-      })
-      return content
+        // Handle both Windows (\r\n) and Unix (\n) line endings safely
+        const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+        if (lines.length === 0) return [];
+
+        const header = lines[0].split(',').map(h => h.trim());
+
+        // FIXED: Use .map() instead of .forEach() so it returns the array
+        const content = lines.slice(1).map((row) => {
+            const cleanedLine = {};
+            const values = row.split(',', header.length);
+
+            values.forEach((c, colIndex) => {
+                const colName = header[colIndex];
+                if (colName) {
+                    cleanedLine[colName] = this.#cleanValue(c);
+                }
+            });
+            return cleanedLine;
+        });
+
+        return content;
     }
 }
 
@@ -63,6 +68,15 @@ class PortfolioLoader {
         // Fixed: match property name (requestHeader)
         this.requestHeader = new Headers({'Accept': 'text'});
         this.parser = new CSVParser();
+        this._cell = []
+        this._tags = []
+        this._rawCert =  []
+        this._rawEdu = []
+        this._rawService = []
+        this._award = []
+        this._project = []
+        this._rawPosition = []
+        this._posBullets = []
     }
 
     async #init() {
