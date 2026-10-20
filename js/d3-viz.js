@@ -225,6 +225,7 @@ function displayTags(tags) {
     tagList.className = 'tag-chips'
     tagList.ariaLabel = 'Tags'
     tagList.role = 'list'
+    item.classList.add(['tag-chips'])
     tags.split(',').map (t => {
       // Use .find() instead of .filter() to get the single object directly
       let tag = allTags.find(t1 => t1.slug === t.trim());
@@ -234,10 +235,10 @@ function displayTags(tags) {
 
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        item.classList.add(['tag-chips']).add([t.trim()])
+        item.classList.add([t.trim()])
       }
       else {
-        item.classList.add(['tag-chips']).add(['flash-error'])
+        item.classList.add(['flash-error'])
       }
       tagList.appendChild(item)
 
@@ -370,7 +371,8 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = a.title
             let sm = document.createElement('p')
-            sm.classList.add(['art-sect']).add(['org'])
+            sm.classList.add(['art-sect'])
+            sm.classList.add(['org'])
             sm.textContent= a.org_name
             card.appendChild(title)
             card.appendChild(displayTags(a.tag_slug))
@@ -512,7 +514,7 @@ function renderMareyChart(filteredCells) {
     container.setAttribute("width", width)
     container.setAttribute("height", height)
     container.setAttribute("role", "presentation")
-    container.setAttribute("viewBox", [width, height, "100%", "500%"])
+    container.setAttribute("viewBox", [-600, -800, 600, 800])
     container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
 
