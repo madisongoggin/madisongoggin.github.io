@@ -573,13 +573,13 @@ function yAxis(g) {
 }
 
 const line = d3.line()
-    .x(d => xScale(d.x))
-    .y(d => catScale(d.domain))
+    .x(d => d.x)
+    .y(d => d.domain)
     .curve(d3.curveMonotoneX);
 
 const line2 = d3.line()
-    .x(d => yScale(d.y))
-    .y(d => catScale(d.domain))
+    .x(d => d.y)
+    .y(d => d.domain)
     .curve(d3.curveMonotoneX);
 
 const svgBase = d3.select('#marey-container')
@@ -596,7 +596,7 @@ const routes = svgBase.append('g')
     .selectAll("g")
     .data(filteredCells)
     .enter()
-    .append('g');
+    .append('g')
 
 // First path (Line 2)
 routes.append("path")
@@ -608,7 +608,7 @@ routes.append("path")
 // Second path (Line 1)
 routes.append("path")
     .attr("d", d => line(d))
-    .attr("class", d => `has-tooltip ${d.y}`)
+    .attr("class", d => `has-tooltip ${d.x}`)
     .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`)
     .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`);
 
