@@ -163,8 +163,8 @@ function formatDate(date) {
 
 function displayTags(tags) {
     const allTags = portfolioData.tags;
-    return `<dl role='list' class="tag-chips" aria-label="Tags">` +
-    String(tags).split(',')
+    return `<dl role='list' class="tag-chips" aria-label="Tags">
+    ${String(tags).split(',')
     .map((t) => {
       // Use .find() instead of .filter() to get the single object directly
       const tag = allTags.find(t1 => t1.slug === t.trim());
@@ -175,18 +175,22 @@ function displayTags(tags) {
       // Fix the nested double quotes around the CSS variable
        return `<dt> <kbd class="${tag.color}">${tag.name}</dt></kbd> <dd>${tag.category}</dd>`;
     })
-    .join(' ') + // Use .join('') to combine the array items without commas
-    '</dl>';
+    .join(' ')} </dl>`   // Use .join('') to combine the array items without commas
 }
+
 async function createSections(key)  {
     let page = document.getElementById(key)
     page.class = 'card-grid'
     switch (key) {
         case 'position':
             const postSummary = portfolioData.rawPosition
+            if(!postSummary) {
+              console.warn("Position data not loaded")
+              break;
+            }
             const posBullets = portfolioData.rawPosBullets
             const postHTML =  postSummary.map(p => {
-              return ```
+              return `
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow">${p.title}</h3>
                     <samp class='ink-soft'>${p.org_name}</samp>
@@ -199,28 +203,35 @@ async function createSections(key)  {
                         b => b.bullet_tag.includes(p.bullet_tag))
                         .map(b => `<dd>${b.bullet_text}</dd>`
                       ).join(' ')
-                  }</dl> </article>```
+                  }</dl> </article>`
                 }).join('<hr />')
             page.setHTML(postHTML, config)
             break;
         case 'cert':
             const certs = portfolioData.rawCert;
+            if (!certs) {
+                console.warn("Certs data not loaded yet.");
+            }
              const certHtml =  certs.map(c => {
-                return ```
+                return `
                 <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow">$${c.cert_name}</h3>
+                    <h3 class='eyebrow'>$${c.cert_name}</h3>
                     ${displayTags(c.tag_slugs)}
                     <samp class="ink-soft"'>${c.gov_body}</samp>
                     <p>${formatDate(c.earn_date) ?? ''}</p>
-                    </article>```
+                    </article>`
             }).join('<hr />')
             page.setHTML(certHtml, config)
             break;
         case 'edu':
             const ed =  portfolioData.rawEdu
+          if (!ed) {
+            console.warn("Awards data not loaded yet.");
+          break;
+          }
           ed.reverse()
           const edHtml = d.map(e => {
-               return ```
+               return `
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>${e.degree}</h3>
                     <p class="--ink-soft">${e.scholarship ?? ''}</p>
@@ -230,22 +241,35 @@ async function createSections(key)  {
               }).join('<hr />')
           page.setHTML(edHtml, config)
             break;
-     case 'award':
-            const awards = portfolioData.rawAward
-            const awardsHTML = awards.map(a => {
-           return ```
-                <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow>'${a.title}</h3>
-                    ${displayTags(a.tag_slug)}
-                    <samp class="ink-soft"">${a.org_name}</samp>
-                    </article>```
-            }).join('<hr />')
-            page.setHTML(awardsHTML, config);
-            break;
+    case 'award':
+    const awards = portfolioData.rawAward;
+
+    // Safety check: ensure data is loaded before trying to map
+    if (!awards) {
+        console.warn("Awards data not loaded yet.");
+        break;
+    }
+
+    const awardsHTML = awards.map(a => {
+        return `
+            <article role="feed" class="card matrix-legend">
+                <h3 class="eyebrow">${a.title}</h3>
+                ${displayTags(a.tag_slug)}
+                <samp class="ink-soft">${a.org_name}</samp>
+            </article>
+          `;
+    }).join('<hr />');
+
+      page.setHTML(awardsHTML, config);
+      break;
         case 'service':
             const services = portfolioData.rawService
+              if(!services) {
+              console.warn("Service data not loaded")
+              break;
+            }
             const serviceHTML = services.map(s => {
-           return ```
+           return `
                   <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>${s.title}</h3>
                     <samp class='ink-soft'">${s.org_name}</samp>
@@ -254,14 +278,18 @@ async function createSections(key)  {
                      ${formatDate(s.start_date)}
                     ' -' ${formatDate(s.end_date) ?? 'Present'}
                     </p>
-                    </article>```
+                    </article>`
             }).join('<hr />')
             page.setHTML(serviceHTML, config)
             break;
         case 'project':
             const projects = portfolioData.rawProject;
+                     if(!projects) {
+              console.warn("Position data not loaded")
+              break;
+            }
             const ProjectsHTML = projects.map(p => {
-               return ```
+               return `
                   <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow'>
                         ${`<a target="_blank" href="` + p.repo_url + `">${p.name}</a>`?? p.name}
@@ -307,7 +335,7 @@ async function createBody() {
 function initFilters() {
     const allTags = portfolioData.tags;
     const categories = new Set(allTags.category)
-    categories.forEach(cat => {
+    Array.from(categories).forEach(cat => {
         const optGroup = document.createElement('optgroup');
         optGroup.label = cat.toUpperCase()
         allTags.filter(t => t.category === cat)
