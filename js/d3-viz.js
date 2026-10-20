@@ -520,7 +520,7 @@ function renderMareyChart(filteredCells) {
     container.setAttribute("width", width)
     container.setAttribute("height", height)
     container.setAttribute("role", "presentation")
-    container.setAttribute("viewBox", [-600, -800, 600, 800])
+    container.setAttribute("viewBox", [-20, -20, 600, 800])
     container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
 
@@ -586,7 +586,7 @@ const svgBase = d3.select('#marey-container')
     .attr('width', width)
     .attr("height", height)
     .attr('role', 'presentation')
-    .attr("viewbox", [width, height, "100%", "500%"])
+    .attr("viewbox", [-20, -20, 600, 800])
     .attr('opacity', 1)
     .attr('aria-label', "Marey's Train Schedule style showing cross-systems experience and expertise.")
     .call(xAxis)
@@ -600,14 +600,14 @@ const routes = svgBase.append('g')
 
 // First path (Line 2)
 routes.append("path")
-    .call(line2)
+    .attr("d", line2(filteredCells))
     .attr("class", d => `has-tooltip ${d.y}`)
     .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`)
     .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`);
 
 // Second path (Line 1)
 routes.append("path")
-    .call(line)
+    .attr("d", line(filteredCells))
     .attr("class", d => `has-tooltip ${d.y}`)
     .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`)
     .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`);
