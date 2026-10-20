@@ -234,10 +234,10 @@ function displayTags(tags) {
 
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        item.classList.add(['tag-chips', t.trim()])
+        item.classList.add(['tag-chips']).add([t.trim()])
       }
       else {
-        item.classList.add(['tag-chips', 'flash-error'])
+        item.classList.add(['tag-chips']).add(['flash-error'])
       }
       tagList.appendChild(item)
 
@@ -370,7 +370,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = a.title
             let sm = document.createElement('p')
-            sm.classList.add(['art-sect', 'org'])
+            sm.classList.add(['art-sect']).add(['org'])
             sm.textContent= a.org_name
             card.appendChild(title)
             card.appendChild(displayTags(a.tag_slug))
@@ -505,13 +505,14 @@ function renderMareyChart(filteredCells) {
 
     const parent = container.parentNode
 
-    const width = parent.offsetWidth
-    const height = parent.offSetTop || 350;
+    const width = parent.offsetWidth || 750;
+    const height = parent.offSetTop || 500;
 
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     container.setAttribute("width", width)
     container.setAttribute("height", height)
     container.setAttribute("role", "presentation")
+    container.setAttribute("viewBox", [width, height, "100%", "500%"])
     container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
 
@@ -577,6 +578,7 @@ const svgBase = d3.select('#marey-container')
     .attr('width', width)
     .attr("height", height)
     .attr('role', 'presentation')
+    .attr("viewbox", [width, height, "100%", "500%"])
     .attr('opacity', 1)
     .attr('aria-label', "Marey's Train Schedule style showing cross-systems experience and expertise.")
     .call(xAxis)
