@@ -579,7 +579,7 @@ function treemap(data) {
 
 // --- Interactivity & Event Handling ---
 function updateVisualizations(selectedSlug) {
-        const allCells = window.portfolioDataa.cells;
+        const allCells = window.portfolioData.cells;
         if (selectedSlug !== 'all') {
             let filteredCells = allCells.filter(c => c.x === selectedSlug || c.y === selectedSlug)
             if (filteredCells.length != 0) {
