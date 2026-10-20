@@ -106,6 +106,15 @@ line, .graph-databases, .sql-server, .web-app { stroke: #ff9da7;  }
 path, .graph-databases, .sql-server, .web-app { stroke: #ff9da7; }
 
 
+.python, .c-sharp, .go, .julia, .powershell, .r, .sql {
+  background-color:  #4e79a7
+}
+.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b   }
+ .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f ; }
+.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 }
+ .aws, .azure, .gcp { background-color: #76b7b2 }
+.graphql { background-color: #b07aa1   }
+.graph-databases, .sql-server, .web-app { background-color: #ff9da7;  }
 
 html { scroll-behavior: smooth; }
 
@@ -325,15 +334,7 @@ thead th { background: var(--bg); }
   font-size: .85rem;
   border: 999px;
 }
-.python, .c-sharp, .go, .julia, .powershell, .r, .sql {
-  background-color:  #4e79a7
-}
-.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b   }
- .adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f ; }
-.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7 }
- .aws, .azure, .gcp { background-color: #76b7b2 }
-.graphql { background-color: #b07aa1   }
-.graph-databases, .sql-server, .web-app { background-color: #ff9da7;  }
+
 
 .credential-columns { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
 

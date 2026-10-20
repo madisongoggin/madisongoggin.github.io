@@ -234,10 +234,10 @@ function displayTags(tags) {
 
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        item.classList = ['tag-chips', t.trim()]
+        item.classList.add(['tag-chips', t.trim()])
       }
       else {
-        item.classList = ['tag-chips', 'flash-error']
+        item.classList.add(['tag-chips', 'flash-error'])
       }
       tagList.appendChild(item)
 
@@ -370,7 +370,7 @@ async function createSections(key)  {
             title.className = 'art-sect'
            title.textContent = a.title
             let sm = document.createElement('p')
-            sm.classList = ['art-sect', 'org']
+            sm.classList.add(['art-sect', 'org'])
             sm.textContent= a.org_name
             card.appendChild(title)
             card.appendChild(displayTags(a.tag_slug))
@@ -510,9 +510,8 @@ function renderMareyChart(filteredCells) {
 
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     container.setAttribute("width", width)
-    container.setAttribute("heigt", height)
+    container.setAttribute("height", height)
     container.setAttribute("role", "presentation")
-    container.setAttribute("viewbox", [0, 0, width, height])
     container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
 
@@ -577,7 +576,6 @@ const line2 = d3.line()
 const svgBase = d3.select('#marey-container')
     .attr('width', width)
     .attr("height", height)
-    .attr("viewbox", [0, 0, width, height])
     .attr('role', 'presentation')
     .attr('opacity', 1)
     .attr('aria-label', "Marey's Train Schedule style showing cross-systems experience and expertise.")
@@ -629,7 +627,6 @@ function renderTreemap(filteredCells) {
 
     container.setAttribute("width",width)
    container.setAttribute("height", height)
-   container.setAttribute("viewBox",  [0, 0, width, height])
   container.setAttribute("role", 'presentation')
   container.setAttribute("ariaLabel", "Hierarchical treemap of cross-systems experience and expertise")
 
@@ -638,7 +635,6 @@ function renderTreemap(filteredCells) {
     .attr('width', width)
     .attr('height', height)
       .attr('role', 'presentation')
-     .attr('viewBox', [0, 0, width, height])
     .attr('ariaLabel', "Hierarchical treemap of cross-systems experience and expertise")
 
 
