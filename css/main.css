@@ -40,19 +40,6 @@
 
 .flash-error { color: var(--magenta); background-color: var(--accent-soft); border:  1px solid var(--accent-soft);}
 
-svg {
-    display: flexbox;
-    flex-basis: content;
-    flex-direction: column;
-    flex-flow: column;
-    overflow: scroll;
-    align-content: flex-start;
-    align-items: flex-start;
-    align-self: flex-start;
-    text-align: center;
-    content-visibility: visible;
-
-}
 
 svg, path, g, line, text {
     content-visibility: visible;
@@ -64,12 +51,49 @@ svg, path, g, line, text {
   border: 1px solid var(--yellow) ;
   background-color: var(--yellow);
 }
-.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering svg, path, g, line, text { fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet); }
-.adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { fill: #59a14f ; background-color: var(--magenta); border: 1px solid var(--magenta);}
-.access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
-.aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
-.graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
-.graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+path, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
+fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+}
+
+g, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
+fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+}
+
+line, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
+fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+}
+
+text, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
+fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+}
+
+path, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+
+g, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+
+line, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+
+text, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+
+path, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+
+g, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+
+line, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+
+text, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+
+
+g .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
+text .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
+line .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
+path .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
+
+g, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+text, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+line, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+path, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+
 
 
 .c-sharp, .go, .julia, .powershell, .r, .sql {
@@ -180,7 +204,7 @@ a:hover { text-decoration: underline; }
 .account { margin-left: auto; display: flex; align-items: center; gap: .75rem; }
 .account-name { font-size: .85rem; color: var(--ink-soft); }
 
-article .art-sect {
+.art-sect  article{
   flex: content;
   flex-direction: column;
   align-items: center;
@@ -192,11 +216,11 @@ article .art-sect {
   border-radius: var(--radius);
 }
 
-.art-sect samp, kbd, code {
+.art-sect samp, .art-sect kbd,  .art-sect code {
    font: "Courier New", monospace, monospace;
 }
 
-.org {
+.org p {
   font-style: italic;
 }
 
@@ -291,7 +315,7 @@ thead th { background: var(--bg); }
 /* Cards */
 .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
 
-.tag-chips { list-style: none; display: flex; flex-wrap: wrap; gap: .35rem; padding: 0; margin: .6rem 0 0; }
+.tag-chips { list-style: none; display: flex; flex-wrap: wrap; flex-direction: column; overflow: visible; gap: .35rem; padding: 0; margin: .6rem 0 0; }
 
 .tag-chips dt {
   cursor: pointer;

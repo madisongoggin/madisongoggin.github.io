@@ -234,12 +234,11 @@ function displayTags(tags) {
       item.textContent = t.trim().replace('-', ' ')
 
       const desc = document.createElement('dd')
-      desc.className = 'tag-chips'
       // Add a fallback case in case the tag slug isn't found in portfolioData
       if (tag) {
-        item.classList = ['tag-chips', t.slug]
+        item.classList = ['tag-chips', t]
         desc.textContent = tag.category
-        desc.classList = ['tag-chips', t.slug]
+        desc.classList = ['tag-chips', t]
       }
       else {
         item.classList = ['tag-chips', 'flash-error']
@@ -350,7 +349,7 @@ async function createSections(key)  {
            scholarship.classList = ['art-sect', 'org']
            scholarship.textContent = e.scholarship
             let sm = document.createElement('samp')
-            sm.classList ['art-sect', 'org']
+            sm.classList = ['art-sect', 'org']
             sm.textContent= e.school
             let capition = document.createElement('p')
             capition.className = 'art-sect'
@@ -386,7 +385,7 @@ async function createSections(key)  {
             card.appendChild(title)
             card.appendChild(displayTags(a.tag_slug))
             card.appendChild(sm)
-            page.appendChild(ard)
+            page.appendChild(card)
         });
       break;
         case 'service':
@@ -432,6 +431,7 @@ async function createSections(key)  {
             card.role = 'feed';
             let title = document.createElement('h3')
             title.className = 'art-sect'
+            title.textContent = p.name
            if(p.repo_url) {
             let link = document.createElement('a')
             link.target = "_blank"
@@ -453,9 +453,9 @@ async function createSections(key)  {
                let smDeploy = document.createElement('samp')
                 sm.className = 'art-sect'
                 let depLink  = document.createElement('a')
-                deplink.target = "_blank"
-                dplink.href = p.deploy_url
-                deplink.textContent ='Live demo'
+                depLink.target = "_blank"
+                depLink.href = p.deploy_url
+                depLink.textContent ='Live demo'
                 smDeploy.appendChild(depLink)
                 card.appendChild(smDeploy)
             }
@@ -587,7 +587,6 @@ const line2 = d3.line()
 const svgBase = d3.select('#marey-container')
     .attr('width', width)
     .attr('height', height)
-    .attr('viewBox', [0, 0, width, height])
     .attr("preserveAspectRatio", "none")
     .attr('role', 'presentation')
     .attr('opacity', 1)
