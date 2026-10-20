@@ -781,7 +781,7 @@ function AddTooltips() {
 }
 
 function AddHeroTags() {
-  const parent = document.getElementById('focus-area')
+  const parent = document.getElementById('focus-areas')
   const tags = ["AI Safety", "Security Engineering", " Cloud and Industrial DevSecAIOps", "Distributed Systems", "Federated and Edge AI", "Post-Quantum Readiness"]
   tags.map((t, num) => {
     const li = document.createElement('li');
