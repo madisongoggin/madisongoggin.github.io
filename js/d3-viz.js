@@ -225,13 +225,13 @@ function displayTags(tags) {
     tagList.className = 'tag-chips'
     tagList.ariaLabel = 'Tags'
     tagList.role = 'list'
-    String(tags).split(',').map((t) => {
+    tags.split(',').array.forEach(t => {
       // Use .find() instead of .filter() to get the single object directly
       const tag = allTags.find(t1 => t1.slug === t.trim());
       const item = document.createElement('dt')
       item.ariaLabel = 'Tag'
       item.role = 'group'
-      item.textContent = t.trim().replace('-', ' ')
+      item.textContent = t.trim()
 
       const desc = document.createElement('dd')
       // Add a fallback case in case the tag slug isn't found in portfolioData
@@ -514,15 +514,14 @@ function renderMareyChart(filteredCells) {
     if (container.childNodes) {
       container.replaceChildren()
     }
-    const width = container.clientWidth || 600;
-    const height = container.clientHeight || 350;
+    const width = document.clientWidth || 600;
+    const height = document.clientHeight || 350;
     const margin = { top: 20, right: 30, bottom: 40, left: 60 };
     const innerWidth = width - margin.left - margin.right;
     const innerHeight = height - margin.top - margin.bottom;
 
-    container.setAttribute("width",width)
-   container.setAttribute("height", height)
-   container.setAttribute("viewBox",  [0, 0, width, height])
+    container.setAttribute("width",innerWidth)
+   container.setAttribute("height", innerHeight)
   container.setAttribute("role", 'presentation')
    container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
 
