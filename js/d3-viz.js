@@ -273,7 +273,7 @@ async function createSections(key)  {
             let title = document.createElement('h3')
             title.className = 'art-sect'
            title.textContent = p.title
-            let sm = document.createElement('samp')
+            let sm = document.createElement('p')
             sm.classNames = ['art-sect', 'org']
             sm.textContent= p.org_name
             let dates = document.createElement('p')
@@ -317,7 +317,7 @@ async function createSections(key)  {
             let title = document.createElement('h3')
             title.className = 'art-sect'
            title.textContent = c.cert_name
-            let sm = document.createElement('samp')
+            let sm = document.createElement('p')
             sm.classList = ['art-sect', 'org']
             sm.textContent= c.gov_body
             let dates = document.createElement('p')
@@ -348,7 +348,7 @@ async function createSections(key)  {
            let scholarship = document.createElement('p')
            scholarship.classList = ['art-sect', 'org']
            scholarship.textContent = e.scholarship
-            let sm = document.createElement('samp')
+            let sm = document.createElement('p')
             sm.classList = ['art-sect', 'org']
             sm.textContent= e.school
             let capition = document.createElement('p')
@@ -379,7 +379,7 @@ async function createSections(key)  {
             let title = document.createElement('h3')
             title.className = 'art-sect'
            title.textContent = a.title
-            let sm = document.createElement('samp')
+            let sm = document.createElement('p')
             sm.classList = ['art-sect', 'org']
             sm.textContent= a.org_name
             card.appendChild(title)
@@ -402,7 +402,7 @@ async function createSections(key)  {
             let title = document.createElement('h3')
             title.className = 'art-sect'
            title.textContent = s.title
-            let sm = document.createElement('samp')
+            let sm = document.createElement('p')
             sm.classList = ['art-sect', 'org']
             sm.textContent = s.org_name
 
@@ -450,7 +450,7 @@ async function createSections(key)  {
             card.appendChild(sm)
 
             if (p.deploy_url) {
-               let smDeploy = document.createElement('samp')
+               let smDeploy = document.createElement('p')
                 sm.className = 'art-sect'
                 let depLink  = document.createElement('a')
                 depLink.target = "_blank"

@@ -61,72 +61,64 @@ svg, path, g, line, text {
 
 
 .c-sharp, .python, .go, .julia, .powershell, .r, .sql path {  fill: #4e79a7;
-  border: 1px solid var(--yellow) ;
-  background-color: var(--yellow);
 
 }
-
-.c-sharp, .python, .go, .julia, .powershell, .r, .sql text {  fill: #4e79a7;
-  border: 1px solid var(--yellow) ;
-  background-color: var(--yellow);
+text, .c-sharp, .python, .go, .julia, .powershell, .r, .sql {  fill: #4e79a7;
 
 }
 
 path, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+fill:  #f28e2b;
 }
 
 g, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+fill:  #f28e2b;
 }
 
 line, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
-}
+fill:  #f28e2b;  }
 
 text, .agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {
-fill:  #f28e2b;  background-color: var(--violet); border: 1px solid var(--violet);
+fill:  #f28e2b;
 }
 
-path, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+path, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill: #4e79a7 }
 
-g, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+g, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm {  fill:   #4e79a7;}
 
-line, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+line, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill:  #4e79a7;}
 
-text, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill: var(--magenta); background-color:   #4e79a7; border:  1px solid #4e79a7;}
+text, .access-governance, .dast, .edge-ai-security, .iam, .risk-assessment, .pentest, .sast, .sbom, .tprm { fill:  #4e79a7}
 
-path, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+path, .aws, .azure, .gcp { fill: #76b7b2; }
 
-g, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+g, .aws, .azure, .gcp { fill: #76b7b2; }
 
-line, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+line, .aws, .azure, .gcp { fill: #76b7b2;}
 
-text, .aws, .azure, .gcp { fill: #76b7b2; background-color: var(--yellow); border: 1px solid var(--yellow);}
+text, .aws, .azure, .gcp { fill: #76b7b2;}
 
 
-g .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
-text .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
-line .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
-path .graphql { fill: #b07aa1; background-color: var(--accent-ink); border: 1px solid var(--accent-ink); }
+g .graphql { fill: #b07aa1; }
+text .graphql { fill: #b07aa1; }
+path .graphql { fill: #b07aa1;  }
 
-g, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
-text, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
-line, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
-path, .graph-databases, .sql-server, .web-app { fill: #ff9da7; background-color: var(--orange); border: 1px solid var(--orange); }
+g, .graph-databases, .sql-server, .web-app { fill: #ff9da7;  }
+text, .graph-databases, .sql-server, .web-app { fill: #ff9da7; }
+line, .graph-databases, .sql-server, .web-app { fill: #ff9da7;  }
+path, .graph-databases, .sql-server, .web-app { fill: #ff9da7; }
 
 
 
 .python, .c-sharp, .go, .julia, .powershell, .r, .sql {
-  color: #4e79a7;
-  background-color: var(--yellow);
+  background-color:  #4e79a7;
 }
-.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {color: #f28e2b; background-color: var(--violet);  }
-.adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { color: #59a14f ; background-color: var(--magenta); }
-.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { color: var(--magenta); background-color:   #4e79a7;}
-.aws, .azure, .gcp { color: #76b7b2; background-color: var(--yellow); }
-.graphql { color: #b07aa1; background-color: var(--accent-ink);  }
-.graph-databases, .sql-server, .web-app { color: #ff9da7; background-color: var(--orange); }
+.agentic-ai, .ai, .cloud, .compliance, .cybersecurity, .cybersecurity, .database-administration, .devsecaiops, .distributed-systems, .edge-ai, .federated-learning, .high-availability, .intelligent-process-automation, .it-auditing, .observability, .resilient-architecture, .security-engineering {background-color: #f28e2b;   }
+.adversarial-ml, .aiot, .federated-cv, .federated-nlp, .multimodal-ai { background-color: #59a14f ; }
+.access-governance, .dast, .edge-ai-security, .iam, .ci-cd,  .risk-assessment, .sast, .sbom, .pentest, .tprm, .telemetry { background-color:   #4e79a7;}
+.aws, .azure, .gcp { background-color: #76b7b2}
+.graphql { background-color: #b07aa1  }
+.graph-databases, .sql-server, .web-app { background-color: #ff9da7;  }
 
 
 html { scroll-behavior: smooth; }
@@ -223,8 +215,12 @@ a:hover { text-decoration: underline; }
 .account { margin-left: auto; display: flex; align-items: center; gap: .75rem; }
 .account-name { font-size: .85rem; color: var(--ink-soft); }
 
-.art-sect  {
-  flex: content;
+
+article .art-sect {
+  border: grey;
+  color: var(--ink);
+  border-radius: var(--radius);
+  flex: auto;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
@@ -232,22 +228,16 @@ a:hover { text-decoration: underline; }
   overflow: scroll;
 }
 
-.art-sect  article{
-
-  border: grey;
-  color: var(--ink);
-  border-radius: var(--radius);
-}
-
 .art-sect samp, .art-sect kbd,  .art-sect code {
   font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
-.org p {
+p .org {
   font-style: italic;
+  overflow:  show;
 }
 
-.art-sect p {
+p .art-sect {
   color: var(--ink);
 }
 
@@ -277,7 +267,7 @@ a:hover { text-decoration: underline; }
 .hero { padding: 3.5rem 1.25rem 2rem; }
 .eyebrow { text-transform: uppercase; letter-spacing: .14em; font-size: .78rem; color: var(--accent); font-weight: 700; }
 .lede { font-size: 1.1rem; color: var(--ink-soft); max-width: 65ch; }
-.hero-tags { display: flex; flex-wrap: wrap; gap: .5rem; list-style: none; padding: 0; margin: 1.5rem 0 0; }
+.hero-tags { display: flex; flex-wrap: wrap; list-style: none; padding: 0; margin: 1.5rem 0 0; }
 .hero-tags li {
   background: hsl(calc(var(--i) * 50), 80%, 60%);
   color: var(--bg);
@@ -296,10 +286,24 @@ a:hover { text-decoration: underline; }
   box-shadow: var(--shadow);
   padding: 1.75rem;
   margin: 0 auto 1.75rem;
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: scroll;
 }
 .panel-head { max-width: 70ch; margin-bottom: 1.25rem; }
 .panel-sub { color: var(--ink-soft); margin: 0; }
 
+
+.panel-bord {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 1.75rem;
+  margin: 0 auto 1.75rem;
+}
 
 .matrix-count { font-weight: 600; color: var(--ink); }
 .matrix-inspector:not(:empty) { color: var(--accent); font-weight: 600; }
@@ -336,27 +340,44 @@ thead th { background: var(--bg); }
 
 
 /* Cards */
-.card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1rem; }
+.card-grid {
+  display: flex;
+  flex: auto;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: scroll;
+}
 
 .tag-chips { list-style: none; display: flex; flex-wrap: wrap; flex-direction: row; padding: .3rem, .9rem; font-weight: 600; font-size: .85rem; border: 999px;}
 
-.tag-chips dt {
+dt .tag-chips {
   cursor: pointer;
   font: inherit;
-  font-weight: bold;
   marker: none;
+  color: var(--bg);
+  padding: .3rem, .9rem;
+  font-weight: 600;
+  font-size:
+  .85rem;
+  border: 999px;
 }
 
 
-.tag-chips dd {
+dd .tag-chips {
   display: none;
   marker: none;
 }
 
 .tag-chips dt.active + dd {
-  display: block;
+  display: flex;
   font-size: .9rem;
   marker: none;
+  font: inherit;
+  marker: none;
+  color: var(--bg);
+  padding: .3rem, .9rem;
+  font-weight: 600; font-size:
+  .85rem; border: 999px;
 }
 
 
