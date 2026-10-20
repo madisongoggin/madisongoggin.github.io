@@ -539,11 +539,22 @@ function renderMareyChart(filteredCells) {
         const catScale = d3.scalePoint()
         .domain(cats)
 
+        const scaledData = filteredCells.map(c => {
+       return {
+                "dx" : xScale(c.x),
+                "dy" : yScale(c.i),
+                "x" : c.x,
+                "y" : c.y,
+                "count" : c.count,
+                "domain" : c.category
+            }
+        })
+
         // Axes
 function xAxis(g) {
     g.selectAll("g")
         .attr("transform", `translateX(${margin.left- margin.right})`)
-        .data(filteredCells)
+        .data(scaledData)
         .call(g => g.append("line")
             .attr("class", d => d.x)
             .attr('stroke-width', '3')
@@ -573,12 +584,12 @@ function yAxis(g) {
 }
 
 const line = d3.line()
-    .x(d => d.x)
+    .x(d => d.dx)
     .y(d => d.domain)
     .curve(d3.curveMonotoneX);
 
 const line2 = d3.line()
-    .x(d => d.y)
+    .x(d => d.dy)
     .y(d => d.domain)
     .curve(d3.curveMonotoneX);
 
@@ -594,7 +605,7 @@ const svgBase = d3.select('#marey-container')
 
 const routes = svgBase.append('g')
     .selectAll("g")
-    .data(filteredCells)
+    .data(scaledData)
     .enter()
     .append('g')
 
@@ -623,8 +634,8 @@ routes.append("g")
     .attr('stroke-opacity', '.7')
     .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`)
     .attr("r", d => Math.max(6, Math.min(18, Math.sqrt(d.count) * 4)))
-    .attr('cx', v => xScale(xValues.indexOf(v.x)))
-    .attr('cy', v => yScale(yValues.indexOf(v.y)));
+    .attr('cx', v => v.dx)
+    .attr('cy', v => v.dy);
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
