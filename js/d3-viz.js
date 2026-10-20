@@ -600,14 +600,14 @@ const routes = svgBase.append('g')
 
 // First path (Line 2)
 routes.append("path")
-    .attr("d", line2(filteredCells))
+    .attr("d", d => line2(d))
     .attr("class", d => `has-tooltip ${d.y}`)
     .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`)
     .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.y} is ${d.count}`);
 
 // Second path (Line 1)
 routes.append("path")
-    .attr("d", line(filteredCells))
+    .attr("d", d => line(d))
     .attr("class", d => `has-tooltip ${d.y}`)
     .attr("data-tooltip", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`)
     .attr("text", d => d.x != d.y ? `Intersection of ${d.x} and ${d.y} with weight count ${d.count}` : `Count of ${d.x} is ${d.count}`);
