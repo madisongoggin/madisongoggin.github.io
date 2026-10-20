@@ -5,8 +5,7 @@
 */
 
 
-const portfolioData = new PortfolioLoader();
-window.portfolioData = portfolioData;
+
 
 function tagClean(t) {
  if (String(t).includes(',')) {
@@ -147,6 +146,9 @@ class PortfolioLoader {
     return new d3.InternSet([...this.cert, ...this.edu, ...this.position, ...this.award, ...this.service, ...this.project]);
   }
 }
+
+const portfolioData = new PortfolioLoader();
+window.portfolioData = portfolioData;
 
 const config = new Sanitizer({
   attributes: ['class', 'role', 'aria-label']
