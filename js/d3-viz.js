@@ -48,7 +48,7 @@ class CSVParser {
       return lines.slice(1).forEach((row, i) => {
         let cleanedLine = {};
         row.split(',', header.length).forEach(c => {
-          cleanedLine[header[i]] = this.#cleanValue(c)
+          return cleanedLine[header[i]] = this.#cleanValue(c)
         })
         return cleanedLine
       })
@@ -144,7 +144,7 @@ class PortfolioLoader {
   }
 }
 
-const portfolioData = new PortfolioLoader()
+window.portfolioData = new PortfolioLoader()
 
 const config = new Sanitizer({
   attributes: ['class', 'role', 'aria-label']
@@ -189,7 +189,7 @@ async function createSections(key)  {
               break;
             }
             const posBullets = portfolioData.rawPosBullets
-            const postHTML =  postSummary.map(p => {
+            const postHTML = postSummary.map(p => {
               return `
                 <article role='feed' class="card matrix-legend">
                     <h3 class='eyebrow">${p.title}</h3>
@@ -211,6 +211,7 @@ async function createSections(key)  {
             const certs = portfolioData.rawCert;
             if (!certs) {
                 console.warn("Certs data not loaded yet.");
+                break;
             }
              const certHtml =  certs.map(c => {
                 return `
