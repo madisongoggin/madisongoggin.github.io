@@ -16,15 +16,14 @@ function tagClean(t) {
 
 class CSVParser {
     constructor() {
-        this.QUOTE = '""';
-        this.NEWLINE = '\n';
+        this.QUOTE = ['"'];
     }
 
     #cleanValue(value) {
         if (value === null || value === undefined || value.trim() === "") {
             return null;
         }
-        const trimmed = value.trim().replaceAll(this.QUOTE, '');
+        const trimmed = value.trim().replaceAll(this.QUOTE, String())
 
         if (/^\d{4}-\d{2}-\d{2}$/.test(trimmed)) {
             return new Date(trimmed);
@@ -39,8 +38,9 @@ class CSVParser {
     }
 
     parse(csvText) {
+      cleanedText = csvText.replaceAll(this.QUOTE)
         // Handle both Windows (\r\n) and Unix (\n) line endings safely
-        const lines = csvText.split(/\r?\n/).filter(line => line.trim() !== "");
+        const lines = cleanedText.split(/\r?\n/).filter(line => line.trim() !== "");
         if (lines.length === 0) return [];
 
         const header = lines[0].split(',').map(h => h.trim());
@@ -164,9 +164,11 @@ class PortfolioLoader {
 const portfolioData = new PortfolioLoader();
 window.portfolioData = portfolioData;
 
+/*
 const config = new Sanitizer({
   attributes: ['class', 'role', 'aria-label']
 });
+*/
 
 // DOM elements
 const tooltip = document.getElementById('floating-tooltip');
@@ -174,26 +176,45 @@ const tagFilterSelect = document.getElementById('tag-filter');
 const resetBtn = document.getElementById('reset-filters');
 
 
-const dateFormat = new Intl.DateTimeFormat('en-US', { month: 'short', year: 'numeric' })
+const dateFormat = new Intl.DateTimeFormat(undefined, { month: 'short', year: 'numeric' })
 function formatDate(date) {
   return dateFormat.format(date)
 }
 
 function displayTags(tags) {
     const allTags = window.portfolioData.tags;
-    return `<dl role='list' class="tag-chips" aria-label="Tags">
-    ${String(tags).split(',')
-    .map((t) => {
+    let tagList = document.createElement('dl')
+    tagList.className = 'tag-chips'
+    tagList.ariaLabel = 'Tags'
+    String(tags).split(',').map((t) => {
       // Use .find() instead of .filter() to get the single object directly
       const tag = allTags.find(t1 => t1.slug === t.trim());
+      const item = document.createElementNS('dt')
+      item.className = 'tag-chips'
+      item.ariaLabel = 'Tag'
 
+      const innerText = document.createElement('kbd')
+      const label = document.createElement('dd')
+      label.className = 'tag-chips'
       // Add a fallback case in case the tag slug isn't found in portfolioData
-      if (!tag) return '';
+      if (tag) {
+        innerText.className = tag.color;
+        innerText.textContent = tag.name;
+        label.textContent = tag.category;
 
-      // Fix the nested double quotes around the CSS variable
-       return `<dt> <kbd class="${tag.color}">${tag.name}</dt></kbd> <dd>${tag.category}</dd>`;
+      }
+      else {
+          innerText.textContent = t.trim()
+          innerText.classList = 'flash-error'
+          label.textContent = ''
+      }
+
+      innerText.appendChild(label)
+
+      tagList.appendChild(innerText)
+
     })
-    .join(' ')} </dl>`   // Use .join('') to combine the array items without commas
+    return tagList;
 }
 
 async function createSections(key)  {
@@ -207,23 +228,43 @@ async function createSections(key)  {
               break;
             }
             const posBullets = window.portfolioData.rawPosBullets
-            const postHTML = postSummary.map(p => {
-              return `
-                <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow">${p.title}</h3>
-                    <samp class='ink-soft'>${p.org_name}</samp>
-                    <p>${formatDate(p.start_date)}  - ${formatDate(p.end_Date)} </p>
-                    ${displayTags(p.tags)}
-                    <dl name='tasks'>
-                    <dt>Major Tasks</dt>
-                    ${
-                      posBullets.filter(
+            postSummary.reverse()
+            postSummary.map(p => {
+            let card = document.createElement('article')
+            card.className = 'art-sect'
+            card.role = 'feed';
+            let title = document.createElement('h3')
+            title.className = 'art-sect'
+           title.textContent = p.title
+            let sm = document.createElement('samp')
+            sm.className= 'art-sect'
+            sm.textContent= p.org_name
+            let dates = document.createElement('p')
+            dates.className = 'art-sect'
+            dates.textContent = `${formatDate(p.start_date)} - ${formatDate(p.end_date)}`
+            let tasks = document.createElement('dl')
+            tasks.className = 'art-sect'
+            tasks.ariaLabel = 'Major Tasks'
+            let label = document.createElement('dt')
+            label.className = 'art-sect'
+            label.textContent = 'Major Tasks'
+            posBullets.filter(
                         b => b.bullet_tag.includes(p.bullet_tag))
-                        .map(b => `<dd>${b.bullet_text}</dd>`
-                      ).join(' ')
-                  }</dl> </article>`
-                }).join('<hr />')
-            page.setHTML(postHTML, config)
+                        .map(b => {
+                          let bullet = document.createElement('dd');
+                          bullet.textContent =  b.bullet_text
+                          label.appendChild(bullet)
+              })
+            tasks.appendChild(label)
+
+            card.appendChild(title)
+            card.appendChild(sm)
+            card.appendChild(dates)
+            card.appendChild(displayTags(p.tags))
+            card.appendChild(tasks)
+
+            page.appendChild(card)
+            });
             break;
         case 'cert':
             const certs = window.portfolioData.rawCert;
@@ -231,55 +272,83 @@ async function createSections(key)  {
                 console.warn("Certs data not loaded yet.");
                 break;
             }
-             const certHtml =  certs.map(c => {
-                return `
-                <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>$${c.cert_name}</h3>
-                    ${displayTags(c.tag_slugs)}
-                    <samp class="ink-soft"'>${c.gov_body}</samp>
-                    <p>${formatDate(c.earn_date) ?? ''}</p>
-                    </article>`
-            }).join('<hr />')
-            page.setHTML(certHtml, config)
+          certs.map(c => {
+             let card = document.createElement('article')
+            card.className = 'art-sect'
+            card.role = 'feed';
+            let title = document.createElement('h3')
+            title.className = 'art-sect'
+           title.textContent = c.cert_name
+            let sm = document.createElement('samp')
+            sm.className= 'art-sect'
+            sm.textContent= c.gov_body
+            let dates = document.createElement('p')
+            dates.className = 'art-sect'
+            dates.textContent = formatDate(c.earn_date)
+
+            card.appendChild(title)
+            card.appendChild(sm)
+            card.appendChild(dates)
+            card.appendChild(displayTags(c.tag_slugs))
+
+            page.appendChild(card)
+          })
             break;
         case 'edu':
             const ed = window.portfolioData.rawEdu
-          if (!ed) {
+            if (!ed) {
             console.warn("Awards data not loaded yet.");
-          break;
-          }
-          ed.reverse()
-          const edHtml = d.map(e => {
-               return `
-                <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>${e.degree}</h3>
-                    <p class="--ink-soft">${e.scholarship ?? ''}</p>
-                    ${displayTags(e.tag_slugs)}
-                     <samp class="ink-soft">${e.school}</samp>
-                    <p>${e.capiton ?? '' }</p></article>`
-              }).join('<hr />')
-          page.setHTML(edHtml, config)
+            break;
+           }
+           ed.map(e => {
+              let card = document.createElement('article')
+            card.className = 'art-sect'
+            card.role = 'feed';
+            let title = document.createElement('h3')
+            title.className = 'art-sect'
+           title.textContent = e.degree
+           let scholarship = document.createElement('p')
+           scholarship.className = 'art-sect'
+           scholarship.textContent = e.scholarship
+            let sm = document.createElement('samp')
+            sm.className= 'art-sect'
+            sm.textContent= e.school
+            let capition = document.createElement('p')
+            dates.className = 'art-sect'
+            dates.textContent = e.caption
+
+            card.appendChild(title)
+            card.appendChild(scholarship)
+            card.appendChild(sm)
+            card.appendChild(displayTags(e.tag_slugs))
+            card.appendChild(capition)
+
+            page.appendChild(card)
+           })
             break;
     case 'award':
     const awards = window.portfolioData.rawAward;
-
+    awards.reverse();
     // Safety check: ensure data is loaded before trying to map
     if (!awards) {
         console.warn("Awards data not loaded yet.");
         break;
     }
-
-    const awardsHTML = awards.map(a => {
-        return `
-            <article role="feed" class="card matrix-legend">
-                <h3 class="eyebrow">${a.title}</h3>
-                ${displayTags(a.tag_slug)}
-                <samp class="ink-soft">${a.org_name}</samp>
-            </article>
-          `;
-    }).join('<hr />');
-
-      page.setHTML(awardsHTML, config);
+     awards.map(a => {
+            let card = document.createElement('article')
+            card.className = 'art-sect'
+            card.role = 'feed';
+            let title = document.createElement('h3')
+            title.className = 'art-sect'
+           title.textContent = a.title
+            let sm = document.createElement('samp')
+            sm.className= 'art-sect'
+            sm.textContent= a.org_name
+            card.appendChild(title)
+            card.appendChild(displayTags(a.tag_slug))
+            card.appendChild(sm)
+            page.appendChild(ard)
+        });
       break;
         case 'service':
             const services = window.portfolioData.rawService
@@ -287,19 +356,29 @@ async function createSections(key)  {
               console.warn("Service data not loaded")
               break;
             }
-            const serviceHTML = services.map(s => {
-           return `
-                  <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>${s.title}</h3>
-                    <samp class='ink-soft'">${s.org_name}</samp>
-                    ${displayTags(s.tag_slugs)}
-                     <p class="ink-soft'">
-                     ${formatDate(s.start_date)}
-                    ' -' ${formatDate(s.end_date) ?? 'Present'}
-                    </p>
-                    </article>`
-            }).join('<hr />')
-            page.setHTML(serviceHTML, config)
+            services.reverse()
+            services.map(s => {
+            let card = document.createElement('article')
+            card.className = 'art-sect'
+            card.role = 'feed';
+            let title = document.createElement('h3')
+            title.className = 'art-sect'
+           title.textContent = s.title
+            let sm = document.createElement('samp')
+            sm.className = 'art-sect'
+            sm.textContent = s.org_name
+
+              let dates = document.createElement('p')
+            dates.className = 'art-sect'
+            dates.textContent = s.end_date ? `${formatDate(s.start_date)} - ${formatDate(s.end_date)}`  : formatDate(s.start_date)
+
+            card.appendChild(title)
+            card.appendChild(sm)
+            card.appendChild(displayTags(s.tag_slugs))
+            card.appendChild(dates)
+
+            page.appendChild(card)
+            }).
             break;
         case 'project':
             const projects = window.portfolioData.rawProject;
@@ -307,19 +386,43 @@ async function createSections(key)  {
               console.warn("Position data not loaded")
               break;
             }
-            const ProjectsHTML = projects.map(p => {
-               return `
-                  <article role='feed' class="card matrix-legend">
-                    <h3 class='eyebrow'>
-                        ${`<a target="_blank" href="` + p.repo_url + `">${p.name}</a>`?? p.name}
-                    </h3>
-                        <p class="ink-soft'">${p.status ?? ''} </p>
-                       ${displayTags(p.tags)}
-                   <samp>${p.description}</samp>
-                   ${'<samp><a target="_blank" href="' + p.deploy_url + '">Live demo</a></samp>' ?? ''}
-                   </article>`
-            }).join('<hr />')
-            page.setHTML(ProjectsHTML, config)
+            projects.reverse()
+            projects.map(p => {
+            let card = document.createElement('article')
+            card.className = 'art-sect'
+            card.role = 'feed';
+            let title = document.createElement('h3')
+            title.className = 'art-sect'
+           if(p.repo_url) {
+            let link = document.createElement('a')
+            link.target = "_blank"
+            link.href = p.repo_url
+            link.textContent = p.title
+            title.appendChild(link)
+           } else {
+            title.textContent = s.title
+           }
+            let sm = document.createElement('samp')
+            sm.className = 'art-sect'
+            sm.textContent = p.description
+
+            card.appendChild(title)
+            card.appendChild(displayTags(p.tags))
+            card.appendChild(sm)
+
+            if (p.deploy_url) {
+               let smDeploy = document.createElement('samp')
+                sm.className = 'art-sect'
+                let depLink  = document.createElement('a')
+                link.target = "_blank"
+                link.href = p.deploy_url
+                link.textContent ='Live demo'
+                smDeploy.appendChild(depLink)
+                card.appendChild(smDeploy)
+            }
+
+            page.appendChild(card)
+            });
             break;
         default:
             return;
@@ -333,9 +436,7 @@ async function createBody() {
     const result = await Promise.allSettled(
         sections.map(async (s) => {
             try {
-                console.log(`Starting section: ${s}`);
                 const res = await createSections(s);
-                console.log(`Successfully completed section: ${s}`);
                 return res;
             } catch (err) {
                 console.error(`Error in section [${s}]:`, err);
@@ -353,8 +454,7 @@ async function createBody() {
 // Populate dropdown filter options
 function initFilters() {
     const allTags = window.portfolioData.tags;
-    const categories = new Set(allTags.category)
-    Array.from(categories).forEach(cat => {
+    allTags.map(cat => {
         const optGroup = document.createElement('optgroup');
         optGroup.label = cat.toUpperCase()
         allTags.filter(t => t.category === cat)
@@ -385,7 +485,6 @@ function renderMareyChart(filteredCells) {
    container.setAttribute("viewBox",  [0, 0, width, height])
   container.setAttribute("role", 'presentation')
    container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
-
 
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.x)].sort();
@@ -488,7 +587,6 @@ const line2 = d3.line()
       .attr('cx', v => xScale(xValues.indexOf(v.x)))
       .attr('cy', v => yScale(yValues.indexOf(v.y)))
 
-        svgBase.node().removeAttribute('style')
 }
 
         // --- 2. Cascaded d3.treemap Visualization ---
@@ -644,6 +742,17 @@ function AddTooltips() {
   return 0
 }
 
+function AddHeroTags() {
+  const parent = document.getElementById('focus-area')
+  const tags = ["AI Safety", "Security Engineering", " Cloud and Industrial DevSecAIOps", "Distributed Systems", "Federated and Edge AI", "Post-Quantum Readiness"]
+  tags.map((t, num) => {
+    const li = document.createElement('li');
+  li.className = 'hero-tags';
+  li.style.setProperty('--i', num);
+  li.textContent = t
+  parent.appendChild(li)
+  });
+}
 
 tagFilterSelect.addEventListener('change', (e) => {
             updateVisualizations(e.target.value);
@@ -658,19 +767,17 @@ resetBtn.addEventListener('click', () => {
 window.addEventListener('DOMContentLoaded', async () => {
     try {
         await window.portfolioData.LoadAll()
-        console.log("Data loaded");
+
 
         updateVisualizations('all');
-        console.log("Visuals loaded");
+
 
         await createBody();
-        console.log("Body created")
+
 
         initFilters()
-        console.log("Filters created")
 
         AddTooltips()
-        console.log("Tooltips added")
 
     } catch (err) {
         console.log("error", err);
