@@ -502,19 +502,19 @@ function renderMareyChart(filteredCells) {
     if (container.childNodes) {
       container.replaceChildren()
     }
-    const width = parent.clientWidth || 600;
-    const height = parent.clientHeight || 350;
-    const margin = { top: 20, right: 30, bottom: 40, left: 60 };
-    const innerWidth = width - margin.left - margin.right;
-    const innerHeight = height - margin.top - margin.bottom;
 
-    /*
-    container.setAttribute("height", innerHeight)
-    container.setAttribute("width", innerWidth)
-  container.setAttribute("role", 'presentation')
-  container.setAttribute("viewbox", [0, 0, innerWidth, innerHeight])
-   container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
-   */
+    const parent = container.parentNode()
+
+    const width = parent.offsetWidth
+    const height = parent.offSetTop || 350;
+
+    const margin = { top: 20, right: 30, bottom: 40, left: 60 };
+    container.setAttribute("width", width)
+    container.setAttribute("heigt", height)
+    container.setAttribute("role", "presentation")
+    container.setAttribute("viewbox", [0, 0, width, height])
+    container.setAttribute("ariaLabel", "Marey's Train Schedule style showing cross-systems experience and expertise.")
+
 
     // Extract unique X and Y sets
         const xValues = [...new Set(filteredCells.x)].sort();
@@ -575,13 +575,10 @@ const line2 = d3.line()
     .curve(d3.curveMonotoneX);
 
 const svgBase = d3.select('#marey-container')
-/*
-    .attr('width', innerWidth)
-    .attr("height", innerHeight)
-    .attr("viewbox", [0, 0, innerWidth, innerHeight])
-    .attr("preserveAspectRatio", "none")
+    .attr('width', width)
+    .attr("height", height)
+    .attr("viewbox", [0, 0, width, height])
     .attr('role', 'presentation')
-*/
     .attr('opacity', 1)
     .attr('aria-label', "Marey's Train Schedule style showing cross-systems experience and expertise.")
     .call(xAxis)
